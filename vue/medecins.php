@@ -5,14 +5,13 @@
 <body>
 <h1>Liste des medecins</h1>
 <?php
-    include("medecin.controleur.php");
+    include($_SERVER['DOCUMENT_ROOT'].'/controleur/medecin.controleur.php');
     $controleur=new Medecin_controleur();
     $resultat=$controleur->liste_medecins();
     while ($data = $resultat->fetch()) {
-        echo $data[0].'<br/>'.$data[1];
+        echo $data[0].'<br/>'.$data[1].'<br/>';
     }
     
 ?>
-ui
 <input type="button" value="Ajouter un medecin">
 </body>

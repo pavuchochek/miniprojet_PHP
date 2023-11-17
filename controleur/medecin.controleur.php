@@ -9,7 +9,9 @@ class Medecin_controleur{
         $this->pdo=$this->c->getConnexion();
     }
     public function  liste_medecins(){
-        $res=$this->pdo->query('SELECT * FROM Médecin');
+        $res=$this->pdo->query('SELECT personne.Nom,personne.Prénom
+        FROM médecin,personne
+        WHERE médecin.Id_Personne=personne.Id_Personne');
         return $res;
     }
 }

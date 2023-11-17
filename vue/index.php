@@ -5,6 +5,6 @@
 
 <body>
     Bienvenue
-    <a href="medecins.php"><input type="button" value="Gerer les usagers"></a>
-    <a href="usagers.php"><input type="button" value="Gerer les medecins"></a>
+    <a href="usagers.php"><input type="button" value="Gerer les usagers"></a>
+    <a href="medecins.php"><input type="button" value="Gerer les medecins"></a>
 </body>
