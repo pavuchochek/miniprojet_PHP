@@ -1,5 +1,5 @@
 <?php
-include("pdo.php");
+include($_SERVER['DOCUMENT_ROOT'].'/miniProjet_php/modele/pdo.php');
 class Medecin_controleur{
     private $c;
     private $pdo;

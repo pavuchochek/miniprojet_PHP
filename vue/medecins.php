@@ -5,7 +5,7 @@
 <body>
 <h1>Liste des medecins</h1>
 <?php
-    include($_SERVER['DOCUMENT_ROOT'].'/controleur/medecin.controleur.php');
+    include($_SERVER['DOCUMENT_ROOT'].'/miniProjet_php/controleur/medecin.controleur.php');
     $controleur=new Medecin_controleur();
     $resultat=$controleur->liste_medecins();
     while ($data = $resultat->fetch()) {
