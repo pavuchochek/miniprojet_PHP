@@ -5,10 +5,13 @@
 <body>
 <h1>Liste des medecins</h1>
 <?php
-    include("modele/pdo.php");
+    include("medecin.controleur.php");
     $controleur=new Medecin_controleur();
     $resultat=$controleur->liste_medecins();
-    echo $resultat;
+    while ($data = $resultat->fetch()) {
+        echo $data[0].'<br/>'.$data[1];
+    }
+    
 ?>
 ui
 <input type="button" value="Ajouter un medecin">
