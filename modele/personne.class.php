@@ -1,4 +1,6 @@
-<?php enum Civilite{
+<?php
+
+enum Civilite{
     case H;
     case F;
 }
