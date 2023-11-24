@@ -7,11 +7,17 @@
 <?php
     include($_SERVER['DOCUMENT_ROOT'].'/miniProjet_php/controleur/medecin.controleur.php');
     $controleur=new Medecin_controleur();
-    $resultat=$controleur->liste_medecins();
-    while ($data = $resultat->fetch()) {
-        echo $data[0].'<br/>'.$data[1].'<br/>';
-    }
-    
+    $resultat=$controleur->liste_medecins(); 
 ?>
+ <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 <input type="button" value="Ajouter un medecin">
 </body>
