@@ -1,4 +1,5 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/miniProjet_php/modele/classes.php');
 class Rdv{
 	private $_Id_Rdv;
 	private $_Date_rdv;
