@@ -1,0 +1,17 @@
+*{
+    border:1px solid black;
+}
+.box_medecin{
+    width:50%;
+    margin:auto;
+
+}
+.item_medecin{
+    display: inline-block;
+    width:fit-content;
+}
+.icone_liste_medecin{
+    max-height:200px;
+}
+.nom{
+}
