@@ -12,15 +12,12 @@ clearstatcache();
 <div class="box_medecin">
 
 <?php
-    require($_SERVER['DOCUMENT_ROOT'].'/miniProjet_php/modele/classes.php');
+    require($_SERVER['DOCUMENT_ROOT'].'/miniProjet_php/src/modele/classes.php');
     $controleur = new Medecin_controleur();
     $resultat=$controleur->liste_medecins();
     foreach ($resultat as $value){
         echo "<div class='item_medecin'>
-        <img
-        class='icone_liste_medecin'
-        src='img/icone_homme.png'
-        alt='icone d'un medecin'/>
+        <img class='icone_liste_medecin' src='img/icone_homme.png' alt='icone d'un medecin'/>
         <div class='nom'>".$value->getNom()."</div>"."<div>".$value->getPrenom()."</div></div>";
     }
 ?>

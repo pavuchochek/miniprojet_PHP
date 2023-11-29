@@ -1,10 +1,15 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'].'/miniProjet_php/modele/classes.php');
+require('../modele/classes.php');
+
+
+
 class Medecin_controleur{
+    
     private $c;
     private $pdo;
     public function __construct(){
-        $this->c = new Connexion("localhost","root","344561","miniProjet_php");
+        include("../../configuration.php");
+        $this->c = new Connexion($db_address,$user,$password,$db_name);
         
         $this->pdo=$this->c->getConnexion();
     }

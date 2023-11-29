@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'].'/miniProjet_php/modele/personne.class.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/miniProjet_php/src/modele/personne.class.php');
 
 class Medecin extends Personne{
 
