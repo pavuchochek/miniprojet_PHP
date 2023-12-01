@@ -1,5 +1,5 @@
 CREATE TABLE Personne(
-   Id_Personne COUNTER,
+   Id_Personne INT(11) AUTO_INCREMENT NOT NULL,
    Nom VARCHAR(50),
    Prénom VARCHAR(50),
    Civilité CHAR(1),
@@ -7,14 +7,14 @@ CREATE TABLE Personne(
 );
 
 CREATE TABLE Médecin(
-   Id_Médecin COUNTER,
+   Id_Médecin INT(11) AUTO_INCREMENT NOT NULL,
    Id_Personne INT NOT NULL,
    PRIMARY KEY(Id_Médecin),
    FOREIGN KEY(Id_Personne) REFERENCES Personne(Id_Personne)
 );
 
 CREATE TABLE Usager(
-   Id_Usager COUNTER,
+   Id_Usager INT(11) AUTO_INCREMENT NOT NULL,
    N_sécurité_sociale CHAR(13) NOT NULL,
    Adresse VARCHAR(200),
    Date_naissance DATE,
