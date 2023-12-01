@@ -1,4 +1,4 @@
-INSERT INTO usager (nom, prenom, civilité) VALUES
+INSERT INTO personne (Nom, Prénom, Civilité) VALUES
 ('Doe', 'John', 'M'),
 ('Smith', 'Jane', 'F'),
 ('Johnson', 'Michael', 'M'),
@@ -11,7 +11,7 @@ INSERT INTO usager (nom, prenom, civilité) VALUES
 ('Taylor', 'Jessica', 'F'),
 ('Anderson', 'Christopher', 'M');
 
-NSERT INTO medecin (id_usager) VALUES
+NSERT INTO médecin (Id_Personne) VALUES
 (4),
 (5),
 (6),
@@ -19,3 +19,5 @@ NSERT INTO medecin (id_usager) VALUES
 (8),
 (9),
 (10);
+
+
