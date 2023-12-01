@@ -28,8 +28,8 @@ CREATE TABLE Usager(
 );
 
 CREATE TABLE Rdv(
-   Id_Usager INT,
-   Id_Médecin INT,
+   Id_Usager INT NOT NULL,
+   Id_Médecin INT NOT NULL,
    Date_rdv DATE,
    Heure_début TIME,
    Heure_fin TIME,
