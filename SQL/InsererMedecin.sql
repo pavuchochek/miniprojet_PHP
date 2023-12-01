@@ -11,7 +11,7 @@ INSERT INTO personne (Nom, Prénom, Civilité) VALUES
 ('Taylor', 'Jessica', 'F'),
 ('Anderson', 'Christopher', 'M');
 
-NSERT INTO médecin (Id_Personne) VALUES
+INSERT INTO médecin (Id_Personne) VALUES
 (4),
 (5),
 (6),
