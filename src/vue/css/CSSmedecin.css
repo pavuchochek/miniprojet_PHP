@@ -2,16 +2,22 @@
     border:1px solid black;
 }
 .box_medecin{
-    width:50%;
+    width:80%;
     margin:auto;
 
 }
 .item_medecin{
     display: inline-block;
+    padding:2%;
+    margin:2%;
     width:fit-content;
 }
 .icone_liste_medecin{
     max-height:200px;
 }
-.nom{
+.boutons_modif{
+    display:flex;
+    position: sticky;
+    bottom:30px;
+    right:0px;
 }

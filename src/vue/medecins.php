@@ -4,7 +4,7 @@ clearstatcache();
 <head>
     <meta charset="utf-8" />
     <title>Medecins</title>
-    <link rel="stylesheet" href="css/medecin.css">
+    <link rel="stylesheet" href="css/CSSmedecin.css">
 </head>
 <body>
 <h1>Liste des medecins</h1>
@@ -22,5 +22,7 @@ clearstatcache();
     }
 ?>
 </div>
+<div class="boutons_modif" >
 <input type="button" value="Ajouter un medecin">
+</div>
 </body>
