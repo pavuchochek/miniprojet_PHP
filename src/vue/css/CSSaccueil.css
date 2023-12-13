@@ -1,9 +1,9 @@
 /* CSS de la page */
+
 #menu{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 135px;
     height: 80%;
 }
 

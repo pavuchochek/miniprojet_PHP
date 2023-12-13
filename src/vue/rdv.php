@@ -11,9 +11,8 @@
     <?php include 'header.php'; ?>
 
     <body>
-        <h1>Liste des rdv</h1>
-        <div class="boutons_modif" >
-            <input type="button" value="Ajouter un rdv">
+        <div class="decalage_header">
+            <h1>Liste des rdv</h1>
         </div>
     </body>
 
