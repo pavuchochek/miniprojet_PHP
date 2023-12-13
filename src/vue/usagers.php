@@ -1,19 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="utf-8" />
-    <title>Usagers</title>
-    <link rel="stylesheet" href="css/CSSusager.css">
-</head>
+        <meta charset="utf-8" />
+        <title>Usagers</title>
+        <link rel="stylesheet" href="css/CSSusager.css">
+        <link rel="stylesheet" href="css/CSSheader.css">
+        <link rel="stylesheet" href="css/CSSfooter.css">
+    </head>
 
-<header>
-    <a href="index.php">
-        <img src="img/logo.png" alt="logo">
-    </a>
-    <h1>Accueil Cabinet Médical</h1>
-</header>
+    <?php include 'header.php'; ?>
 
-<body>
-<h1>Liste des usagers</h1>
-<div class="boutons_modif" >
-    <input type="button" value="Ajouter un usager">
-</div>
-</body>
+    <body>
+    <h1>Liste des usagers</h1>
+    <div class="boutons_modif" >
+        <input type="button" value="Ajouter un usager">
+    </div>
+    </body>
+
+    <?php include 'footer.php'; ?>
+</html>

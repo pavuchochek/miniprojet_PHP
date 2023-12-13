@@ -1,0 +1,17 @@
+/* CSS du footer */
+footer{
+    background-color: #87CEEB;
+    border-radius: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 98%;
+    display: flex;
+    justify-content: right;
+    margin: 10px;
+}
+
+footer p {
+    margin-right: 10px;
+    font-size: 120%;
+}
+/* Fin du CSS du footer */
