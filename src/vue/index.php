@@ -11,7 +11,7 @@
     <?php include 'header.php'; ?>
 
     <body>
-        <div id="menu" class="decalage_header">
+        <div id="menu" class="body">
             <a href="medecins.php">
                 <img src="img/icone_menu_medecin.png" alt="logo">
                 <input type="button" value="Liste des médecins">

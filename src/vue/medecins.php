@@ -13,7 +13,7 @@
     <?php include 'header.php'; ?>
 
     <body>
-        <div class="decalage_header">
+        <div class="body">
             <h1>Liste des medecins</h1>
 
             <div class="box_medecin">

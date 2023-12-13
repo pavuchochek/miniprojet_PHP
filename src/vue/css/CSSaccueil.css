@@ -2,9 +2,6 @@
 
 #menu{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80%;
 }
 
 #menu input {
@@ -30,9 +27,10 @@
 #menu a {
     background-color: #FFFFFF;
     border-radius: 10px;
-    margin: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
     border: 1px solid black;
-    margin-top: 2%;
+    margin-top: 1%;
     padding-top: 5%;
     padding-bottom: 5%;
     height: 80%;

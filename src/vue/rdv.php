@@ -11,7 +11,7 @@
     <?php include 'header.php'; ?>
 
     <body>
-        <div class="decalage_header">
+        <div class="body">
             <h1>Liste des rdv</h1>
         </div>
     </body>

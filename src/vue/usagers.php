@@ -11,7 +11,7 @@
     <?php include 'header.php'; ?>
 
     <body>
-        <div class="decalage_header">
+        <div class="body">
             <h1>Liste des usagers</h1>
             <div class="boutons_modif" >
                 <input type="button" value="Ajouter un usager">

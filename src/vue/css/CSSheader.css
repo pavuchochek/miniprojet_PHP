@@ -7,13 +7,12 @@ header {
     display: flex;
     margin: 10px;
     width:98%;
-    position: fixed;
 }
 
 header img {
     max-width: 50%;
     height: auto;
-    margin: 4.2px;
+    margin: 4.2px
 }
 
 header h1 {
@@ -22,9 +21,5 @@ header h1 {
     padding-right: 10%;
     font-size: 300%;
     font-family: 'work sans', sans-serif;
-}
-
-.decalage_header {
-    padding-top: 135px;
 }
 /* Fin du CSS du header */
