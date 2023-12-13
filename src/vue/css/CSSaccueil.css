@@ -1,0 +1,93 @@
+/* CSS du header */
+header {
+    background-color: #87CEEB;
+    border-radius: 20px;
+    display: flex;
+    margin: 10px;
+    width:98%;
+    position: fixed;
+}
+
+header img {
+    max-width: 50%;
+    height: auto;
+    margin: 4.2px;
+}
+
+header h1 {
+    text-align: center;
+    margin: auto;
+    padding-right: 10%;
+    font-size: 300%;
+}
+/* Fin du CSS du header */
+
+/* CSS du footer */
+footer{
+    background-color: #87CEEB;
+    border-radius: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 98%;
+    display: flex;
+    justify-content: right;
+    margin: 10px;
+}
+
+footer p {
+    margin-right: 10px;
+    font-size: 120%;
+}
+/* Fin du CSS du footer */
+
+/* CSS de la page */
+#menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 135px;
+    height: 80%;
+}
+
+#menu input {
+    background-color: #FFFFFF;
+    border: 0px;
+    margin: auto;
+    padding: 10px;
+    width: 100%;
+    border-radius: 20px;
+    font-size: 200%;
+    cursor: pointer;
+}
+
+#menu img {
+    max-width: 60%;
+    height: auto;
+    margin: auto;
+    margin-top: 10px;
+    display: block;
+    margin-bottom:10px;
+}
+
+#menu a {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin: 5%;
+    border: 1px solid black;
+    margin-top: 2%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    height: 80%;
+    box-sizing: border-box;
+}
+
+#menu a:hover {
+    background-color: #D3D3D3;
+    margin-top: 10px;
+}
+
+#menu a:hover input {
+    background-color: #D3D3D3;
+}
+    
+    

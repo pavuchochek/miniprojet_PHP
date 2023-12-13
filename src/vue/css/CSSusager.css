@@ -1,0 +1,9 @@
+*{
+    border:1px solid black;
+}
+.boutons_modif{
+    display:flex;
+    position: sticky;
+    bottom:30px;
+    right:0px;
+}

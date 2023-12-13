@@ -6,6 +6,14 @@ clearstatcache();
     <title>Medecins</title>
     <link rel="stylesheet" href="css/CSSmedecin.css">
 </head>
+
+<header>
+    <a href="index.php">
+        <img src="img/logo.png" alt="logo">
+    </a>
+    <h1>Accueil Cabinet Médical</h1>
+</header>
+
 <body>
 <h1>Liste des medecins</h1>
 

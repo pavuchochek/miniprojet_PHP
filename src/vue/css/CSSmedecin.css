@@ -1,6 +1,31 @@
 *{
     border:1px solid black;
 }
+
+/* CSS du header */
+header {
+    background-color: #87CEEB;
+    border-radius: 20px;
+    display: flex;
+    margin: 10px;
+    width:98%;
+    position: fixed;
+}
+
+header img {
+    max-width: 50%;
+    height: auto;
+    margin: 4.2px;
+}
+
+header h1 {
+    text-align: center;
+    margin: auto;
+    padding-right: 10%;
+    font-size: 300%;
+}
+/* Fin du CSS du header */
+
 .box_medecin{
     width:80%;
     margin:auto;

@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8" />
-    <title>Usagers</title>
-    <link rel="stylesheet" href="css/CSSusager.css">
+    <title>Rdv</title>
+    <link rel="stylesheet" href="css/CSSrdv.css">
 </head>
 
 <header>
@@ -12,8 +12,8 @@
 </header>
 
 <body>
-<h1>Liste des usagers</h1>
+<h1>Liste des rdv</h1>
 <div class="boutons_modif" >
-    <input type="button" value="Ajouter un usager">
+    <input type="button" value="Ajouter un rdv">
 </div>
 </body>
