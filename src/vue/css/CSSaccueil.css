@@ -1,4 +1,6 @@
-/* CSS de la page */
+#header_accueil{
+    display:none;
+}
 
 #menu{
     display: flex;

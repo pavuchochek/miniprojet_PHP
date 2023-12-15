@@ -1,3 +1,7 @@
+#header_user{
+    display:none;
+}
+
 .boutons_modif{
     display:flex;
     position: sticky;
