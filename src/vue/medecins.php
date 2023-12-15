@@ -18,7 +18,7 @@
 
             <div class="box_medecin">
                 <?php
-                    require($_SERVER['DOCUMENT_ROOT'].'/miniProjet_php/src/modele/classes.php');
+                    require('../modele/classes/classes.php');
                     $controleur = new Medecin_controleur();
                     $resultat=$controleur->liste_medecins();
                     foreach ($resultat as $value){

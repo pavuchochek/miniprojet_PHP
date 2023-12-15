@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/miniProjet_php/modele/classes.php');
+require_once('classes.php');
 class Usager extends Personne{
 	private $_Id_Usager;
 	private $_N_sécurite_sociale;
