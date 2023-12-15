@@ -1,15 +1,27 @@
 /* CSS du footer */
 footer{
+    background-color: white;
+    width : 100%;
+    min-height: 80px;
+    position:fixed;
+    bottom:0;
+}
+
+#footer p {
+    margin-right: 10px;
+    font-size: 120%;
+}
+
+.body{
+    margin-bottom: 80px;
+}
+
+#footer {
     background-color: #87CEEB;
     border-radius: 20px;
     width: 98%;
     display: flex;
     justify-content: right;
     margin: 10px;
-}
-
-footer p {
-    margin-right: 10px;
-    font-size: 120%;
 }
 /* Fin du CSS du footer */
