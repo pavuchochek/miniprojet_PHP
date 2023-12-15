@@ -24,4 +24,24 @@ footer{
     justify-content: right;
     margin: 10px;
 }
+
+#footer a {
+    margin:auto;
+    margin-right: auto;
+    margin-left: 50px;
+}
+
+#footer a input{
+    background-color: #87CEEB;
+    border : 0px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: black;
+    font-size: 120%;
+    text-decoration: none;
+}
+
+#footer a :hover {
+    background-color: #6CA6CD;
+}
 /* Fin du CSS du footer */
