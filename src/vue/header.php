@@ -1,7 +1,7 @@
 
 <header id = "top">
     <a href="index.php">
-        <img src="img/logo.png" alt="logo">
+        <img src="img/logo.png" alt="logo" id = "logo">
     </a>
     <h1>Cabinet Médical</h1>
     <div id="boutons">
@@ -16,20 +16,16 @@
 
     <script>
         function handleScroll() {
-            console.log('handleScroll function called');
-
             var header = document.querySelector('header');
             var Element = document.querySelector('.retourHaut');
-
             if (window.scrollY > header.offsetHeight) {
                 testEleElementment.style.display = 'flex';
+            } else {
+                Element.style.display = 'none';
             }
-
             window.addEventListener('scroll', function() {
                 var headerHeight = header.offsetHeight;
-
                 var scrollPosition = window.scrollY || window.pageYOffset;
-
                 if (scrollPosition > headerHeight) {
                     Element.style.display = 'flex';
                 } else {

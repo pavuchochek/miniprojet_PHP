@@ -8,7 +8,7 @@ header {
     width: 98%;
 }
 
-header img {
+#logo {
     max-width: 50%;
     height: auto;
     margin: 2%;
@@ -54,7 +54,12 @@ header h1 {
 
 .retourHaut {
     display: none;
+}
+
+.retourHaut img {
     position: fixed;
     top : 2%;
     right: 2%;
+    max-width: 5%;
+    height: auto;
 }
