@@ -3,9 +3,7 @@
 }
 
 .boutons_modif{
-    display:flex;
-    position: sticky;
-    bottom:30px;
-    right:0px;
+    display: flex;
+    right: 0px;
     margin-left: 48%;
 }

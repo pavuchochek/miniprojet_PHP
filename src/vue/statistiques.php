@@ -17,4 +17,8 @@
     </body>
 
     <?php include 'footer.php'; ?>
+    <script>
+        // Appeler la fonction au chargement de la page
+        document.addEventListener('DOMContentLoaded', handleScroll);
+    </script>
 </html>

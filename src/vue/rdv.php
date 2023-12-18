@@ -13,8 +13,17 @@
     <body>
         <div class="body">
             <h1>Liste des rdv</h1>
+            <?php
+            for ($i = 1; $i <= 50; $i++) {
+                echo "<p>Paragraph $i</p>";
+            }
+            ?>
         </div>
     </body>
 
     <?php include 'footer.php'; ?>
+    <script>
+        // Appeler la fonction au chargement de la page
+        document.addEventListener('DOMContentLoaded', handleScroll);
+    </script>
 </html>

@@ -1,18 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Kulim+Park&family=Work+Sans:wght@300&display=swap');
 
-/* CSS du header */
 header {
     background-color: #87CEEB;
     border-radius: 20px;
     display: flex;
-    margin: 10px;
-    width:98%;
+    margin: 0.5%;
+    width: 98%;
 }
 
 header img {
     max-width: 50%;
     height: auto;
-    margin: 4.2px
+    margin: 2%;
 }
 
 header h1 {
@@ -45,6 +44,17 @@ header h1 {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin-right: 30px;
+    margin-right: 3%;
+    width: 10%;
 }
-/* Fin du CSS du header */
+
+.body {
+    max-height: fit-content;
+}
+
+.retourHaut {
+    display: none;
+    position: fixed;
+    top : 2%;
+    right: 2%;
+}
