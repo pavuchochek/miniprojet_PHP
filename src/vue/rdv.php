@@ -12,12 +12,11 @@
 
     <body>
         <div class="body">
-            <h1>Liste des rdv</h1>
-            <?php
-            for ($i = 1; $i <= 50; $i++) {
-                echo "<p>Paragraph $i</p>";
-            }
-            ?>
+            <h1>Liste des rdv</h1>  
+            <div class="boutons_modif" >
+                <input type="button" value="Ajouter un rdv">
+            </div>
+            <p>Affichage type calendrier :</p>
         </div>
     </body>
 
