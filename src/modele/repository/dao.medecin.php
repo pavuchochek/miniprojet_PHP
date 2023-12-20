@@ -13,8 +13,6 @@ class Dao_Medecin{
         include_once('../../configuration.php');
         $this->c = new Connexion($db_address,$user,$password,$db_name);
         $this->pdo=$this->c->getConnexion();
-        $message = "Connecté";
-        $this->journaliser($message);
     }   
 
 
