@@ -1,6 +1,7 @@
 <?php
 include_once('../modele/repository/pdo.php');
 include_once('../controleur/medecin.controleur.php');
+include_once('../modele/classes/medecin.class.php');
 define('LOG_FILE', 'logs.log');
 
 
@@ -18,8 +19,9 @@ class Dao_Medecin{
 
     public function  liste_medecins(String $nom,String $prenom){
             if ($nom=="" && $prenom=="") {
-                $res=$this->pdo->query('SELECT table_name FROM information_schema.tables');
-                var_dump($res);
+                $res=$this->pdo->query('SELECT Personne.Nom,Personne.Prenom,Personne.Civilite,Medecin.id_Medecin,Personne.id_Personne 
+                FROM Medecin,Personne 
+                WHERE Medecin.Id_Personne=Personne.Id_Personne');
                 $tablo_medecins=array();
                 while ($data = $res->fetch()) {
                     $medecin=new Medecin($data[0],$data[1],$data[2],$data[3],$data[4]);
