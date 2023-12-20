@@ -1,17 +1,20 @@
 <?php
-require('../../modele/classes.php');
+include_once('../modele/repository/pdo.php');
+include_once('../controleur/medecin.controleur.php');
+define('LOG_FILE', 'logs.log');
 
 
 
-class daoMedecin{
+class Dao_Medecin{
     
     private $c;
     private $pdo;
     public function __construct(){
-        include("../../../configuration.php");
+        include_once('../../configuration.php');
         $this->c = new Connexion($db_address,$user,$password,$db_name);
-        
         $this->pdo=$this->c->getConnexion();
+        $message = "Connecté";
+        $this->journaliser($message);
     }   
 
 
