@@ -2,7 +2,7 @@
 CREATE TABLE Personne(
    Id_Personne INT(11) AUTO_INCREMENT NOT NULL,
    Nom VARCHAR(50),
-   Prénom VARCHAR(50),
+   Prenom VARCHAR(50),
    Civilite CHAR(1),
    PRIMARY KEY(Id_Personne)
 );
@@ -16,7 +16,7 @@ CREATE TABLE Medecin(
 
 CREATE TABLE Usager(
    Id_Usager INT(11) AUTO_INCREMENT NOT NULL,
-   N_sécurité_sociale CHAR(13) NOT NULL,
+   N_sécurite_sociale CHAR(13) NOT NULL,
    Adresse VARCHAR(200),
    Date_naissance DATE,
    Lieu_naissance VARCHAR(50),
@@ -25,7 +25,7 @@ CREATE TABLE Usager(
    PRIMARY KEY(Id_Usager),
    UNIQUE(N_sécurité_sociale),
    FOREIGN KEY(Id_Personne) REFERENCES Personne(Id_Personne),
-   FOREIGN KEY(Id_Medecin) REFERENCES Médecin(Id_Medecin)
+   FOREIGN KEY(Id_Medecin) REFERENCES Medecin(Id_Medecin)
 );
 
 CREATE TABLE Rdv(
@@ -36,5 +36,5 @@ CREATE TABLE Rdv(
    Heure_fin TIME,
    PRIMARY KEY(Id_Usager, Id_Medecin),
    FOREIGN KEY(Id_Usager) REFERENCES Usager(Id_Usager),
-   FOREIGN KEY(Id_Medecin) REFERENCES Médecin(Id_Medecin)
+   FOREIGN KEY(Id_Medecin) REFERENCES Medecin(Id_Medecin)
 );

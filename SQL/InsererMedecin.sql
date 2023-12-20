@@ -1,4 +1,4 @@
-INSERT INTO personne (Nom, Prénom, Civilite) VALUES
+INSERT INTO personne (Nom, Prenom, Civilite) VALUES
 ('Doe', 'John', 'M'),
 ('Smith', 'Jane', 'F'),
 ('Johnson', 'Michael', 'M'),
@@ -20,7 +20,7 @@ INSERT INTO Medecin (Id_Personne) VALUES
 (9),
 (10);
 
-INSERT INTO personne (Nom, Prénom, Civilite)
+INSERT INTO personne (Nom, Prenom, Civilite)
 VALUES
 ('Lee', 'Michelle', 'F'),
 ('Garcia', 'Carlos', 'M'),
