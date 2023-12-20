@@ -1,15 +1,45 @@
-/* CSS du footer */
+.body{
+    margin-bottom: 80px;
+}
+
 footer{
+    background-color: white;
+    width : 100%;
+    min-height: 10%;
+    position: fixed;
+    bottom: 0;
+}
+
+#footer p {
+    margin-right: 1%;
+    font-size: 120%;
+}
+
+#footer {
     background-color: #87CEEB;
     border-radius: 20px;
     width: 98%;
     display: flex;
     justify-content: right;
-    margin: 10px;
+    margin: 0.5%;
 }
 
-footer p {
-    margin-right: 10px;
-    font-size: 120%;
+#footer a {
+    margin: auto;
+    margin-right: auto;
+    margin-left: 2%;
 }
-/* Fin du CSS du footer */
+
+#footer a input{
+    background-color: #6CA6CD;
+    border : 0px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: black;
+    font-size: 120%;
+    text-decoration: none;
+}
+
+#footer a :hover {
+    background-color: #87CEEB;
+}

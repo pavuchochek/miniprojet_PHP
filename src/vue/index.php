@@ -28,4 +28,7 @@
     </body>
 
     <?php include 'footer.php'; ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', handleScroll);
+    </script>
 </html>

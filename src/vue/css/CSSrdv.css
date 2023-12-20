@@ -1,0 +1,9 @@
+#header_rdv{
+    display:none;
+}
+
+.boutons_modif{
+    display: flex;
+    right: 0px;
+    background-color: green;
+}
