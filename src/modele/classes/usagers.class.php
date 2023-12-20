@@ -1,6 +1,6 @@
 <?php
 
-require_once('classes.php');
+include_once('../modele/classes/personne.class.php');
 class Usager extends Personne{
 	private $_Id_Usager;
 	private $_N_sécurite_sociale;
@@ -17,7 +17,6 @@ class Usager extends Personne{
 		$this->_Id_Usager = $Id_Usager;
 		$this->_Id_Medecin_referent = $Id_Medecin_referent;
 		$this->_Lieu_naissance = $Lieu_naissance;
-		$this->_N_sécurite_sociale = $N_sécurite_sociale;
 	}
 }
 ?>
