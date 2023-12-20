@@ -2,9 +2,6 @@
   "name": "example/project",
   "type": "project",
   "require": {
-    "vlucas/phpdotenv": "^5.3",
-    "ext-mysqli":"*",
-    "ext-pdo":"*",
-    "ext-pdo_mysql":"*"
+    "vlucas/phpdotenv": "^5.3"
   }
 }
