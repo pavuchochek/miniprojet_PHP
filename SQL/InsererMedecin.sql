@@ -1,4 +1,4 @@
-INSERT INTO personne (Nom, Prénom, Civilité) VALUES
+INSERT INTO personne (Nom, Prénom, Civilite) VALUES
 ('Doe', 'John', 'M'),
 ('Smith', 'Jane', 'F'),
 ('Johnson', 'Michael', 'M'),
@@ -11,7 +11,7 @@ INSERT INTO personne (Nom, Prénom, Civilité) VALUES
 ('Taylor', 'Jessica', 'F'),
 ('Anderson', 'Christopher', 'M');
 
-INSERT INTO médecin (Id_Personne) VALUES
+INSERT INTO Medecin (Id_Personne) VALUES
 (4),
 (5),
 (6),
@@ -20,7 +20,7 @@ INSERT INTO médecin (Id_Personne) VALUES
 (9),
 (10);
 
-INSERT INTO personne (Nom, Prénom, Civilité)
+INSERT INTO personne (Nom, Prénom, Civilite)
 VALUES
 ('Lee', 'Michelle', 'F'),
 ('Garcia', 'Carlos', 'M'),
@@ -54,7 +54,7 @@ VALUES
 ('Valdez', 'Leo', 'M');
 
 
-INSERT INTO médecin (Id_Personne)
+INSERT INTO medecin (Id_Personne)
 VALUES
 (11),
 (12),
