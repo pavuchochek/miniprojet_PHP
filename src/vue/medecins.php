@@ -1,4 +1,5 @@
-<?php clearstatcache();?>
+<?php clearstatcache();
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,7 +19,7 @@
 
             <div class="box_medecin">
                 <?php
-                    require('../modele/classes/classes.php');
+                    require('../controleur/medecin.controleur.php');
                     $controleur = new Medecin_controleur();
                     $resultat=$controleur->liste_medecins();
                     foreach ($resultat as $value){
