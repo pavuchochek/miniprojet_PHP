@@ -17,7 +17,7 @@ class Dao_Medecin{
     }   
 
 
-    public function  liste_medecins(String $nom,String $prenom){
+    public function liste_medecins(String $nom,String $prenom){
             if ($nom=="" && $prenom=="") {
                 $res=$this->pdo->query('SELECT Personne.Nom,Personne.Prenom,Personne.Civilite,Medecin.id_Medecin,Personne.id_Personne 
                 FROM Medecin,Personne 
@@ -30,5 +30,19 @@ class Dao_Medecin{
             }
             return $tablo_medecins;
         }
+    
+    public function ajouter_medecins(Medecin $medecin){
+        $req=$this->pdo->prepare('INSERT INTO Personne (Nom,Prenom,Civilite) VALUES (:nom,:prenom,:civilite)');
+        $req->execute(array(
+            'nom'=>$medecin->getNom(),
+            'prenom'=>$medecin->getPrenom(),
+            'civilite'=>$medecin->getCivilite()
+        ));
+        $id=$this->pdo->lastInsertId();
+        $req=$this->pdo->prepare('INSERT INTO Medecin (Id_Personne) VALUES (:id)');
+        $req->execute(array(
+            'id'=>$id
+        ));
+    }
 }
 ?>
