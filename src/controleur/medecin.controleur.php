@@ -11,6 +11,12 @@ class Medecin_controleur{
     public function liste_medecins(){
         return $this->daoMedecin->liste_medecins("","");
     }
+    public function ajouter_medecin(string $nom,string $prenom,string $civilite){
+        $personne=new Personne($nom,$prenom,$civilite);
+
+        $medecin=new Medecin($personne);
+        $this->daoMedecin->ajouter_medecins($medecin);
+    }
 }
 
 ?>

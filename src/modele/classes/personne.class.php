@@ -7,12 +7,11 @@ class Personne{
 
     private string $_Civilite;
     
-        public function __construct(string $Nom, string $Prenom, string $Civilite, int $Id_personne){
+        public function __construct(string $Nom, string $Prenom, string $Civilite){
         
             $this->_Nom = $Nom;
             $this->_Prenom = $Prenom;
             $this->_Civilite = $Civilite;
-            $this->_Id_personne = $Id_personne;
         }
         
         public function getNom(): string
@@ -28,6 +27,9 @@ class Personne{
         public function getCivilite(): string
         {
             return $this->_Civilite;
+        }
+        public function setId(int $id){
+            $this->_Id_personne=$id;
         }
         
         public function getId(): int

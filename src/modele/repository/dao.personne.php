@@ -6,7 +6,7 @@ define('LOG_FILE', 'logs.log');
 
 
 
-class Dao_Medecin{
+class Dao_Personne{
     
     private $c;
     private $pdo;
@@ -19,13 +19,12 @@ class Dao_Medecin{
 
     public function liste_medecins(String $nom,String $prenom){
             if ($nom=="" && $prenom=="") {
-                $res=$this->pdo->query('SELECT Personne.Nom,Personne.Prenom,Personne.Civilite 
+                $res=$this->pdo->query('SELECT Personne.Nom,Personne.Prenom,Personne.Civilite,Medecin.id_Medecin,Personne.id_Personne 
                 FROM Medecin,Personne 
                 WHERE Medecin.Id_Personne=Personne.Id_Personne');
                 $tablo_medecins=array();
                 while ($data = $res->fetch()) {
-                    $personne=new Personne($data[0],$data[1],$data[2]);
-                    $medecin=new Medecin($personne);
+                    $medecin=new Medecin($data[0],$data[1],$data[2],$data[3],$data[4]);
                     $tablo_medecins[] = $medecin;
                 }
             }
