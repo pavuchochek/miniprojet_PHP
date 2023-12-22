@@ -33,6 +33,6 @@
                 }
             });
         }
-        document.addEventListener('DOMContentLoaded', handleScroll);
+        document.addEventListener('DOMContentLoaded', flecheHaut);
     </script>
 </header>
