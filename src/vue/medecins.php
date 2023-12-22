@@ -15,8 +15,12 @@
 
     <body>
         <div class="body">
-            <h1>Liste des medecins</h1>
-
+            <div class="recherche">
+                <form action="" method="GET">
+                    <input type="text" name="search" placeholder="Rechercher un médecin">
+                    <input type="submit" value="Rechercher">
+                </form>
+            </div>
             <div class="box_medecin">
                 <?php
                     require('../controleur/medecin.controleur.php');

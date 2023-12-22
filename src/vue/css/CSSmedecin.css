@@ -10,12 +10,14 @@
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 
 }
+
 .item_medecin{
     display: inline-block;
     padding:2%;
     margin:2%;
     width:fit-content;
 }
+
 .icone_liste_medecin{
     max-height:200px;
 }
