@@ -2,8 +2,24 @@
     display:none;
 }
 
-.boutons_modif{
-    display: flex;
-    right: 0px;
-    background-color: green;
+.boutons_modif {
+    text-align: right;
 }
+
+.boutons_modif input{
+    background-color: green;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 32px;
+    margin: 4px 10px;
+}
+
+.boutons_modif input:hover{
+    background-color: #6CA6CD;
+}
+
