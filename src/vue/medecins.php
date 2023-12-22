@@ -17,7 +17,7 @@
     <body>
         <div class="body">
 
-            <div id="formulaire">
+            <div id="formulaire" class="formulaire">
                 <form method="post" action="traitement_ajout_medecin.php">
                     <label for="nom">Nom:</label>
                     <input type="text" id="nom" name="nom">
@@ -32,13 +32,13 @@
                     <input type="submit" value="Envoyer">
                 </form>
             </div>
-            <div class="recherche">
-                <form action="" method="GET">
-                    <input type="text" name="search" placeholder="Rechercher un médecin">
-                    <input type="submit" value="Rechercher">
-                </form>
-            </div>
             <div class="box_medecin" id="list_medecin">
+                <div class="recherche">
+                    <form action="" method="GET">
+                        <input type="text" name="search" placeholder="Rechercher un médecin">
+                        <input type="submit" value="Rechercher">
+                    </form>
+                </div>
                 <?php
                     require('../controleur/medecin.controleur.php');
                     $controleur = new Medecin_controleur();
@@ -59,7 +59,7 @@
             </div>
 
             <div class="boutons_modif" id="afficherFormulaire">
-                <input type="button" value="Ajouter un medecin">
+                <input type="button">
             </div>
         </div>
     </body>
@@ -67,9 +67,11 @@
     <?php include 'footer.php'; ?>
     <script>
         var list = document.getElementById('list_medecin');
+        var boutonAfficher = document.getElementById('afficherFormulaire').getElementsByTagName('input')[0];
         document.getElementById('afficherFormulaire').addEventListener('click', function() {
             var formulaire = document.getElementById('formulaire');
             var list = document.getElementById('list_medecin');
+            var boutonAfficher = document.getElementById('afficherFormulaire').getElementsByTagName('input')[0];
             if (formulaire.style.display == 'block') {
                 formulaire.style.display = 'none';
                 list.style.display = 'block';
@@ -77,9 +79,14 @@
                 formulaire.style.display = 'block';
                 list.style.display = 'none';
             }
+            if (boutonAfficher.value == 'Voir la liste des médecins') {
+                boutonAfficher.value = 'Ajouter un medecin';
+            } else
+                boutonAfficher.value = 'Voir la liste des médecins';
         });
         document.addEventListener('DOMContentLoaded', flecheHaut);
-        formulaire.style.display = 'none';
-        list.style.display = 'block';
+        formulaire.style.display = 'block';
+        list.style.display = 'none';
+        boutonAfficher.value = 'Voir la liste des médecins';
     </script>
 </html>
