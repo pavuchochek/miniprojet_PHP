@@ -19,10 +19,10 @@
 
             <div id="formulaire" class="formulaire">
                 <form method="post" action="traitement_ajout_medecin.php">
-                    <label for="nom">Nom:</label>
-                    <input type="text" id="nom" name="nom">
                     <label for="prenom">Prénom:</label>
-                    <input type="text" id="prenom" name="prenom">
+                    <input type="text" id="prenom" name="prenom" autocomplete="off">
+                    <label for="nom">Nom:</label>
+                    <input type="text" id="nom" name="nom" autocomplete="off">
                     <label for="civilite">Civilité:</label>
                     <select id="civilite" name="civilite">
                         <option value="M">Monsieur</option>
@@ -33,9 +33,9 @@
                 </form>
             </div>
             <div class="box_medecin" id="list_medecin">
-                <div class="recherche">
-                    <form action="" method="GET">
-                        <input type="text" name="search" placeholder="Rechercher un médecin">
+                <div>
+                    <form action="" method="GET" class="recherche">
+                        <input type="text" name="search" autocomplete="off" placeholder="Rechercher un médecin">
                         <input type="submit" value="Rechercher">
                     </form>
                 </div>
