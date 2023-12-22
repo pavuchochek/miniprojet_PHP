@@ -5,10 +5,9 @@ class Medecin extends Personne{
 
 	private $_Id_medecin;
 	
-		public function __construct(string $Nom, string $Prenom, string $Civilite, int $Id_personne, int $Id_medecin)
+		public function __construct(Personne $personne)
 		{
-			parent::__construct($Nom, $Prenom, $Civilite, $Id_personne);
-			$this->_Id_medecin = $Id_medecin;
+			parent::__construct($personne->getNom(), $personne->getPrenom(), $personne->getCivilite());
 		}
 		
 		public function getIdMedecin(): int

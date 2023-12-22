@@ -20,13 +20,15 @@
 
         <div id="formulaire">
             <!-- Le contenu du formulaire -->
-            <form method="post" action="traitement_formulaire.php">
+            <form method="post" action="traitement_ajout_medecin.php">
                 <!-- Ajoutez ici les champs de votre formulaire -->
                 <label for="nom">Nom:</label>
                 <input type="text" id="nom" name="nom">
                 <br>
                 <label for="prenom">Prénom:</label>
                 <input type="text" id="prenom" name="prenom">
+                <label for="civilite">Civilité:</label>
+                <input type="text" id="civilite" name="civilite">
                 <br>
                 <!-- Ajoutez d'autres champs selon vos besoins -->
                 <input type="submit" value="Envoyer">
