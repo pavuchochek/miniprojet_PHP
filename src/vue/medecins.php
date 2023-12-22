@@ -29,7 +29,7 @@
                         <option value="F">Madame</option>
                         <option value="A">Autre</option>
                     </select>
-                    <input type="submit" value="Envoyer">
+                    <input type="submit" value="Ajouter">
                 </form>
             </div>
             <div class="box_medecin" id="list_medecin">
@@ -80,13 +80,13 @@
                 list.style.display = 'none';
             }
             if (boutonAfficher.value == 'Voir la liste des médecins') {
-                boutonAfficher.value = 'Ajouter un medecin';
+                boutonAfficher.value = 'Ajouter un médecin';
             } else
                 boutonAfficher.value = 'Voir la liste des médecins';
         });
         document.addEventListener('DOMContentLoaded', flecheHaut);
-        formulaire.style.display = 'block';
-        list.style.display = 'none';
-        boutonAfficher.value = 'Voir la liste des médecins';
+        formulaire.style.display = 'none';
+        list.style.display = 'block';
+        boutonAfficher.value = 'Ajouter un médecin';
     </script>
 </html>
