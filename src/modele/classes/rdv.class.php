@@ -1,20 +1,33 @@
 <?php
 class Rdv{
-	private $_Id_Rdv;
 	private $_Date_rdv;
 	private $_Heure_début;
 	private $_Heure_fin;
-	private $_Id_Medecin;
-	private $_Id_Usager;
+	private $_Medecin;
+	private $_Usager;
 	
-	public function __construct($Id_Rdv, $Date_rdv, $Heure_début, $Heure_fin, $Id_Medecin, $Id_Usager)
+	public function __construct($Date_rdv, $Heure_début, $Heure_fin, $Medecin, $Usager)
 	{
-		$this->_Id_Rdv = $Id_Rdv;
 		$this->_Date_rdv = $Date_rdv;
 		$this->_Heure_début = $Heure_début;
 		$this->_Heure_fin = $Heure_fin;
-		$this->_Id_Medecin = $Id_Medecin;
-		$this->_Id_Usager = $Id_Usager;
+		$this->_Medecin = $Medecin;
+		$this->_Usager = $Usager;
+	}
+	public function getDateRdv():String{
+		return $this->_Date_rdv;
+	}
+	public function getHeureDebut():String{
+		return $this->_Heure_début;
+	}
+	public function getHeureFin():String{
+		return $this->_Heure_fin;
+	}
+	public function getMedecin():Medecin{
+		return $this->_Medecin;
+	}
+	public function getUsager():Usager{
+		return $this->_Usager;
 	}
 }
 ?>
