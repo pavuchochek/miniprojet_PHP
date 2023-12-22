@@ -46,6 +46,7 @@
                     $resultat=$controleur->liste_medecins();
                     if (isset($_GET['search'])) {
                         $recherche=strtolower($_GET['search']);
+                        $recherche=trim($recherche);
                         $resultat=$controleur->rechercherMedecins($recherche);
                     }
                     foreach ($resultat as $value){
