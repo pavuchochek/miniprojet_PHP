@@ -5,4 +5,5 @@
                     $prenom=$_POST["prenom"];
                     $civilite=$_POST["civilite"];
                     $controleur->ajouter_medecin($nom,$prenom,$civilite);
+                    header('Location: medecins.php');
     ?>
