@@ -28,7 +28,11 @@
                 <label for="prenom">Prénom:</label>
                 <input type="text" id="prenom" name="prenom">
                 <label for="civilite">Civilité:</label>
-                <input type="text" id="civilite" name="civilite">
+                <select id="civilite" name="civilite">
+                    <option value="M">Monsieur</option>
+                    <option value="F">Madame</option>
+                    <option value="Autre">Autre</option>
+                </select>
                 <br>
                 <!-- Ajoutez d'autres champs selon vos besoins -->
                 <input type="submit" value="Envoyer">
