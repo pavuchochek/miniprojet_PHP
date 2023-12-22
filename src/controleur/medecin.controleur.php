@@ -7,7 +7,6 @@ class Medecin_controleur{
 
     public function __construct(){
         $this->daoMedecin = new Dao_Medecin();
-        echo "dao est crée";
     }
     public function liste_medecins(){
         return $this->daoMedecin->liste_medecins("","");
