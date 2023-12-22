@@ -16,9 +16,28 @@
 .icone_liste_medecin{
     max-height:200px;
 }
-.boutons_modif{
-    display:flex;
-    position: sticky;
-    bottom:30px;
-    right:0px;
+
+.boutons_modif {
+    text-align: right;
+}
+
+.boutons_modif input{
+    position: fixed;
+    top : 22%;
+    right: 1%;
+    height: auto;
+    background-color: green;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 32px;
+    margin: 4px 10px;
+}
+
+.boutons_modif input:hover{
+    background-color: #6CA6CD;
 }
