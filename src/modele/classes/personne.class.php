@@ -4,7 +4,6 @@ class Personne{
     private int $_Id_personne;
     private string $_Nom;
     private string $_Prenom;
-
     private string $_Civilite;
     
         public function __construct(string $Nom, string $Prenom, string $Civilite){
