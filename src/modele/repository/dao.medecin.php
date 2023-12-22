@@ -45,5 +45,26 @@ class Dao_Medecin{
             'id'=>$id
         ));
     }
+
+    public function supprimer_medecins(Medecin $medecin){
+        $req=$this->pdo->prepare('DELETE FROM Medecin WHERE Id_Personne=:id');
+        $req->execute(array(
+            'id'=>$medecin->getId()
+        ));
+        $req=$this->pdo->prepare('DELETE FROM Personne WHERE Id_Personne=:id');
+        $req->execute(array(
+            'id'=>$medecin->getId()
+        ));
+    }
+
+    public function modifier_medecins(Medecin $medecin){
+        $req=$this->pdo->prepare('UPDATE Personne SET Nom=:nom,Prenom=:prenom,Civilite=:civilite WHERE Id_Personne=:id');
+        $req->execute(array(
+            'nom'=>$medecin->getNom(),
+            'prenom'=>$medecin->getPrenom(),
+            'civilite'=>$medecin->getCivilite(),
+            'id'=>$medecin->getId()
+        ));
+    }
 }
 ?>

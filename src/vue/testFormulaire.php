@@ -29,7 +29,7 @@
                 <input type="text" id="prenom" name="prenom">
                 <label for="civilite">Civilité:</label>
                 <select id="civilite" name="civilite">
-                    <option value="H">Monsieur</option>
+                    <option value="M">Monsieur</option>
                     <option value="F">Madame</option>
                     <option value="Autre">Autre</option>
                 </select>
