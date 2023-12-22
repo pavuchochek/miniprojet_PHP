@@ -27,13 +27,11 @@ class Personne{
         {
             return $this->_Civilite;
         }
-        public function setId(int $id){
-            $this->_Id_personne=$id;
-        }
-        
-        public function getId(): int
-        {
+        public function getId(): ?int {
             return $this->_Id_personne;
+        }
+        public function setId(int $id): void {
+            $this->_Id_personne = $id;
         }
         
         public function setNom(string $Nom): void
