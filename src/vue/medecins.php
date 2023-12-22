@@ -44,6 +44,10 @@
                     require('../controleur/medecin.controleur.php');
                     $controleur = new Medecin_controleur();
                     $resultat=$controleur->liste_medecins();
+                    if (isset($_GET['search'])) {
+                        $recherche=strtolower($_GET['search']);
+                        $resultat=$controleur->rechercherMedecins($recherche);
+                    }
                     foreach ($resultat as $value){
                         if ($value->getCivilite() === 'M') {
                             $genderIcon = 'icone_homme.png';

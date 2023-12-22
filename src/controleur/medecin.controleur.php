@@ -17,6 +17,16 @@ class Medecin_controleur{
         $medecin=new Medecin($personne);
         $this->daoMedecin->ajouter_medecins($medecin);
     }
+
+    public function rechercherMedecins($recherche) {
+        $listeMedecins = $this->liste_medecins();
+        $resultats = array_filter($listeMedecins, function ($medecin) use ($recherche) {
+            $nomPrenom = strtolower($medecin->getNom() . ' ' . $medecin->getPrenom());
+            return strpos($nomPrenom, $recherche) !== false;
+        });
+
+        return $resultats;
+    }
 }
 
 ?>
