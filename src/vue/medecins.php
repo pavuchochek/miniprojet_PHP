@@ -39,6 +39,7 @@
                         <input type="submit" value="Rechercher">
                     </form>
                 </div>
+                
                 <?php
                     require('../controleur/medecin.controleur.php');
                     $controleur = new Medecin_controleur();
@@ -51,9 +52,14 @@
                         } else {
                             $genderIcon = 'icone_menu_usager.png';
                         }
-                        echo "<div class='item_medecin'>
-                        <img class='icone_liste_medecin' src='img/$genderIcon' alt='icone d'un medecin'/>
-                        <div class='nom'>".$value->getNom()."</div>"."<div>".$value->getPrenom()."</div></div>";
+                        echo "
+                        <div class='item_medecin'>
+                            <img class='icone_liste_medecin' src='img/$genderIcon' alt='icone d'un medecin'/>
+                            <div class='nom'>"
+                                .$value->getPrenom() . "<br>"
+                                .$value->getNom().
+                            "</div>
+                        </div>";
                     }
                 ?>
             </div>

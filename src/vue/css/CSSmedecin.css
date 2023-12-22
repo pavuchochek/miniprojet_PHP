@@ -8,20 +8,25 @@
     margin-left: 3%;
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-
 }
 
 .item_medecin{
     display: inline-block;
     padding:2%;
     margin:2%;
-    width:fit-content;
+    max-width: 11%;
 }
 
 .icone_liste_medecin{
-    max-height:200px;
+    max-height: 140px;
 }
 
+.nom {
+    font-weight: bold;
+    text-align: center;
+}
+
+/* CSS Formulaire */
 .boutons_modif {
     text-align: right;
 }
