@@ -14,15 +14,15 @@
         <div id="menu" class="body">
             <a href="medecins.php">
                 <img src="img/icone_menu_medecin.png" alt="logo">
-                <input type="button" value="Liste des médecins">
+                <input type="button" value="Médecins">
             </a>
             <a href="usagers.php">
-                <img src="img/icone_menu_usager.png" alt="logo">
-                <input type="button" value="Liste des usagers">
+                <img src="img/icone_menu_usager2.png" alt="logo">
+                <input type="button" value="Usagers">
             </a>
             <a href="rdv.php">
                 <img src="img/icone_menu_rdv.png" alt="logo">
-                <input type="button" value="Liste des rendez-vous">
+                <input type="button" value="Rendez-vous">
             </a>
         </div>
     </body>
