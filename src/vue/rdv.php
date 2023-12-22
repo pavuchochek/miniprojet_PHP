@@ -22,6 +22,6 @@
 
     <?php include 'footer.php'; ?>
     <script>
-        document.addEventListener('DOMContentLoaded', handleScroll);
+        document.addEventListener('DOMContentLoaded', flecheHaut);
     </script>
 </html>
