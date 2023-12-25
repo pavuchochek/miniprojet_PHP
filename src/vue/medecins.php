@@ -151,7 +151,7 @@
         boutonAfficher.value = 'Ajouter un médecin';
 
         var popup = document.getElementById('popupMedecin');
-        popup.style.display = 'block';
+        popup.style.display = 'none';
         
         document.addEventListener('DOMContentLoaded', function() {
             var supprimerBtns = document.getElementsByClassName('supprimerMedecinBtn');

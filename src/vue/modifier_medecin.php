@@ -35,7 +35,8 @@
                         <option value="F">Madame</option>
                         <option value="A">Autre</option>
                     </select>
-
+                    
+                    <a href="medecins.php"><input type="button" id="bouton_annuler" value="Annuler"></a>
                     <input type="submit" id="bouton_valider" value="Ajouter">
                     <script>
                         function Valide() {
