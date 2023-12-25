@@ -18,7 +18,7 @@
         <div class="body">
 
             <div id="formulaire" class="formulaire">
-                <form id="medecinForm" method="post" action="traitement_ajout_medecin.php" onsubmit="return validateForm()">
+                <form id="form" method="post" action="traitement_ajout_medecin.php" onsubmit="return Valide()">
                     <label for="prenom">Prénom:</label>
                     <input type="text" id="prenom" name="prenom" autocomplete="off">
 
@@ -32,29 +32,31 @@
                         <option value="A">Autre</option>
                     </select>
 
-                    <input type="submit" id="submitBtn" value="Ajouter">
+                    <input type="submit" id="bouton_valider" value="Ajouter">
+                    <!-- Désactiavation du bouton submit -->
+                    <script>
+                        function Valide() {
+                            var prenom = document.getElementById('prenom').value;
+                            var nom = document.getElementById('nom').value;
+                            if (prenom === '' || nom === '') {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
+                        document.getElementById('form').addEventListener('input', function () {
+                            var prenom = document.getElementById('prenom').value;
+                            var nom = document.getElementById('nom').value;
+                            var bouton_valider = document.getElementById('bouton_valider');
+                            if (prenom !== '' && nom !== '') {
+                                bouton_valider.classList.add('active');
+                            } else {
+                                bouton_valider.classList.remove('active');
+                            }
+                        });
+                    </script>
                 </form>
 
-                <script>
-                    function validateForm() {
-                        var prenom = document.getElementById('prenom').value;
-                        var nom = document.getElementById('nom').value;
-                        if (prenom === '' || nom === '') {
-                            return false;
-                        }
-                        return true;
-                    }
-                    document.getElementById('medecinForm').addEventListener('input', function () {
-                        var prenom = document.getElementById('prenom').value;
-                        var nom = document.getElementById('nom').value;
-                        var submitBtn = document.getElementById('submitBtn');
-                        if (prenom !== '' && nom !== '') {
-                            submitBtn.classList.add('active');
-                        } else {
-                            submitBtn.classList.remove('active');
-                        }
-                    });
-                </script>
             </div>
             <div class="box_medecin" id="list_medecin">
                 <div>
@@ -132,8 +134,8 @@
                 boutonAfficher.value = 'Voir la liste des médecins';
         });
         document.addEventListener('DOMContentLoaded', flecheHaut);
-        formulaire.style.display = 'none';
-        list.style.display = 'block';
+        formulaire.style.display = 'block';
+        list.style.display = 'none';
         boutonAfficher.value = 'Ajouter un médecin';
     </script>
     

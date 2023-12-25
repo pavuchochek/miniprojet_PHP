@@ -80,15 +80,15 @@
     right: 1%;
     height: auto;
     background-color: green;
-    font-size: 16px;
+    font-size: 100%;
     color: white;
     cursor: pointer;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     border: none;
     border-radius: 12px;
-    padding: 16px 32px;
-    margin: 4px 10px;
+    padding: 1% 2%;
+    margin: 0.4% 1%;
 }
 
 .boutons_modif input:hover{
@@ -113,10 +113,10 @@
 
 .formulaire input[type="text"] {
     width: 90%;
-    padding: 10px;
+    padding: 2%;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 5%;
 }
 
 .formulaire input[type="submit"] {
@@ -126,17 +126,17 @@
     float: right;
 }
 
-#submitBtn {
+#bouton_valider {
     background-color: #ccc;
     cursor: default;
     color: #000;
 }
 
-#submitBtn.active:hover {
+#bouton_valider.active:hover {
     background-color: #127215;
 }
 
-#submitBtn.active {
+#bouton_valider.active {
     background-color: #4CAF50;
     cursor: pointer;
     color: #fff;
