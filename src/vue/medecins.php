@@ -57,6 +57,7 @@
                 </form>
 
             </div>
+
             <div class="box_medecin" id="list_medecin">
                 <div>
                     <form action="" method="GET" class="recherche">
@@ -97,7 +98,7 @@
                                     <a href='modifier_medecin.php?prenom=$prenom & nom=$nom'>
                                         <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
                                     </a>
-                                    <a href='supprimer_medecin.php?id=$idMedecin'>
+                                    <a href='#' id='supprimerMedecinBtn' data-prenom='<?php echo $prenom; ?>' data-nom='<?php echo $nom; ?>'>
                                         <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
                                     </a>
                                 </div>
@@ -109,6 +110,16 @@
 
             <div class="boutons_modif" id="afficherFormulaire">
                 <input type="button">
+            </div>
+
+            <div class="popup" id="popupMedecin">
+                <p>Voulez vous supprimer le médecin <?php echo $prenom." ". $nom; ?> ?</p>
+                <div class="boutons_Popup">
+                    <input type="button" value="Annuler" id="Bouton_popup_annuler">
+                    <a href="supprimer_medecin.php?id=<?php echo $idMedecin ?>">
+                        <input type="button" value="Oui">
+                    </a>
+                </div>
             </div>
         </div>
     </body>
@@ -138,6 +149,21 @@
         formulaire.style.display = 'none';
         list.style.display = 'block';
         boutonAfficher.value = 'Ajouter un médecin';
+
+        var popup = document.getElementById('popupMedecin');
+        popup.style.display = 'none';
+        document.getElementById('supprimerMedecinBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+            var prenom = this.getAttribute('data-prenom');
+            var nom = this.getAttribute('data-nom');
+            <?php $prenom = $prenom; ?>
+            <?php $nom = $nom; ?>
+            popup.style.display = 'block';
+        
+        });
+        document.getElementById('Bouton_popup_annuler').addEventListener('click', function() {
+            popup.style.display = 'none';
+        });
     </script>
     
 </html>
