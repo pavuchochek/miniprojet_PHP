@@ -98,7 +98,7 @@
                                     <a href='modifier_medecin.php?prenom=$prenom & nom=$nom'>
                                         <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
                                     </a>
-                                    <a href='#' id='supprimerMedecinBtn' data-prenom='<?php echo $prenom; ?>' data-nom='<?php echo $nom; ?>'>
+                                    <a href='#' class='supprimerMedecinBtn' data-prenom='<?php echo $prenom; ?>' data-nom='<?php echo $nom; ?>'>
                                         <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
                                     </a>
                                 </div>
@@ -151,16 +151,29 @@
         boutonAfficher.value = 'Ajouter un médecin';
 
         var popup = document.getElementById('popupMedecin');
-        popup.style.display = 'none';
-        document.getElementById('supprimerMedecinBtn').addEventListener('click', function(event) {
-            event.preventDefault();
-            var prenom = this.getAttribute('data-prenom');
-            var nom = this.getAttribute('data-nom');
-            <?php $prenom = $prenom; ?>
-            <?php $nom = $nom; ?>
-            popup.style.display = 'block';
+        popup.style.display = 'block';
         
+        document.addEventListener('DOMContentLoaded', function() {
+            var supprimerBtns = document.getElementsByClassName('supprimerMedecinBtn');
+
+            for (var i = 0; i < supprimerBtns.length; i++) {
+                supprimerBtns[i].addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var prenom = this.getAttribute('data-prenom');
+                    var nom = this.getAttribute('data-nom');
+                    var popup = document.getElementById('popupMedecin');
+                    popup.style.display = 'block';
+                    <?php $prenom = $prenom; ?>
+                    <?php $nom = $nom; ?>
+                });
+            }
+
+            document.getElementById('Bouton_popup_annuler').addEventListener('click', function() {
+                var popup = document.getElementById('popupMedecin');
+                popup.style.display = 'none';
+            });
         });
+        
         document.getElementById('Bouton_popup_annuler').addEventListener('click', function() {
             popup.style.display = 'none';
         });
