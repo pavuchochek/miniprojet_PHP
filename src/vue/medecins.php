@@ -77,6 +77,7 @@
                     foreach ($resultat as $value){
                         $prenom = $value->getPrenom();
                         $nom = $value->getNom();
+                        $idMedecin = $value->getIdMedecin();
                         if ($value->getCivilite() === 'M') {
                             $genderIcon = 'icone_homme.png';
                         } else if ($value->getCivilite() === 'F'){
@@ -96,7 +97,7 @@
                                     <a href='modifier_medecin.php?prenom=$prenom & nom=$nom'>
                                         <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
                                     </a>
-                                    <a href='supprimer_medecin.php'>
+                                    <a href='supprimer_medecin.php?id=$idMedecin'>
                                         <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
                                     </a>
                                 </div>
