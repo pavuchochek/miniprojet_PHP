@@ -75,6 +75,8 @@
                         $resultat=$controleur->rechercherMedecins($recherche);
                     }
                     foreach ($resultat as $value){
+                        $prenom = $value->getPrenom();
+                        $nom = $value->getNom();
                         if ($value->getCivilite() === 'M') {
                             $genderIcon = 'icone_homme.png';
                         } else if ($value->getCivilite() === 'F'){
@@ -91,7 +93,7 @@
                                     .$value->getNom().
                                 "</div>
                                 <div class='boutons'>
-                                    <a href='modifier_medecin.php'>
+                                    <a href='modifier_medecin.php?prenom=$prenom & nom=$nom'>
                                         <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
                                     </a>
                                     <a href='supprimer_medecin.php'>

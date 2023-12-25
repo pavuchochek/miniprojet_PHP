@@ -27,6 +27,12 @@ class Medecin_controleur{
 
         return $resultats;
     }
+
+    public function modifier_medecin(string $nom,string $prenom,string $civilite){
+        $personne=new Personne($nom,$prenom,$civilite);
+        $medecin=new Medecin($personne);
+        $this->daoMedecin->modifier_medecins($medecin);
+    }
 }
 
 ?>
