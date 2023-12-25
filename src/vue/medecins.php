@@ -33,7 +33,6 @@
                     </select>
 
                     <input type="submit" id="bouton_valider" value="Ajouter">
-                    <!-- Désactiavation du bouton submit -->
                     <script>
                         function Valide() {
                             var prenom = document.getElementById('prenom').value;
@@ -113,7 +112,6 @@
     
     <?php include 'footer.php'; ?>
 
-    <!-- Script pour afficher et cacher le formulaire d'ajout de médecin et la liste des médecins -->
     <script>
         var list = document.getElementById('list_medecin');
         var boutonAfficher = document.getElementById('afficherFormulaire').getElementsByTagName('input')[0];
@@ -134,8 +132,8 @@
                 boutonAfficher.value = 'Voir la liste des médecins';
         });
         document.addEventListener('DOMContentLoaded', flecheHaut);
-        formulaire.style.display = 'block';
-        list.style.display = 'none';
+        formulaire.style.display = 'none';
+        list.style.display = 'block';
         boutonAfficher.value = 'Ajouter un médecin';
     </script>
     
