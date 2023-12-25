@@ -2,6 +2,7 @@
     display:none;
 }
 
+/* CSS Liste des médecins */
 .box_medecin{
     width:80%;
     margin:auto;
@@ -27,6 +28,22 @@
     text-align: center;
 }
 
+.boutons {
+    text-align: right;
+}
+
+.boutons a {
+    text-decoration: none;
+}
+
+.boutons a img {
+    width: 20px;
+    height: 20px;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+/* CSS Barre de recherche */
 .recherche {
     width: 50%;
     margin: auto;

@@ -60,10 +60,20 @@
                         echo "
                         <div class='item_medecin'>
                             <img class='icone_liste_medecin' src='img/$genderIcon' alt='icone d'un medecin'/>
-                            <div class='nom'>"
-                                .$value->getPrenom() . "<br>"
-                                .$value->getNom().
-                            "</div>
+                            <div>
+                                <div class='nom'>"
+                                    .$value->getPrenom() . "<br>"
+                                    .$value->getNom().
+                                "</div>
+                                <div class='boutons'>
+                                    <a href='modifier_medecin.php'>
+                                        <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
+                                    </a>
+                                    <a href='supprimer_medecin.php'>
+                                        <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
+                                    </a>
+                                </div>
+                            </div>
                         </div>";
                     }
                 ?>
@@ -76,6 +86,8 @@
     </body>
     
     <?php include 'footer.php'; ?>
+
+    <!-- Script pour afficher et cacher le formulaire d'ajout de médecin et la liste des médecins -->
     <script>
         var list = document.getElementById('list_medecin');
         var boutonAfficher = document.getElementById('afficherFormulaire').getElementsByTagName('input')[0];
@@ -100,4 +112,5 @@
         list.style.display = 'block';
         boutonAfficher.value = 'Ajouter un médecin';
     </script>
+    
 </html>
