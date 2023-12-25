@@ -1,5 +1,6 @@
 <?php
     require('../controleur/medecin.controleur.php');
+
     $controleur = new Medecin_controleur();
     $nom=$_POST["nom"];
     $prenom=$_POST["prenom"];

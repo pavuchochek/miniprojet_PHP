@@ -18,19 +18,43 @@
         <div class="body">
 
             <div id="formulaire" class="formulaire">
-                <form method="post" action="traitement_ajout_medecin.php">
+                <form id="medecinForm" method="post" action="traitement_ajout_medecin.php" onsubmit="return validateForm()">
                     <label for="prenom">Prénom:</label>
                     <input type="text" id="prenom" name="prenom" autocomplete="off">
+
                     <label for="nom">Nom:</label>
                     <input type="text" id="nom" name="nom" autocomplete="off">
+
                     <label for="civilite">Civilité:</label>
                     <select id="civilite" name="civilite">
                         <option value="M">Monsieur</option>
                         <option value="F">Madame</option>
                         <option value="A">Autre</option>
                     </select>
-                    <input type="submit" value="Ajouter">
+
+                    <input type="submit" id="submitBtn" value="Ajouter">
                 </form>
+
+                <script>
+                    function validateForm() {
+                        var prenom = document.getElementById('prenom').value;
+                        var nom = document.getElementById('nom').value;
+                        if (prenom === '' || nom === '') {
+                            return false;
+                        }
+                        return true;
+                    }
+                    document.getElementById('medecinForm').addEventListener('input', function () {
+                        var prenom = document.getElementById('prenom').value;
+                        var nom = document.getElementById('nom').value;
+                        var submitBtn = document.getElementById('submitBtn');
+                        if (prenom !== '' && nom !== '') {
+                            submitBtn.classList.add('active');
+                        } else {
+                            submitBtn.classList.remove('active');
+                        }
+                    });
+                </script>
             </div>
             <div class="box_medecin" id="list_medecin">
                 <div>

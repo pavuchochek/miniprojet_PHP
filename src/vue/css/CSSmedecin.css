@@ -120,15 +120,24 @@
 }
 
 .formulaire input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
     padding: 1% 2%;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
     float: right;
 }
 
-.formulaire input[type="submit"]:hover {
-    background-color: #45a049;
+#submitBtn {
+    background-color: #ccc;
+    cursor: default;
+    color: #000;
+}
+
+#submitBtn.active:hover {
+    background-color: #127215;
+}
+
+#submitBtn.active {
+    background-color: #4CAF50;
+    cursor: pointer;
+    color: #fff;
 }
