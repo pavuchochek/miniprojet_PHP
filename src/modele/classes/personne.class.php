@@ -27,9 +27,11 @@ class Personne{
         {
             return $this->_Civilite;
         }
+        
         public function getId(): ?int {
             return $this->_Id_personne;
         }
+
         public function setId(int $id): void {
             $this->_Id_personne = $id;
         }
