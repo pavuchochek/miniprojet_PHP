@@ -91,14 +91,14 @@
                             <img class='icone_liste_medecin' src='img/$genderIcon' alt='icone d'un medecin'/>
                             <div>
                                 <div class='nom'>"
-                                    .$value->getPrenom() . "<br>"
-                                    .$value->getNom().
+                                    .$prenom . "<br>"
+                                    .$nom.
                                 "</div>
                                 <div class='boutons'>
                                     <a href='modifier_medecin.php?prenom=$prenom & nom=$nom'>
                                         <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
                                     </a>
-                                    <a href='#' class='supprimerMedecinBtn' data-prenom='<?php echo $prenom; ?>' data-nom='<?php echo $nom; ?>'>
+                                    <a href='#' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom'>
                                         <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
                                     </a>
                                 </div>
@@ -113,10 +113,10 @@
             </div>
 
             <div class="popup" id="popupMedecin">
-                <p>Voulez vous supprimer le médecin <?php echo $prenom." ". $nom; ?> ?</p>
+                <p id="popupMedecinNom"> gngn</p>
                 <div class="boutons_Popup">
                     <input type="button" value="Annuler" id="Bouton_popup_annuler">
-                    <a href="supprimer_medecin.php?id=<?php echo $idMedecin ?>">
+                    <a href="traitement_supprimer_medecin.php?id=<?php echo $idMedecin ?>">
                         <input type="button" value="Oui">
                     </a>
                 </div>
@@ -162,15 +162,19 @@
                     var prenom = this.getAttribute('data-prenom');
                     var nom = this.getAttribute('data-nom');
                     var popup = document.getElementById('popupMedecin');
+                    var nomprenom = document.getElementById('popupMedecinNom');
+                    nomprenom.innerHTML = "Voulez vous supprimer le médecin " + prenom + ' ' + nom + " ?";
                     popup.style.display = 'block';
-                    <?php $prenom = $prenom; ?>
-                    <?php $nom = $nom; ?>
+                    document.getElementById('Bouton_popup_annuler').setAttribute('data-prenom', prenom);
+                    document.getElementById('Bouton_popup_annuler').setAttribute('data-nom', nom);
                 });
             }
 
             document.getElementById('Bouton_popup_annuler').addEventListener('click', function() {
                 var popup = document.getElementById('popupMedecin');
                 popup.style.display = 'none';
+                var prenom = this.getAttribute('data-prenom');
+                var nom = this.getAttribute('data-nom');
             });
         });
         

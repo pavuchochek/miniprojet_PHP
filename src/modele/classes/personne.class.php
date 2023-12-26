@@ -1,13 +1,13 @@
 <?php
 #Classe de composition (conseil de M. Gaetan Piqué)
 class Personne{
-    private int $_Id_personne;
+    private $_Id_Personne;
     private string $_Nom;
     private string $_Prenom;
     private string $_Civilite;
     
-        public function __construct(string $Nom, string $Prenom, string $Civilite){
-        
+        public function __construct(string $Nom, string $Prenom, string $Civilite)
+        {       
             $this->_Nom = $Nom;
             $this->_Prenom = $Prenom;
             $this->_Civilite = $Civilite;
@@ -28,12 +28,14 @@ class Personne{
             return $this->_Civilite;
         }
         
-        public function getId(): ?int {
-            return $this->_Id_personne;
+        public function getId(): int
+        {
+            return $this->_Id_Personne;
         }
 
-        public function setId(int $id): void {
-            $this->_Id_personne = $id;
+        public function setId(int $id): void
+        {
+            $this->_Id_Personne = $id;
         }
         
         public function setNom(string $Nom): void
