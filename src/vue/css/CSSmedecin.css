@@ -17,17 +17,17 @@
     justify-content: space-between;
     width: 100%;
     margin-bottom: 10px;
+    display: inline-block;
 }
 
 .rdv {
     padding: 1%;
-    margin: 0;
+    border-bottom: 2px solid black;
 }
 
 .boutons {
     text-align: right;
 }
-
 .boutons a {
     text-decoration: none;
 }
@@ -35,7 +35,6 @@
 .boutons a img {
     width: 40px;
     height: 40px;
-    margin-left: 5%;
     cursor: pointer;
     border-radius: 5px;
 }

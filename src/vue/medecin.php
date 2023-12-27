@@ -21,9 +21,9 @@
                 <div class="box_rdv">
                     <?php
                     for ($i = 1; $i <= 10; $i++) {
-                        $heure = "10h00";
-                        $date = "01/01/2020";
-                        $usager = "Jean Dupont";
+                        $heure = $i ."h00";
+                        $date = $i ."/01/2020";
+                        $usager = "Le monsieur au fond à droite";
                     ?>
                         <!-- affichage type d'un rdv (remplacer les # par l'action à faire)-->
                         <div class="rdv">
