@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Medecins</title>
-        <link rel="stylesheet" href="css/CSSmedecin.css">
+        <link rel="stylesheet" href="css/CSSmedecins.css">
         <link rel="stylesheet" href="css/CSSheader.css">
         <link rel="stylesheet" href="css/CSSfooter.css">
         <link rel="icon" href="img/logo.png">
@@ -87,23 +87,25 @@
                             $genderIcon = 'icone_menu_usager.png';
                         }
                         echo "
-                        <div class='item_medecin'>
-                            <img class='icone_liste_medecin' src='img/$genderIcon' alt='icone d'un medecin'/>
-                            <div>
-                                <div class='nom'>"
-                                    .$prenom . "<br>"
-                                    .$nom.
-                                "</div>
-                                <div class='boutons'>
-                                    <a href='modifier_medecin.php?prenom=$prenom & nom=$nom'>
-                                        <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
-                                    </a>
-                                    <a href='#' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom'>
-                                        <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
-                                    </a>
+                        <a href='medecin.php' class = 'lien_medecin'>
+                            <div class='item_medecin'>
+                                <img class='icone_liste_medecin' src='img/$genderIcon' alt='icone d'un medecin'/>
+                                <div>
+                                    <div class='nom'>"
+                                        .$prenom . "<br>"
+                                        .$nom.
+                                    "</div>
+                                    <div class='boutons'>
+                                        <a href='modifier_medecin.php?prenom=$prenom&nom=$nom'>
+                                            <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
+                                        </a>
+                                        <a href='#' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom'>
+                                            <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>";
+                        </a>";
                     }
                 ?>
             </div>
