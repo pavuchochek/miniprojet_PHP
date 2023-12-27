@@ -2,7 +2,6 @@
 
 include_once('../modele/classes/personne.class.php');
 class Usager extends Personne{
-	private $_Personne;
 	private $_N_sécurite_sociale;
 	private $_Adresse;
 	private $_Date_naissance;
@@ -11,7 +10,7 @@ class Usager extends Personne{
 	
 	public function __construct(Personne $personne,String $Adresse,String $Date_naissance, String $Lieu_naissance, Medecin $medecin)
 	{
-		$this->_Personne=$personne;
+		parent::__construct($personne->getNom(), $personne->getPrenom(), $personne->getCivilite());
 		$this->_Adresse = $Adresse;
 		$this->_Date_naissance = $Date_naissance;
 		$this->_Medecin_referent = $medecin;
@@ -56,19 +55,6 @@ class Usager extends Personne{
 
 	public function setNsecuriteSociale(String $N_sécurite_sociale){
 		$this->_N_sécurite_sociale = $N_sécurite_sociale;
-	}
-
-	public function __toString():String{
-		return $this->_Personne->toString();
-	}
-
-	public function __destruct(){
-		unset($this->_Personne);
-		unset($this->_Adresse);
-		unset($this->_Date_naissance);
-		unset($this->_Lieu_naissance);
-		unset($this->_Medecin_referent);
-		unset($this->_N_sécurite_sociale);
 	}
 }
 ?>

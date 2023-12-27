@@ -38,6 +38,9 @@ class Medecin_controleur{
         $medecin = $this->daoMedecin->getMedecinById($idMedecin);
         $this->daoMedecin->supprimer_medecins($medecin);
     }
+    public function getIdMedecinByPrenomNom($prenom, $nom) {
+        return $this->daoMedecin->getIdMedecinByPrenomNom($prenom, $nom);
+    }
 }
 
 ?>

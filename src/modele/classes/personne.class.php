@@ -35,7 +35,7 @@ class Personne{
 
         public function setId(int $id): void
         {
-            $this->_Id_Personne = $id;
+            $this->_Id_Personne = (int)$id;
         }
         
         public function setNom(string $Nom): void
