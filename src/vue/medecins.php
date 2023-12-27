@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Medecins</title>
-    <link rel="stylesheet" href="css/CSSmedecin.css">
+    <link rel="stylesheet" href="css/CSSmedecins.css">
     <link rel="stylesheet" href="css/CSSheader.css">
     <link rel="stylesheet" href="css/CSSfooter.css">
     <link rel="icon" href="img/logo.png">
@@ -35,55 +35,55 @@
             </form>
         </div>
 
-        <div class="box_medecin" id="list_medecin">
-            <div>
-                <form action="" method="GET" class="recherche">
-                    <input type="text" name="search" autocomplete="off" placeholder="Rechercher un médecin">
-                    <input type="submit" value="Rechercher">
-                </form>
-            </div>
-
-            <?php
-                require('../controleur/medecin.controleur.php');
-                $controleur = new Medecin_controleur();
-                $resultat = $controleur->liste_medecins();
-                if (isset($_GET['search'])) {
-                    $recherche = strtolower($_GET['search']);
-                    $recherche = trim($recherche);
-                    $resultat = $controleur->rechercherMedecins($recherche);
-                }
-                foreach ($resultat as $value) {
-                    $prenom = $value->getPrenom();
-                    $nom = $value->getNom();
-                    $idMedecin = $value->getIdMedecin();
-                    if ($value->getCivilite() === 'M') {
-                        $genderIcon = 'icone_homme.png';
-                    } else if ($value->getCivilite() === 'F') {
-                        $genderIcon = 'icone_femme.png';
-                    } else {
-                        $genderIcon = 'icone_menu_usager.png';
+            <div class="box_medecin" id="list_medecin">
+                <div>
+                    <form action="" method="GET" class="recherche">
+                        <input type="text" name="search" autocomplete="off" placeholder="Rechercher un médecin">
+                        <input type="submit" value="Rechercher">
+                    </form>
+                </div>
+                
+                <?php
+                    require('../controleur/medecin.controleur.php');
+                    $controleur = new Medecin_controleur();
+                    $resultat=$controleur->liste_medecins();
+                    if (isset($_GET['search'])) {
+                        $recherche=strtolower($_GET['search']);
+                        $recherche=trim($recherche);
+                        $resultat=$controleur->rechercherMedecins($recherche);
                     }
-                    echo "
-                    <div class='item_medecin'>
-                        <img class='icone_liste_medecin' src='img/$genderIcon' alt='icone d'un medecin'/>
-                        <div>
-                            <div class='nom'>"
-                                . $prenom . "<br>"
-                                . $nom .
-                            "</div>
-                            <div class='boutons'>
-                                <a href='modifier_medecin.php?prenom=$prenom&nom=$nom'>
-                                    <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
-                                </a>
-                                <a href='traitement_supprimer_medecin.php?id=$idMedecin'>
-                                    <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
-                                </a>
+                    foreach ($resultat as $value){
+                        $prenom = $value->getPrenom();
+                        $nom = $value->getNom();
+                        $idMedecin = $value->getIdMedecin();
+                        if ($value->getCivilite() === 'M') {
+                            $genderIcon = 'icone_homme.png';
+                        } else if ($value->getCivilite() === 'F'){
+                            $genderIcon = 'icone_femme.png';
+                        } else {
+                            $genderIcon = 'icone_menu_usager.png';
+                        }
+                        echo "
+                        <div class='item_medecin'>
+                            <img class='icone_liste_medecin' src='img/$genderIcon' alt='icone d'un medecin'/>
+                            <div>
+                                <div class='nom'>"
+                                    .$prenom . "<br>"
+                                    .$nom.
+                                "</div>
+                                <div class='boutons'>
+                                    <a href='modifier_medecin.php?prenom=$prenom & nom=$nom'>
+                                        <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
+                                    </a>
+                                    <a href='#' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom'>
+                                        <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </div>";
-                }
-            ?>
-        </div>
+                        </div>";
+                    }
+                ?>
+            </div>
 
         <div class="boutons_modif" id="afficherFormulaire">
             <input type="button" value="Ajouter médecin" onclick="toggleForm()">
