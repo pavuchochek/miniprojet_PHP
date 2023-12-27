@@ -6,6 +6,7 @@ services:
     ports:
       - "80:80"
     volumes:
+        -  ./configuration.php:/app/configuration.php
         - ./src:/app/src
         - .env:/app/.env
 
