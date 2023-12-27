@@ -47,6 +47,7 @@
             </div>
             <div class="partie_usagers">
                 <h1>Liste des usagers</h1>
+                <!-- Faire l'affichage du même type que les médecins (parce que c'est bo)-->
             </div>
         </div>
     </body>
