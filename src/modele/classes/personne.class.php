@@ -30,8 +30,10 @@ class Personne{
         }
         
         public function getId(): int
-        {
-            return $this->_Id_Personne;
+        {   if(is_null($this->_Id_Personne)) { return 0;}else{
+            
+                return $this->_Id_Personne; 
+        }
         }
 
         public function setId(int $id): void
