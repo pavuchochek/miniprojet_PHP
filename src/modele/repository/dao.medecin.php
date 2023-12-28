@@ -2,17 +2,17 @@
 include_once('../modele/repository/pdo.php');
 include_once('../controleur/medecin.controleur.php');
 include_once('../modele/classes/medecin.class.php');
+include_once('../modele/classes/rdv.class.php');
 include_once('../modele/repository/dao.usager.php');
 define('LOG_FILE', 'logs.log');
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 class Dao_Medecin {
-    private $daoManager;
     private $pdo;
 
-    public function __construct(DaoManager $daoManager) {
-        $this->daoManager = $daoManager;
-        $this->pdo = $daoManager->getConnexion();
+    public function __construct() {
+        include_once('../../configuration.php');
+        $this->pdo = Connexion::getInstance($db_address, $user, $password, $db_name);
     }
 
 
@@ -180,22 +180,35 @@ class Dao_Medecin {
         ));
     }
     
-    public function liste_rdv(Medecin $medecin){
-        //Recherche des rdv
-        $res = $this->pdo->prepare('SELECT Id_Usager,Date_rdv,Heure_debut,Heure_fin FROM Rdv WHERE Rdv.Id_Medecin=:id');
+    public function liste_rdv(Medecin $medecin) {
+        // Recherche des rdv avec les informations de l'usager
+        $tablo_rdv = array();
+        $res = $this->pdo->prepare('
+            SELECT Rdv.Id_Usager, Rdv.Date_rdv, Rdv.Heure_debut, Rdv.Heure_fin,
+                   Personne.Nom AS Usager_Nom, Personne.Prenom AS Usager_Prenom,
+                   Personne.Civilite AS Usager_Civilite, Usager.N_securite_sociale,
+                   Usager.Adresse, Usager.Date_naissance, Usager.Lieu_naissance,
+                   Usager.Id_Usager
+            FROM Rdv
+            JOIN Usager ON Rdv.Id_Usager = Usager.Id_Usager
+            JOIN Personne ON Usager.Id_Personne = Personne.Id_Personne
+            WHERE Rdv.Id_Medecin = :id
+        ');
         $res->execute(array(
             'id' => $medecin->getIdMedecin()
         ));
-        $data = $res->fetch();
-        //Parcour de chaque rdv et creation de la liste
-        while ($data) {
-            //recuperation de l'usager
-            $usager=$this->daoManager->getDaoUsager()->getUsagerById($data[0]);
-            $rdv=new Rdv($data[1],$data[2],$data[3],$medecin,$usager);
+        while ($data = $res->fetch()) {
+            // Création de l'objet Usager et Rdv
+            $personne = new Personne($data['Usager_Nom'], $data['Usager_Prenom'], $data['Usager_Civilite']);
+            $personne->setId($data['Id_Usager']);  
+            $usager = new Usager($personne, $data['N_securite_sociale'], $data['Adresse'], $data['Date_naissance'], $data['Lieu_naissance'], $medecin);
+            $usager->setIdUsager($data['Id_Usager']);
+            $rdv = new Rdv($data['Date_rdv'], $data['Heure_debut'], $data['Heure_fin'], $medecin, $usager);
             $tablo_rdv[] = $rdv;
         }
-        return $tablo_rdv;        
+        return $tablo_rdv;
     }
+    
     
 }
 ?>

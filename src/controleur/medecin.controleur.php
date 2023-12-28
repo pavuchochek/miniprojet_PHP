@@ -1,6 +1,5 @@
 <?php
 require('../modele/repository/dao.medecin.php');
-require('../modele/repository/dao.manager.php');
 
 
 class Medecin_controleur{
@@ -9,9 +8,7 @@ class Medecin_controleur{
         private $daoMedecin;
     
         public function __construct() {
-            include_once('../../configuration.php');
-            $this->daoManager = DaoManager::getInstance($db_address, $user, $password, $db_name); // À ajuster selon votre implémentation
-            $this->daoMedecin = $this->daoManager->getDaoMedecin();
+            $this->daoMedecin=new Dao_Medecin();
         }
     public function liste_medecins(){
         return $this->daoMedecin->liste_medecins("","");
