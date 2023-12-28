@@ -28,10 +28,9 @@ class Medecin_controleur{
         return $resultats;
     }
 
-    public function modifier_medecin(string $nom,string $prenom,string $civilite){
-        $personne = new Personne($nom,$prenom,$civilite);
-        $medecin = new Medecin($personne);
-        $this->daoMedecin->modifier_medecins($medecin);
+    public function modifier_medecin(string $nom,string $prenom,string $civilite,int $idMedecin){
+        $medecin = $this->daoMedecin->getMedecinById($idMedecin);
+        $this->daoMedecin->modifier_medecins($medecin,$nom,$prenom, $civilite);
     }
     
     public function supprimer_medecin(int $idMedecin){

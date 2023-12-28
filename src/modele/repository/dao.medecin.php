@@ -158,12 +158,12 @@ class Dao_Medecin {
         }
     }
 
-    public function modifier_medecins(Medecin $medecin){
+    public function modifier_medecins(Medecin $medecin,String $nouveauNom,String $nouveauPrenom,String $nouvelleCivilite){
         $req=$this->pdo->prepare('UPDATE Personne SET Nom=:nom,Prenom=:prenom,Civilite=:civilite WHERE Id_Personne=:id');
         $req->execute(array(
-            'nom'=>$medecin->getNom(),
-            'prenom'=>$medecin->getPrenom(),
-            'civilite'=>$medecin->getCivilite(),
+            'nom'=>$nouveauNom,
+            'prenom'=>$nouveauPrenom,
+            'civilite'=>$nouvelleCivilite,
             'id'=>$medecin->getId()
         ));
     }
