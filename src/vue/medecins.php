@@ -17,7 +17,7 @@
         <div class="body">
 
             <div id="formulaire" class="formulaire" style="display: none;">
-                <form id="form" method="post" action="traitement_ajout_medecin.php" onsubmit="return Valide()">
+                <form id="medecinForm" method="post" action="traitement_ajout_medecin.php" onsubmit="return Valide()">
                     <label for="prenom">Prénom:</label>
                     <input type="text" id="prenom" name="prenom" autocomplete="off">
 
@@ -127,6 +127,21 @@
                 var nom = document.getElementById('nom').value;
                 return prenom !== '' && nom !== '';
             }
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('medecinForm').addEventListener('input', function () {
+                    var prenom = document.getElementById('prenom').value;
+                    var nom = document.getElementById('nom').value;
+                    var submitBtn = document.getElementById('bouton_valider');
+                    if (prenom !== '' && nom !== '') {
+                        submitBtn.classList.add('active');
+                    } else {
+                        submitBtn.classList.remove('active');
+                    }
+                });
+            });
+            
+            
             document.addEventListener('DOMContentLoaded', function() {
                 var formulaireVisible = false;
                 var popup = document.getElementById('popupMedecin');
