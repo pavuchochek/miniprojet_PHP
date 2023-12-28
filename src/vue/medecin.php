@@ -18,13 +18,17 @@
         <div class="body">
             <div class="partie_rdv">
                 <h1>Liste des rdv</h1>
+                
                 <div class="box_rdv">
                     <?php
-                    for ($i = 1; $i <= 10; $i++) {
-                        $heure = $i ."h00";
-                        $date = $i ."/01/2020";
-                        $usager = "Le monsieur au fond à droite";
-                    ?>
+                    require('../controleur/medecin.controleur.php');
+                    $controleur = new Medecin_controleur();
+                    $resultat = $controleur->getListeRdv(1);
+                    foreach ($resultat as $value){
+                        $heure = $value->getHeureDebut();
+                        $date = $value->getDateRdv();
+                     $usager = $value->getUsager()->getNom();
+                    }?>
                         <!-- affichage type d'un rdv (remplacer les # par l'action à faire)-->
                         <div class="rdv">
                             <div>
@@ -41,7 +45,6 @@
                             </div>
                         </div>
                     <?php
-                    }
                     ?>
                 </div>
             </div>
