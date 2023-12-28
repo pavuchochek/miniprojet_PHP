@@ -89,13 +89,29 @@ class Dao_Medecin {
             } else {
                 $tablo_medecins = array(); // Aucun médecin trouvé avec les critères de recherche
             }
-
-            $tablo_medecins = array_reverse($tablo_medecins);
             return $tablo_medecins;
         } catch (PDOException $e) {
             // En cas d'erreur, afficher le message d'erreur
             error_log("Error executing SQL query: " . $e->getMessage());
             throw $e;
+        }
+    }
+    public function liste_usager_medecin(Medecin $medecin){
+        try{
+            $req = $this->pdo->prepare('SELECT DISTINCT * FROM Usager,Personne WHERE Usager.Id_Personne=Personne.Id_Personne');
+        $req->execute(array(
+            'id' => $medecin->getIdMedecin()
+        ));
+        while ($data = $req->fetch()) {
+            $personne = new Personne($data[0], $data[1], $data[2]);
+            $personne->setId($data[3]);
+            $usager = new Usager($personne, $data[4], $data[5],$data[6],$medecin);
+            $usager->setIdUsager($data[4]);
+            $tablo_usagers[] = $usager;
+        }
+        return  $tablo_usagers;
+        }catch(PDOException $e) {
+            error_log("". $e->getMessage());
         }
     }
 
