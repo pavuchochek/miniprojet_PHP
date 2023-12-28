@@ -56,6 +56,7 @@
                     $prenom = $value->getPrenom();
                     $nom = $value->getNom();
                     $idMedecin = $value->getIdMedecin();
+                    $civilite= $value->getCivilite();
                     if ($value->getCivilite() === 'M') {
                         $genderIcon = 'icone_homme.png';
                     } else if ($value->getCivilite() === 'F'){
@@ -72,7 +73,7 @@
                                 .$nom.
                             "</div>
                             <div class='boutons'>
-                                <a href='modifier_medecin.php?prenom=$prenom&nom=$nom'>
+                                <a href='modifier_medecin.php?prenom=$prenom&nom=$nom&id=$idMedecin&civilite=$civilite'>
                                     <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
                                 </a>
                                 <a href='traitement_supprimer_medecin.php?id=$idMedecin' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom'>

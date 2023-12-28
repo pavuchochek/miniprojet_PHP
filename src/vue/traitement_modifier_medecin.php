@@ -7,8 +7,7 @@
     $prenom=$_POST["prenom"];
     $prenom = preg_replace("/[^a-zA-Z]/", "", $prenom);
     $civilite=$_POST["civilite"];
-    //TODO
-    //remplacer ajouter_medecin par modifier_medecin, et modifier le controleur et la dao pour correspondre
-    $controleur->ajouter_medecin($nom,$prenom,$civilite);
+    $id=$_GET["id"];
+    $controleur->modifier_medecin($nom,$prenom,$civilite, $id);
     header('Location: medecins.php');
 ?>

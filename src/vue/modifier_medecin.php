@@ -30,7 +30,7 @@
                     <input type="text" id="nom" name="nom" autocomplete="off" value="<?php echo $nom; ?>">
 
                     <label for="civilite">Civilité:</label>
-                    <select id="civilite" name="civilite">
+                    <select id="civilite" name="civilite" value="<?php echo $civilite; ?> >
                         <option value="M">Monsieur</option>
                         <option value="F">Madame</option>
                         <option value="A">Autre</option>
