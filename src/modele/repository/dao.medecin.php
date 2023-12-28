@@ -151,7 +151,10 @@ class Dao_Medecin {
             $req->execute(array(
                 'id' => $medecin->getIdMedecin()
             ));
-
+            $req = $this->pdo->prepare('DELETE FROM Usager WHERE Id_Personne=:id;');
+            $req->execute(array(
+                'id' => $medecin->getId()
+            ));
             $req = $this->pdo->prepare('DELETE FROM Personne WHERE Id_Personne=:id;');
             $req->execute(array(
                 'id' => $medecin->getId()
