@@ -11,6 +11,7 @@ class Personne{
             $this->_Nom = $Nom;
             $this->_Prenom = $Prenom;
             $this->_Civilite = $Civilite;
+            $this->_Id_Personne = null;
         }
         
         public function getNom(): string

@@ -55,7 +55,6 @@ class Dao_Medecin {
 
             $personne = new Personne($data['Nom'], $data['Prenom'], $data['Civilite']);
             $personne->setId($data['Id_Personne']);
-
             $medecin = new Medecin($personne);
             $medecin->setIdMedecin($data['Id_Medecin']);
 

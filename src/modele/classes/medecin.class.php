@@ -8,6 +8,7 @@ class Medecin extends Personne{
 		public function __construct(Personne $personne)
 		{
 			parent::__construct($personne->getNom(), $personne->getPrenom(), $personne->getCivilite());
+			$this->setId($personne->getId()); 
 		}
 		
 		public function getIdMedecin(): int
