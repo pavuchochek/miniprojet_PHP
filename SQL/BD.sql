@@ -50,19 +50,7 @@ INSERT INTO Personne (Nom, Prenom, Civilite) VALUES
 ('Davis', 'Jennifer', 'F'),
 ('Wilson', 'Daniel', 'M'),
 ('Taylor', 'Jessica', 'F'),
-('Anderson', 'Christopher', 'M');
-
-INSERT INTO Medecin (Id_Personne) VALUES
-(4),
-(5),
-(6),
-(7),
-(8),
-(9),
-(10);
-
-INSERT INTO Personne (Nom, Prenom, Civilite)
-VALUES
+('Anderson', 'Christopher', 'M'),
 ('Lee', 'Michelle', 'F'),
 ('Garcia', 'Carlos', 'M'),
 ('Lopez', 'Maria', 'F'),
@@ -94,9 +82,17 @@ VALUES
 ('Santos', 'Sophia', 'F'),
 ('Valdez', 'Leo', 'M');
 
-
-INSERT INTO Medecin (Id_Personne)
-VALUES
+INSERT INTO Medecin (Id_Personne) VALUES
+(1),
+(2),
+(3),
+(4),
+(5),
+(6),
+(7),
+(8),
+(9),
+(10),
 (11),
 (12),
 (13),
@@ -139,11 +135,11 @@ INSERT INTO Personne (Nom, Prenom, Civilite) VALUES
 -- Inserting new Users
 INSERT INTO Usager (N_securite_sociale, Adresse, Date_naissance, Lieu_naissance, Id_Personne, Id_Medecin)
 VALUES
-('1234567890125', '123 Birch St', '1993-04-05', 'City16', 16, NULL),
-('9876543210989', '456 Cedar St', '1984-09-12', 'City17', 17, NULL),
-('1111222233336', '789 Elm St', '1994-02-28', 'City18', 18, NULL),
-('4444555566669', '101 Maple St', '1981-06-15', 'City19', 19, NULL),
-('7777888899992', '202 Oak St', '1997-10-20', 'City20', 20, NULL);
+('1234567890125', '123 Birch St', '1993-04-05', 'City16', 16, 13),
+('9876543210989', '456 Cedar St', '1984-09-12', 'City17', 17, 13),
+('1111222233336', '789 Elm St', '1994-02-28', 'City18', 18, 1),
+('4444555566669', '101 Maple St', '1981-06-15', 'City19', 19, 2),
+('7777888899992', '202 Oak St', '1997-10-20', 'City20', 20, 3);
 
 -- Inserting Future Appointments for new Users
 INSERT INTO Rdv (Id_Usager, Id_Medecin, Date_rdv, Heure_debut, Heure_fin)
