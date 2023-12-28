@@ -9,9 +9,10 @@ class Usager extends Personne{
 	private $_Lieu_naissance;
 	private $_Medecin_referent;
 	
-	public function __construct(Personne $personne,String $Adresse,String $Date_naissance, String $Lieu_naissance, Medecin $medecin)
+	public function __construct(Personne $personne,int $NSecuSociale,String $Adresse,String $Date_naissance, String $Lieu_naissance, Medecin $medecin)
 	{
 		parent::__construct($personne->getNom(), $personne->getPrenom(), $personne->getCivilite());
+		$this->_N_sécurite_sociale= $NSecuSociale;
 		$this->_Adresse = $Adresse;
 		$this->_Date_naissance = $Date_naissance;
 		$this->_Medecin_referent = $medecin;
