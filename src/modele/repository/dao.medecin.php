@@ -151,14 +151,18 @@ class Dao_Medecin {
             $req->execute(array(
                 'id' => $medecin->getIdMedecin()
             ));
-            $req = $this->pdo->prepare('DELETE FROM Usager WHERE Id_Personne=:id;');
+            //SI LA PERSONNE EST NI MEDECIN NI USAGER ON LA SUPPRIME DEFINITIVEMENT
+            $req = $this->pdo->prepare('SELECT * from Usager where Id_Personne=:id');
             $req->execute(array(
                 'id' => $medecin->getId()
             ));
-            $req = $this->pdo->prepare('DELETE FROM Personne WHERE Id_Personne=:id;');
-            $req->execute(array(
-                'id' => $medecin->getId()
-            ));
+            $data = $req->fetch();
+            if (!$data) {
+                $req = $this->pdo->prepare('DELETE FROM Personne WHERE Id_Personne=:id;');
+                $req->execute(array(
+                    'id' => $medecin->getId()
+                ));
+            }
         } catch (PDOException $e) {
             // En cas d'erreur, afficher le message d'erreur
             error_log("Error executing SQL query: " . $e->getMessage());
