@@ -137,17 +137,22 @@ class Dao_Medecin {
     }
 
     public function supprimer_medecins(Medecin $medecin) {
+
         try {
-            $req = $this->pdo->prepare('DELETE FROM Rdv WHERE Id_Medecin=:id;commit;');
+            $req = $this->pdo->prepare('UPDATE Usager SET Id_Medecin=NULL WHERE Id_Medecin=:id;');
             $req->execute(array(
                 'id' => $medecin->getIdMedecin()
             ));
-            $req = $this->pdo->prepare('DELETE FROM Medecin WHERE Id_Medecin=:id;commit;');
+            $req = $this->pdo->prepare('DELETE FROM Rdv WHERE Id_Medecin=:id;');
+            $req->execute(array(
+                'id' => $medecin->getIdMedecin()
+            ));
+            $req = $this->pdo->prepare('DELETE FROM Medecin WHERE Id_Medecin=:id;');
             $req->execute(array(
                 'id' => $medecin->getIdMedecin()
             ));
 
-            $req = $this->pdo->prepare('DELETE FROM Personne WHERE Id_Personne=:id;commit;');
+            $req = $this->pdo->prepare('DELETE FROM Personne WHERE Id_Personne=:id;');
             $req->execute(array(
                 'id' => $medecin->getId()
             ));
