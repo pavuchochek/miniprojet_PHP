@@ -7,7 +7,7 @@
     $prenom=$_POST["prenom"];
     $prenom = preg_replace("/[^a-zA-Z]/", "", $prenom);
     $civilite=$_POST["civilite"];
-    $id=$_GET["id"];
+    $id=$_POST["idMedecin"];
     $controleur->modifier_medecin($nom,$prenom,$civilite, $id);
     header('Location: medecins.php');
 ?>

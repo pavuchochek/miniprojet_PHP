@@ -23,14 +23,18 @@
                     <?php
                         $prenom = $_GET['prenom'];
                         $nom = $_GET['nom'];
+                        $civilite=$_GET['civilite'];
+                        $idMedecin= $_GET['id'];
                     ?>
+                    <input type="hidden" name="idMedecin" value="<?php echo $idMedecin; ?>">
+
                     <input type="text" id="prenom" name="prenom" autocomplete="off" value="<?php echo $prenom; ?>">
 
                     <label for="nom">Nom:</label>
                     <input type="text" id="nom" name="nom" autocomplete="off" value="<?php echo $nom; ?>">
 
                     <label for="civilite">Civilité:</label>
-                    <select id="civilite" name="civilite" value="<?php echo $civilite; ?> >
+                    <select id="civilite" name="civilite" value="<?php echo $civilite; ?>">
                         <option value="M">Monsieur</option>
                         <option value="F">Madame</option>
                         <option value="A">Autre</option>
