@@ -1,19 +1,14 @@
-<?php
-class Connexion extends PDO {
+<?php class Connexion extends PDO {
     private static $instance = null;
     private $serveur, $utilisateur, $motDePasse, $dataBase;
 
     private function __construct($serveur, $utilisateur, $motDePasse, $dataBase)
     {
+        parent::__construct('mysql:host=' . $serveur . ';dbname=' . $dataBase, $utilisateur, $motDePasse);
         $this->serveur = $serveur;
         $this->utilisateur = $utilisateur;
         $this->motDePasse = $motDePasse;
         $this->dataBase = $dataBase;
-        try {
-            parent::__construct('mysql:host=' . $this->serveur . ';dbname=' . $this->dataBase, $this->utilisateur, $this->motDePasse);
-        } catch (Exception $e) {
-            die('' . $e->getMessage());
-        }
     }
 
     public static function getInstance($serveur, $utilisateur, $motDePasse, $dataBase)
@@ -23,11 +18,4 @@ class Connexion extends PDO {
         }
         return self::$instance;
     }
-
-    public function getConnexion()
-    {
-        return self::$instance;
-    }
-}
-
-?>
+}?>

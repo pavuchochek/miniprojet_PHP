@@ -6,16 +6,14 @@ include_once('../modele/classes/usagers.class.php');
 
 
 class Dao_Usager{
-    
-    private $c;
+    private $daoManager;
     private $pdo;
-    private $daoMedecin;
-    public function __construct(){
-        include_once('../../configuration.php');
-        $this->c = Connexion::getInstance($db_address, $user, $password, $db_name);
-        $this->pdo = $this->c->getConnexion();
-        $this->daoMedecin = new Dao_Medecin();
-    }   
+
+    public function __construct(DaoManager $daoManager) {
+        $this->daoManager = $daoManager;
+        $this->pdo = $daoManager->getConnexion();
+    }
+
 
     public function getUsagerById(int $idUsager):Usager{
         try{

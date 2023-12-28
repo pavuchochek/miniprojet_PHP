@@ -7,17 +7,14 @@ define('LOG_FILE', 'logs.log');
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 class Dao_Medecin {
-    
-    private $c;
+    private $daoManager;
     private $pdo;
-    private $daoUsager;
-    
-    public function __construct() {
-        include_once('../../configuration.php');
-        $this->c = Connexion::getInstance($db_address, $user, $password, $db_name);
-        $this->pdo = $this->c->getConnexion();
-        /*$this->daoUsager = new Dao_Usager();*/
-    }   
+
+    public function __construct(DaoManager $daoManager) {
+        $this->daoManager = $daoManager;
+        $this->pdo = $daoManager->getConnexion();
+    }
+
 
     public function getIdMedecinByPrenomNom($prenom, $nom) {
         try {
@@ -182,7 +179,7 @@ class Dao_Medecin {
             'id'=>$medecin->getId()
         ));
     }
-    /*
+    
     public function liste_rdv(Medecin $medecin){
         //Recherche des rdv
         $res = $this->pdo->prepare('SELECT Id_Usager,Date_rdv,Heure_debut,Heure_fin FROM Rdv WHERE Rdv.Id_Medecin=:id');
@@ -193,12 +190,12 @@ class Dao_Medecin {
         //Parcour de chaque rdv et creation de la liste
         while ($data) {
             //recuperation de l'usager
-            $usager=$this->daoUsager->getUsagerById($data[0]);
+            $usager=$this->daoManager->getDaoUsager()->getUsagerById($data[0]);
             $rdv=new Rdv($data[1],$data[2],$data[3],$medecin,$usager);
             $tablo_rdv[] = $rdv;
         }
         return $tablo_rdv;        
     }
-    */
+    
 }
 ?>
