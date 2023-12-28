@@ -105,8 +105,28 @@
 
         <?php include 'footer.php'; ?>
 
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script>
+            var formulaireVisible = false;
+            function toggleForm() {
+                var formulaire = document.getElementById('formulaire');
+                var listMedecin = document.getElementById('list_medecin');
+
+                if (formulaireVisible) {
+                    formulaire.style.display = 'none';
+                    listMedecin.style.display = 'block';
+                    formulaireVisible = false;
+                } else {
+                    formulaire.style.display = 'block';
+                    listMedecin.style.display = 'none';
+                    formulaireVisible = true;
+                }
+            }
+
+            function Valide() {
+                var prenom = document.getElementById('prenom').value;
+                var nom = document.getElementById('nom').value;
+                return prenom !== '' && nom !== '';
+            }
             document.addEventListener('DOMContentLoaded', function() {
                 var formulaireVisible = false;
                 var popup = document.getElementById('popupMedecin');
@@ -134,31 +154,7 @@
                     var prenom = this.getAttribute('data-prenom');
                     var nom = this.getAttribute('data-nom');
                 });
-
-                var afficherFormulaireBtn = document.getElementById('afficherFormulaire');
-                afficherFormulaireBtn.addEventListener('click', toggleForm);
             });
-
-            function toggleForm() {
-                var formulaire = document.getElementById('formulaire');
-                var listMedecin = document.getElementById('list_medecin');
-
-                if (formulaireVisible) {
-                    formulaire.style.display = 'none';
-                    listMedecin.style.display = 'block';
-                } else {
-                    formulaire.style.display = 'block';
-                    listMedecin.style.display = 'none';
-                }
-
-                formulaireVisible = !formulaireVisible;
-            }
-
-            function Valide() {
-                var prenom = document.getElementById('prenom').value;
-                var nom = document.getElementById('nom').value;
-                return prenom !== '' && nom !== '';
-            }
         </script>
     </body>
 </html>
