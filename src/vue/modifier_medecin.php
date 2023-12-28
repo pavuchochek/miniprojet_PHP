@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Medecins</title>
-        <link rel="stylesheet" href="css/CSSmedecin.css">
+        <link rel="stylesheet" href="css/CSSmedecins.css">
         <link rel="stylesheet" href="css/CSSheader.css">
         <link rel="stylesheet" href="css/CSSfooter.css">
         <link rel="icon" href="img/logo.png">
