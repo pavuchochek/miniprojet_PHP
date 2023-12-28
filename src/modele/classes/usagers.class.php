@@ -2,6 +2,7 @@
 
 include_once('../modele/classes/personne.class.php');
 class Usager extends Personne{
+	private $_IdUsager;
 	private $_N_sécurite_sociale;
 	private $_Adresse;
 	private $_Date_naissance;
@@ -15,12 +16,18 @@ class Usager extends Personne{
 		$this->_Date_naissance = $Date_naissance;
 		$this->_Medecin_referent = $medecin;
 		$this->_Lieu_naissance = $Lieu_naissance;
+		$this->setId($personne->getId());
 	}
 
 	public function getAdresse():String{
 		return $this->_Adresse;
 	}
-
+	public function getIdUsager():int{
+		return $this->_IdUsager;
+	}
+	public function setIdUsager(int $idUsager): void{
+		$this->_IdUsager = $idUsager;
+	}
 	public function getDateNaissance():String{
 		return $this->_Date_naissance;
 	}
