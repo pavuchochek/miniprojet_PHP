@@ -25,8 +25,14 @@
                         $controleur = new Medecin_controleur();
                         $id = $_GET['id'];
                         $resultat = $controleur->getListeRdv($id);
-                        foreach ($resultat as $value){
-                            if ($value !== null) {
+                        if ($resultat == null) {
+                            echo "<div class='rdv'>
+                                <div>
+                                    <h3>Aucun rdv</h3>
+                                </div>
+                            </div>";
+                        } else {
+                            foreach ($resultat as $value){
                                 $heure = $value->getHeureDebut();
                                 $date = $value->getDateRdv();
                                 $usager = $value->getUsager()->getNom();
@@ -45,13 +51,6 @@
                                     </div>
                                 </div>";
                             }
-                        }
-                        if ($resultat == null) {
-                            echo "<div class='rdv'>
-                                <div>
-                                    <h3>Aucun rdv</h3>
-                                </div>
-                            </div>";
                         }
                     ?>
                 </div>
