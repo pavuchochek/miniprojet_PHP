@@ -65,7 +65,7 @@
                             $genderIcon = 'icone_menu_usager.png';
                         }
                         echo "
-                        <a href='medecin.php' class = 'lien_medecin'>
+                        <a href='medecin.php?id=$idMedecin' class = 'lien_medecin'>
                             <div class='item_medecin'>
                                 <img class='icone_liste_medecin' src='img/$genderIcon' alt='icone d'un medecin'/>
                                 <div>

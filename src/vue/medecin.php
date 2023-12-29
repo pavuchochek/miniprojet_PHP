@@ -21,30 +21,38 @@
                 
                 <div class="box_rdv">
                     <?php
-                    require('../controleur/medecin.controleur.php');
-                    $controleur = new Medecin_controleur();
-                    $resultat = $controleur->getListeRdv(1);
-                    foreach ($resultat as $value){
-                        $heure = $value->getHeureDebut();
-                        $date = $value->getDateRdv();
-                     $usager = $value->getUsager()->getNom();
-                    }?>
-                        <!-- affichage type d'un rdv (remplacer les # par l'action à faire)-->
-                        <div class="rdv">
-                            <div>
-                                <h3><?php echo $date; ?> : <?php echo $heure; ?></h3>
-                                <p>Usager: <?php echo $usager; ?></p>
-                            </div>
-                            <div class="boutons">
-                                <a href='#'>
-                                    <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
-                                </a>
-                                <a href='#'>
-                                    <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
-                                </a>
-                            </div>
-                        </div>
-                    <?php
+                        require('../controleur/medecin.controleur.php');
+                        $controleur = new Medecin_controleur();
+                        $id = $_GET['id'];
+                        $resultat = $controleur->getListeRdv($id);
+                        foreach ($resultat as $value){
+                            if ($value !== null) {
+                                $heure = $value->getHeureDebut();
+                                $date = $value->getDateRdv();
+                                $usager = $value->getUsager()->getNom();
+                                echo "<div class='rdv'>
+                                    <div>
+                                        <h3><?php echo $date; ?> : <?php echo $heure; ?></h3>
+                                        <p>Usager: <?php echo $usager; ?></p>
+                                    </div>
+                                    <div class='boutons'>
+                                        <a href='#'>
+                                            <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
+                                        </a>
+                                        <a href='#'>
+                                            <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
+                                        </a>
+                                    </div>
+                                </div>";
+                            }
+                        }
+                        if ($resultat == null) {
+                            echo "<div class='rdv'>
+                                <div>
+                                    <h3>Aucun rdv</h3>
+                                </div>
+                            </div>";
+                        }
                     ?>
                 </div>
             </div>
