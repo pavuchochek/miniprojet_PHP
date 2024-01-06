@@ -2,11 +2,14 @@
     display: flex;
 }
 
+.titre {
+    margin: 2%;
+}
+
 .partie_rdv, .partie_usagers {
     margin: 2%;
     margin-top: 0;
     width: 100%;
-
 }
 
 .box_rdv {

@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Medecins</title>
-        <link rel="stylesheet" href="css/CSSmedecin.css">
+        <link rel="stylesheet" href="css/CSSdetail_medecin.css">
         <link rel="stylesheet" href="css/CSSheader.css">
         <link rel="stylesheet" href="css/CSSfooter.css">
         <link rel="icon" href="img/logo.png">
@@ -15,18 +15,24 @@
     <?php include 'header.php'; ?>
 
     <body>
+        <h1 class="titre">Médecin :
+            <?php
+            require('../controleur/medecin.controleur.php');
+            $controleur = new Medecin_controleur();
+            $id = $_GET['id'];
+            $prenom = $controleur->getMedecinById($id)->getPrenom();
+            $nom = $controleur->getMedecinById($id)->getNom();
+            echo $prenom . " " . $nom; ?>
+        </h1>
         <div class="body">
             <div class="partie_rdv">
                 <h1>Liste des rdv</h1>
                 
                 <div class="box_rdv">
                     <?php
-                        require('../controleur/medecin.controleur.php');
-                        $controleur = new Medecin_controleur();
-                        $id = $_GET['id'];
                         $resultat = $controleur->getListeRdv($id);
                         if ($resultat == null) {
-                            echo "<div class='rdv'>
+                            echo "<div>
                                 <div>
                                     <h3>Aucun rdv</h3>
                                 </div>
@@ -57,7 +63,6 @@
             </div>
             <div class="partie_usagers">
                 <h1>Liste des usagers</h1>
-                <!-- Faire l'affichage du même type que les médecins (parce que c'est bo)-->
             </div>
         </div>
     </body>
