@@ -39,6 +39,9 @@ class Medecin_controleur{
     public function getIdMedecinByPrenomNom($prenom, $nom) {
         return $this->daoMedecin->getIdMedecinByPrenomNom($prenom, $nom);
     }
+    public function getMedecinById($idMedecin) {
+        return $this->daoMedecin->getMedecinById($idMedecin);
+    }
     public function getListeUsagersMedecin(int $idMedecin){
         $medecin = $this->daoMedecin->getMedecinById($idMedecin);
         return $this->daoMedecin->liste_usager_medecin($medecin);
