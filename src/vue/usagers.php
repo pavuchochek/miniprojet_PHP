@@ -14,6 +14,31 @@
     <body>
         <div class="body">
             <h1>Liste des usagers</h1>
+            <?php
+                    require('../controleur/usager.controleur.php');
+                    $controleur = new Usager_Controleur();
+                    $resultat = $controleur->liste_usagers();
+                    foreach ($resultat as $value){
+                        $prenom = $value->getPrenom();
+                        $nom = $value->getNom();
+                        $civilite= $value->getCivilite();
+                        $medecinRef = $value->getMedecinReferent();
+                        /*attention faut pas que ça soit null !!!*/
+                        if(is_null($medecinRef)){
+                            $medecinRef = "Pas de medecin referent";
+                        }else{
+                            $medecinRef=$medecinRef->toString();
+                        }
+                        echo "
+                            <div class='item_medecin'>
+                                <div>
+                                    <div class='nom'>"
+                                        .$prenom ." ".$nom." ". $civilite ." ".$medecinRef;
+                                    "</div>
+                                </div>
+                            </div>";
+                    }
+            ?>
             <div class="boutons_modif" >
                 <input type="button" value="Ajouter un usager">
             </div>
