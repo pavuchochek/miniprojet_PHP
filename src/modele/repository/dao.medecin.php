@@ -103,6 +103,7 @@ class Dao_Medecin {
         $req->execute(array(
             'id' => $medecin->getIdMedecin()
         ));
+        $tablo_usagers = array();
         while ($data = $req->fetch()) {
             $personne = new Personne($data[0], $data[1], $data[2]);
             $personne->setId($data[3]);
