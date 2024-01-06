@@ -13,5 +13,13 @@ class Dao_Rdv{
     public function createRdv(){
         
     }
+    public function updateRdv(){
+
+    }
+    public function liste_rdv_Actuels(){
+
+    }
+    public function deleteRdv(){
+    }
 }
 ?>

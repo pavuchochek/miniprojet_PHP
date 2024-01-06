@@ -31,10 +31,10 @@ CREATE OR REPLACE TABLE Usager(
 CREATE OR REPLACE TABLE Rdv(
    Id_Usager INT NOT NULL,
    Id_Medecin INT NOT NULL,
-   Date_rdv DATE,
-   Heure_debut TIME,
-   Heure_fin TIME,
-   PRIMARY KEY(Id_Usager, Id_Medecin),
+   Date_rdv DATE NOT NULL,
+   Heure_debut TIME NOT NULL,
+   Heure_fin TIME NOT NULL,
+   PRIMARY KEY(Id_Usager, Id_Medecin,Date_rdv,Heure_debut,Heure_fin),
    FOREIGN KEY(Id_Usager) REFERENCES Usager(Id_Usager),
    FOREIGN KEY(Id_Medecin) REFERENCES Medecin(Id_Medecin)
 );
@@ -134,4 +134,4 @@ VALUES
 (1, 1, '2024-01-20', '11:30:00', '12:30:00'),
 (3, 2, '2024-02-25', '15:00:00', '16:00:00'),
 (4, 36, '2024-03-30', '12:30:00', '13:30:00'),
-(5, 35, '2023-05-05', '10:45:00', '11:45:00');
+(5, 35, '2024-05-05', '10:45:00', '11:45:00');
