@@ -3,8 +3,6 @@ require('../modele/repository/dao.medecin.php');
 
 
 class Medecin_controleur{
-
-        private $daoManager;
         private $daoMedecin;
     
         public function __construct() {
