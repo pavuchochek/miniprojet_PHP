@@ -12,9 +12,9 @@ class Dao_Usager{
         include_once('../../configuration.php');
         $this->pdo = Connexion::getInstance($db_address, $user, $password, $db_name);
     }
-    public function listeUsagers(String $nom, String $prenom){
+    public function listeUsagers(){
             try {
-                if ($nom == "" && $prenom == "") {
+                
                     $res = $this->pdo->query('SELECT Personne.Nom,Personne.Prenom,Personne.Civilite,Usager.Id_Personne,
                     Usager.N_securite_sociale,Usager.Adresse,Usager.Date_naissance,Usager.Lieu_naissance,Usager.Id_Usager,Usager.Id_Medecin
                     FROM Usager,Personne
@@ -32,10 +32,7 @@ class Dao_Usager{
                         $usager->setIdUsager($data[8]);
                         $tablo_usagers[] = $usager;
                     }
-                } else {
-                    $tablo_usagers = array(); // Aucun médecin trouvé avec les critères de recherche
-                }
-                return $tablo_usagers;
+                    return $tablo_usagers;
             } catch (PDOException $e) {
                 // En cas d'erreur, afficher le message d'erreur
                 error_log("Error executing SQL query: " . $e->getMessage());
