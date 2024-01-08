@@ -58,7 +58,7 @@ class Personne{
 
         public function toString(): string
         {
-            return "Id : ".$this->getId().", Nom : ".$this->getNom().", Prenom : ".$this->getPrenom().", Civilite : ".$this->getCivilite();
+            return $this->getNom()." ".$this->getPrenom();
         }
     }
     ?>

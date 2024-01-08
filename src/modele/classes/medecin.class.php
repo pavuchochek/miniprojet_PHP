@@ -23,7 +23,7 @@ class Medecin extends Personne{
 
 		public function toString(): string
 		{
-			return "Id_medecin : ".$this->getIdMedecin().parent::toString();
+			return $this->getNom()." ".$this->getPrenom();
 		}
 	}
 	?>

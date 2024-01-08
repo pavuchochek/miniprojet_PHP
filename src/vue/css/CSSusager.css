@@ -7,3 +7,61 @@
     right: 0px;
     margin-left: 48%;
 }
+
+/* CSS usagers */
+.box_usagers{
+    width: 100%;
+    margin: auto;
+    margin-left: 3%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.item_usager{
+    display: inline-block;
+    padding:1%;
+    margin:2%;
+    border-radius: 20px;
+}
+
+.lien_usager{
+    text-decoration: none;
+    color: black;
+}
+
+.item_usager:hover {
+    background-color: #6CA6CD;
+}
+
+.vide:hover {
+    background-color: white;
+}
+
+.icone_liste_usager{
+    max-height: 140px;
+}
+
+.nom {
+    font-weight: bold;
+    text-align: center;
+}
+
+.boutonsusager {
+    text-align: right;
+    display: block;
+}
+
+.boutonsusager a {
+    text-decoration: none;
+}
+
+.boutonsusager a img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.boutonsusager a img:hover {
+    background-color: #6CA6CD;
+}
