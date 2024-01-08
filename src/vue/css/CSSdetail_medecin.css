@@ -156,7 +156,8 @@
     max-height: 88px;
 }
 
-.nom {
+.nom p{
     font-weight: bold;
     text-align: center;
+    margin: 2%;
 }
