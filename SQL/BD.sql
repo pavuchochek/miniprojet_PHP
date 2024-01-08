@@ -140,6 +140,10 @@ VALUES
 ('6767676767673', '1011 Maple St', '1993-04-01', 'City28', 8, 1),
 ('8989898989896', '1112 Oak St', '1994-09-06', 'City29', 9, 1);
 
+UPDATE Personne
+SET Civilite = 'A'
+WHERE Id_Personne = 3;
+
 INSERT INTO Rdv (Id_Usager, Id_Medecin, Date_rdv, Heure_debut, Heure_fin)
 VALUES
 (1, 1, '2024-01-20', '11:30:00', '12:30:00'),

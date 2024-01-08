@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Kulim+Park&family=Work+Sans:wght@300&display=swap');
 
+* {
+    font-family: 'work sans', sans-serif;
+}
+
 header {
     background-color: #87CEEB;
     border-radius: 20px;

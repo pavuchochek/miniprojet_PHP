@@ -31,7 +31,7 @@ footer{
 }
 
 #footer a input{
-    background-color: #6CA6CD;
+    background-color: #87CEEB;
     border : 0px;
     border-radius: 10px;
     cursor: pointer;
@@ -41,5 +41,5 @@ footer{
 }
 
 #footer a :hover {
-    background-color: #87CEEB;
+    background-color: #6CA6CD;
 }

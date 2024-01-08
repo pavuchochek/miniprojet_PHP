@@ -27,10 +27,10 @@
         <div class="body">
             <div class="partie_rdv">
                 <div class = "titre2">
-                    <h1>Liste des rdv</h1>
+                    <h1>Liste des rendez-vous</h1>
 
                     <div class="boutons_ajout boutons_ajout_rdv" id="afficherFormulaireRdv">
-                        <input type="button" value="Ajouter un rdv">
+                        <input type="button" value="Ajouter un rendez-vous">
                         <!-- Ajouter le formulaire rdv quand la page rdv sera faite -->
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                             } else if ($value->getCivilite() === 'F'){
                                 $genderIcon = 'icone_femme_usager.png';
                             } else {
-                                $genderIcon = 'icone_menu_usager.png';
+                                $genderIcon = 'icone_autre.png';
                             }
                             echo "
                             <a class='lien_medecin'>".

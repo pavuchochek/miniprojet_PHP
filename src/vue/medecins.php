@@ -57,17 +57,19 @@
                         $nom = $value->getNom();
                         $idMedecin = $value->getIdMedecin();
                         $civilite= $value->getCivilite();
+                        $class = '';
                         if ($value->getCivilite() === 'M') {
                             $genderIcon = 'icone_homme.png';
                         } else if ($value->getCivilite() === 'F'){
                             $genderIcon = 'icone_femme.png';
                         } else {
                             $genderIcon = 'icone_menu_usager.png';
+                            $class = 'autre';
                         }
                         echo "
                         <a href='detail_medecin.php?id=$idMedecin' class = 'lien_medecin'>
                             <div class='item_medecin'>
-                                <img class='icone_liste_medecin' src='img/$genderIcon' alt='icone d'un medecin'/>
+                                <img class='icone_liste_medecin $class' src='img/$genderIcon' alt='icone d'un medecin'/>
                                 <div>
                                     <div class='nom'>"
                                         .$prenom . "<br>"

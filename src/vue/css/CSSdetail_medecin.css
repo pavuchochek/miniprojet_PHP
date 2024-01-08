@@ -42,9 +42,8 @@
 }
 
 .boutons_ajout_rdv input{
-    padding: 13% 13%;
+    padding: 9% 9%;
 }
-
 
 .boutons_ajout input:hover{
     background-color: #6CA6CD;
