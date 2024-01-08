@@ -159,7 +159,7 @@
             }
             
             document.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('medecinForm').addEventListener('input', function () {
+                document.getElementById('usagerForm').addEventListener('input', function () {
                     var prenom = document.getElementById('prenom').value;
                     var nom = document.getElementById('nom').value;
                     var submitBtn = document.getElementById('bouton_valider');

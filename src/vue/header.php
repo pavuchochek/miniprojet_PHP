@@ -19,7 +19,7 @@
             var header = document.querySelector('header');
             var Element = document.querySelector('.retourHaut');
             if (window.scrollY > header.offsetHeight) {
-                testEleElementment.style.display = 'flex';
+                testElement.style.display = 'flex';
             } else {
                 Element.style.display = 'none';
             }
