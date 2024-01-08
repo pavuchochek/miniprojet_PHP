@@ -24,6 +24,7 @@ class Dao_Rdv{
         $medecin=$this->getMedecinById($data[1]);
         $rdv=new Rdv($data[2],$data[3],$data[4],$medecin,$usager);
         return $rdv;
+        
     }
 
     public function liste_rdv_Actuels(){
@@ -106,14 +107,17 @@ class Dao_Rdv{
     
             if (!$dataUsager) {
                 throw new Exception("Aucun usager trouvé avec l'ID : $idUsager");
+            }else{
+            if(!is_null($dataUsager[8])){
+                $medecin = $this->getMedecinById($dataUsager[8]);
+            }else{
+                $medecin=null;
             }
-    
-            // Récupération des informations du médecin associé
-            $medecin = $this->getMedecinById($dataUsager['Id_Medecin']);
+               
     
             // Création de l'objet Usager
-            $personne = new Personne($dataUsager['Nom'], $dataUsager['Prenom'], $dataUsager['Civilite']);
-            $personne->setId($dataUsager['Id_Personne']);
+            $personne = new Personne($dataUsager[0], $dataUsager[1], $dataUsager[2]);
+            $personne->setId($dataUsager[7]);
             $usager = new Usager(
                 $personne,
                 $dataUsager['N_securite_sociale'],
@@ -123,6 +127,10 @@ class Dao_Rdv{
                 $medecin
             );
             $usager->setIdUsager($dataUsager['Id_Usager']);
+            }
+    
+            // Récupération des informations du médecin associé
+            
     
             return $usager;
         } catch (PDOException $e) {
