@@ -89,41 +89,49 @@
                     
                     <?php
                         $resultat = $controleur->getListeUsagersMedecin($id);
-                        foreach ($resultat as $value){
-                            $prenom = $value->getPrenom();
-                            $nom = $value->getNom();
-                            $civilite = $value->getCivilite();
-                            $num = $value->getNsecuriteSociale();
-                            if ($value->getCivilite() === 'M') {
-                                $genderIcon = 'icone_homme_usager.png';
-                            } else if ($value->getCivilite() === 'F'){
-                                $genderIcon = 'icone_femme_usager.png';
-                            } else {
-                                $genderIcon = 'icone_autre.png';
-                            }
-                            echo "
-                            <a class='lien_medecin'>".
-                            // ajouter le lien vers la page detail_usager quand la page sera faite
-                                "<div class='item_usager'>
-                                    <img class='icone_liste_usager' src='img/$genderIcon' alt='icone d'un medecin'/>
-                                    <div>
-                                        <div class='nom'><p>"
-                                            .$prenom . "<br>"
-                                            .$nom.
-                                        "</p></div>
-                                        <div class='boutonsusager'>
-                                            <a href='modifier_usager.php?prenom=$prenom&nom=$nom&civilite=$civilite'>
-                                                <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
-                                                // ajouter l'action modifier usager quand la page usager sera faite
-                                            "</a>
-                                            <a href='#' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom'>
-                                                <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
-                                                // ajouter l'action modifier usager quand la page usager sera faite
-                                            " </a>
+                        if ($resultat == null) {
+                            echo "<div class='item_usager vide'>
+                                <div>
+                                    <h3>Aucun patient</h3>
+                                </div>
+                            </div>";
+                        } else {
+                            foreach ($resultat as $value){
+                                $prenom = $value->getPrenom();
+                                $nom = $value->getNom();
+                                $civilite = $value->getCivilite();
+                                $num = $value->getNsecuriteSociale();
+                                if ($value->getCivilite() === 'M') {
+                                    $genderIcon = 'icone_homme_usager.png';
+                                } else if ($value->getCivilite() === 'F'){
+                                    $genderIcon = 'icone_femme_usager.png';
+                                } else {
+                                    $genderIcon = 'icone_autre.png';
+                                }
+                                echo "
+                                <a class='lien_medecin'>".
+                                // ajouter le lien vers la page detail_usager quand la page sera faite
+                                    "<div class='item_usager'>
+                                        <img class='icone_liste_usager' src='img/$genderIcon' alt='icone d'un medecin'/>
+                                        <div>
+                                            <div class='nom'><p>"
+                                                .$prenom . "<br>"
+                                                .$nom.
+                                            "</p></div>
+                                            <div class='boutonsusager'>
+                                                <a href='modifier_usager.php?prenom=$prenom&nom=$nom&civilite=$civilite'>
+                                                    <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
+                                                    // ajouter l'action modifier usager quand la page usager sera faite
+                                                "</a>
+                                                <a href='#' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom'>
+                                                    <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
+                                                    // ajouter l'action modifier usager quand la page usager sera faite
+                                                " </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>";
+                                </a>";
+                            }
                         }
                     ?>
                 </div>

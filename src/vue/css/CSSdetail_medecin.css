@@ -148,6 +148,10 @@
     background-color: #6CA6CD;
 }
 
+.vide:hover {
+    background-color: white;
+}
+
 .icone_liste_usager{
     max-height: 88px;
 }
