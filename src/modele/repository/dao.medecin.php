@@ -3,7 +3,6 @@ include_once('../modele/repository/pdo.php');
 include_once('../controleur/medecin.controleur.php');
 include_once('../modele/classes/medecin.class.php');
 include_once('../modele/classes/rdv.class.php');
-include_once('../modele/repository/dao.usager.php');
 class Dao_Medecin {
     private $pdo;
 

@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <title>Rdv</title>
+        <title>Rendez-vous</title>
         <link rel="stylesheet" href="css/CSSrdv.css">
         <link rel="stylesheet" href="css/CSSheader.css">
         <link rel="stylesheet" href="css/CSSfooter.css">
@@ -13,11 +13,10 @@
 
     <body>
         <div class="body">
-            <h1>Liste des rdv</h1>  
+            <h1>Liste des rendez-vous</h1>  
             <div class="boutons_modif" >
-                <input type="button" value="Ajouter un rdv">
+                <input type="button" value="Ajouter un rendez-vous">
             </div>
-            <p>Affichage type calendrier :</p>
             <?php require('../controleur/rdv.controleur.php');
                     $controleur = new Rdv_controleur();
                     $resultat = $controleur->liste_rdv();

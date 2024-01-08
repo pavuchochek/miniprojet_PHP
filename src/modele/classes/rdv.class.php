@@ -19,9 +19,26 @@ class Rdv{
 		return $this->_Date_rdv;
 	}
 
-	public function getDateRdvString():String{
+	public function getDateRdvString(): String {
 		$date = $this->_Date_rdv;
-		$formattedDate = date('d F Y', strtotime($date));
+		
+		$englishMonths = [
+			'January'   => 'Janvier',
+			'February'  => 'Février',
+			'March'     => 'Mars',
+			'April'     => 'Avril',
+			'May'       => 'Mai',
+			'June'      => 'Juin',
+			'July'      => 'Juillet',
+			'August'    => 'Août',
+			'September' => 'Septembre',
+			'October'   => 'Octobre',
+			'November'  => 'Novembre',
+			'December'  => 'Décembre',
+		];
+	
+		$formattedDate = date('d ') . $englishMonths[date('F', strtotime($date))] . date(' Y', strtotime($date));
+		
 		return $formattedDate;
 	}
 
