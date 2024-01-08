@@ -62,4 +62,11 @@ header h1 {
     right: 2%;
     max-width: 5%;
     height: auto;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 300px;
+}
+
+.retourHaut img:hover {
+    background-color: lightgray;
 }
