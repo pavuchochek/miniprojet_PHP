@@ -6,16 +6,54 @@
     margin: 2%;
 }
 
-.partie_rdv, .partie_usagers {
+.partie_rdv {
+    margin: 2%;
+    margin-top: 0;
+    width: 60%;
+}
+
+.partie_usagers {
     margin: 2%;
     margin-top: 0;
     width: 100%;
 }
 
+.titre2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.boutons_ajout {
+    text-align: right;
+}
+
+.boutons_ajout input{
+    background-color: green;
+    font-size: 100%;
+    color: white;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border: none;
+    border-radius: 12px;
+    padding: 10% 10%;
+    margin: 0.4% 1%;
+}
+
+.boutons_ajout_rdv input{
+    padding: 13% 13%;
+}
+
+
+.boutons_ajout input:hover{
+    background-color: #6CA6CD;
+}
+
+/* CSS RDV */
 .box_rdv {
-    padding: 10px;
-    border: 1px solid black;
-    box-shadow: 0 0 10px black;
+    padding: 2%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     border-radius: 12px;
     justify-content: space-between;
     width: 100%;
@@ -41,53 +79,79 @@
     align-items: center;
 }
 
-.boutons {
+/* CSS boutons modif et suppr */
+.boutonsrdv {
     text-align: right;
+    display: block;
 }
 
-.boutons a {
+.boutonsrdv a {
     text-decoration: none;
 }
 
-.boutons a img {
+.boutonsrdv a img {
     width: 40px;
     height: 40px;
     cursor: pointer;
     border-radius: 5px;
 }
 
-.boutons a img:hover {
+.boutonsrdv a img:hover {
     background-color: #6CA6CD;
 }
 
-.box_medecin{
-    width:80%;
-    margin:auto;
+.boutonsusager {
+    text-align: right;
+    display: block;
+}
+
+.boutonsusager a {
+    text-decoration: none;
+}
+
+.boutonsusager a img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.boutonsusager a img:hover {
+    background-color: #6CA6CD;
+}
+
+/* CSS usagers */
+.partie_usagers .titre2 {
+    margin-left: 3%;
+}
+
+.box_usagers{
+    width: 100%;
+    margin: auto;
     margin-left: 3%;
     margin-top: 1%;
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
-.item_medecin{
+.item_usager{
     display: inline-block;
-    padding:2%;
+    padding:1%;
     margin:2%;
-    max-width: 11%;
     border-radius: 20px;
 }
 
-.lien_medecin{
+.lien_usager{
     text-decoration: none;
     color: black;
 }
 
-.item_medecin:hover {
+.item_usager:hover {
     background-color: #6CA6CD;
 }
 
-.icone_liste_medecin{
-    max-height: 140px;
+.icone_liste_usager{
+    max-height: 88px;
 }
 
 .nom {
@@ -95,6 +159,7 @@
     text-align: center;
 }
 
+/* CSS recherche */
 .recherche {
     width: 50%;
     margin: auto;

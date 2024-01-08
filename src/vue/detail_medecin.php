@@ -26,7 +26,13 @@
         </h1>
         <div class="body">
             <div class="partie_rdv">
-                <h1>Liste des rdv</h1>
+                <div class = "titre2">
+                    <h1>Liste des rdv</h1>
+
+                    <div class="boutons_ajout boutons_ajout_rdv" id="afficherFormulaireRdv">
+                        <input type="button" value="Ajouter un rdv" onclick="toggleForm()">
+                    </div>
+                </div>
                 
                 <div class="box_rdv">
                     <?php
@@ -51,7 +57,7 @@
                                         </div>
                                         <p>Usager: $nom_usager $prenom_usager</p>
                                     </div>
-                                    <div class='boutons'>
+                                    <div class='boutonsrdv'>
                                         <a href='#'>
                                             <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
                                         </a>
@@ -66,8 +72,15 @@
                 </div>
             </div>
             <div class="partie_usagers">
-                <h1>Liste des patients</h1>
-                <div class="box_medecin" id="list_medecin">
+                <div class = "titre2">
+                    <h1>Liste des patients</h1>
+
+                    <div class="boutons_ajout boutons_ajout_usager" id="afficherFormulaireUsager">
+                        <input type="button" value="Assigner un usager" onclick="toggleForm()">
+                    </div>
+                </div>
+
+                <div class="box_usagers" id="list_usagers">
                     <div>
                         <form action="" method="GET" class="recherche">
                             <input type="text" name="search" autocomplete="off" placeholder="Rechercher un patient">
@@ -85,7 +98,8 @@
                         foreach ($resultat as $value){
                             $prenom = $value->getPrenom();
                             $nom = $value->getNom();
-                            $civilite= $value->getCivilite();
+                            $civilite = $value->getCivilite();
+                            $num = $value->getNsecuriteSociale();
                             if ($value->getCivilite() === 'M') {
                                 $genderIcon = 'icone_homme_usager.png';
                             } else if ($value->getCivilite() === 'F'){
@@ -95,15 +109,15 @@
                             }
                             echo "
                             <a class='lien_medecin'>
-                                <div class='item_medecin'>
-                                    <img class='icone_liste_medecin' src='img/$genderIcon' alt='icone d'un medecin'/>
+                                <div class='item_usager'>
+                                    <img class='icone_liste_usager' src='img/$genderIcon' alt='icone d'un medecin'/>
                                     <div>
-                                        <div class='nom'>"
+                                        <div class='nom'><p>"
                                             .$prenom . "<br>"
                                             .$nom.
-                                        "</div>
-                                        <div class='boutons'>
-                                            <a href='modifier_medecin.php?prenom=$prenom&nom=$nom&civilite=$civilite'>
+                                        "</p></div>
+                                        <div class='boutonsusager'>
+                                            <a href='modifier_usager.php?prenom=$prenom&nom=$nom&civilite=$civilite'>
                                                 <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
                                             </a>
                                             <a href='#' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom'>
