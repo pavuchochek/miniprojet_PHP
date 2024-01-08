@@ -19,6 +19,12 @@ class Rdv{
 		return $this->_Date_rdv;
 	}
 
+	public function getDateRdvString():String{
+		$date = $this->_Date_rdv;
+		$formattedDate = date('d F Y', strtotime($date));
+		return $formattedDate;
+	}
+
 	public function getHeureDebut():String{
 		return $this->_Heure_début;
 	}
@@ -54,7 +60,5 @@ class Rdv{
 	public function setUsager(Usager $Usager){
 		$this->_Usager = $Usager;
 	}
-
-
 }
 ?>

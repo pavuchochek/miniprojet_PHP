@@ -105,7 +105,7 @@ class Dao_Medecin {
             $personne = new Personne($data[0], $data[1], $data[2]);
             $personne->setId($data[3]);
             $usager = new Usager($personne, $data[3], $data[4],$data[5],$data[6],$medecin);
-            $usager->setIdUsager($data[4]);
+            $usager->setIdUsager(intval($data[4]));
             $tablo_usagers[] = $usager;
         }
         return  $tablo_usagers;

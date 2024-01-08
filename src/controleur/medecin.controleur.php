@@ -36,19 +36,32 @@ class Medecin_controleur{
         $medecin = $this->daoMedecin->getMedecinById($idMedecin);
         $this->daoMedecin->supprimer_medecins($medecin);
     }
+
     public function getIdMedecinByPrenomNom($prenom, $nom) {
         return $this->daoMedecin->getIdMedecinByPrenomNom($prenom, $nom);
     }
+
     public function getMedecinById($idMedecin) {
         return $this->daoMedecin->getMedecinById($idMedecin);
     }
+
     public function getListeUsagersMedecin(int $idMedecin){
         $medecin = $this->daoMedecin->getMedecinById($idMedecin);
         return $this->daoMedecin->liste_usager_medecin($medecin);
     }
+
     public function getListeRdv(int $idMedecin){
         $medecin = $this->daoMedecin->getMedecinById($idMedecin);
         return $this->daoMedecin->liste_rdv($medecin);
+    }
+
+    public function rechercherUsagersMedecin($recherche, int $idMedecin) {
+        $listeUsagers = $this->getListeUsagersMedecin($idMedecin);
+        $resultats = array_filter($listeUsagers, function ($usager) use ($recherche) {
+            $nomPrenom = strtolower($usager->getNom() . ' ' . $usager->getPrenom());
+            return strpos($nomPrenom, $recherche) !== false;
+        });
+        return $resultats;
     }
 }
 

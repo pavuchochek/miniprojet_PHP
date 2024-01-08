@@ -40,12 +40,16 @@
                         } else {
                             foreach ($resultat as $value){
                                 $heure = $value->getHeureDebut();
-                                $date = $value->getDateRdv();
-                                $usager = $value->getUsager()->getNom();
+                                $date = $value->getDateRdvString();
+                                $nom_usager = $value->getUsager()->getNom();
+                                $prenom_usager = $value->getUsager()->getPrenom();
                                 echo "<div class='rdv'>
                                     <div>
-                                        <h3><?php echo $date; ?> : <?php echo $heure; ?></h3>
-                                        <p>Usager: <?php echo $usager; ?></p>
+                                        <div class='rdvinfo'>
+                                            <h3>$date :</h3>
+                                            <p>$heure</p>
+                                        </div>
+                                        <p>Usager: $nom_usager $prenom_usager</p>
                                     </div>
                                     <div class='boutons'>
                                         <a href='#'>
@@ -76,12 +80,11 @@
                         if (isset($_GET['search'])) {
                             $recherche = strtolower($_GET['search']);
                             $recherche = trim($recherche);
-                            $resultat = $controleur->rechercherMedecins($recherche);
+                            $resultat = $controleur->rechercherUsager($recherche);
                         }
                         foreach ($resultat as $value){
                             $prenom = $value->getPrenom();
                             $nom = $value->getNom();
-                            $idMedecin = $value->getIdMedecin();
                             $civilite= $value->getCivilite();
                             if ($value->getCivilite() === 'M') {
                                 $genderIcon = 'icone_homme.png';
@@ -91,7 +94,7 @@
                                 $genderIcon = 'icone_menu_usager.png';
                             }
                             echo "
-                            <a href='detail_medecin.php?id=$idMedecin' class = 'lien_medecin'>
+                            <a class='lien_medecin'>
                                 <div class='item_medecin'>
                                     <img class='icone_liste_medecin' src='img/$genderIcon' alt='icone d'un medecin'/>
                                     <div>
@@ -100,10 +103,10 @@
                                             .$nom.
                                         "</div>
                                         <div class='boutons'>
-                                            <a href='modifier_medecin.php?prenom=$prenom&nom=$nom&id=$idMedecin&civilite=$civilite'>
+                                            <a href='modifier_medecin.php?prenom=$prenom&nom=$nom&civilite=$civilite'>
                                                 <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
                                             </a>
-                                            <a href='#' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom' data-id='$idMedecin'>
+                                            <a href='#' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom'>
                                                 <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
                                             </a>
                                         </div>
