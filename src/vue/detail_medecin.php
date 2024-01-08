@@ -30,7 +30,8 @@
                     <h1>Liste des rdv</h1>
 
                     <div class="boutons_ajout boutons_ajout_rdv" id="afficherFormulaireRdv">
-                        <input type="button" value="Ajouter un rdv" onclick="toggleForm()">
+                        <input type="button" value="Ajouter un rdv">
+                        <!-- Ajouter le formulaire rdv quand la page rdv sera faite -->
                     </div>
                 </div>
                 
@@ -49,21 +50,24 @@
                                 $date = $value->getDateRdvString();
                                 $nom_usager = $value->getUsager()->getNom();
                                 $prenom_usager = $value->getUsager()->getPrenom();
-                                echo "<div class='rdv'>
+                                echo "
+                                <div class='rdv'>
                                     <div>
                                         <div class='rdvinfo'>
                                             <h3>$date :</h3>
                                             <p>$heure</p>
                                         </div>
-                                        <p>Usager: $nom_usager $prenom_usager</p>
+                                        <p>Patient : $nom_usager $prenom_usager</p>
                                     </div>
                                     <div class='boutonsrdv'>
                                         <a href='#'>
-                                            <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
-                                        </a>
+                                            <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
+                                            // ajouter l'action modifier rdv quand la page rdv sera faite
+                                        "</a>
                                         <a href='#'>
-                                            <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
-                                        </a>
+                                            <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
+                                            // ajouter l'action supprimer rdv quand la page rdv sera faite
+                                        "</a>
                                     </div>
                                 </div>";
                             }
@@ -76,25 +80,15 @@
                     <h1>Liste des patients</h1>
 
                     <div class="boutons_ajout boutons_ajout_usager" id="afficherFormulaireUsager">
-                        <input type="button" value="Assigner un usager" onclick="toggleForm()">
+                        <input type="button" value="Assigner un usager">
+                        <!-- Ajouter le formulaire usager quand la page usager sera faite -->
                     </div>
                 </div>
 
                 <div class="box_usagers" id="list_usagers">
-                    <div>
-                        <form action="" method="GET" class="recherche">
-                            <input type="text" name="search" autocomplete="off" placeholder="Rechercher un patient">
-                            <input type="submit" value="Rechercher">
-                        </form>
-                    </div>
                     
                     <?php
                         $resultat = $controleur->getListeUsagersMedecin($id);
-                        if (isset($_GET['search'])) {
-                            $recherche = strtolower($_GET['search']);
-                            $recherche = trim($recherche);
-                            $resultat = $controleur->rechercherUsager($recherche);
-                        }
                         foreach ($resultat as $value){
                             $prenom = $value->getPrenom();
                             $nom = $value->getNom();
@@ -108,8 +102,9 @@
                                 $genderIcon = 'icone_menu_usager.png';
                             }
                             echo "
-                            <a class='lien_medecin'>
-                                <div class='item_usager'>
+                            <a class='lien_medecin'>".
+                            // ajouter le lien vers la page detail_usager quand la page sera faite
+                                "<div class='item_usager'>
                                     <img class='icone_liste_usager' src='img/$genderIcon' alt='icone d'un medecin'/>
                                     <div>
                                         <div class='nom'><p>"
@@ -118,11 +113,13 @@
                                         "</p></div>
                                         <div class='boutonsusager'>
                                             <a href='modifier_usager.php?prenom=$prenom&nom=$nom&civilite=$civilite'>
-                                                <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>
-                                            </a>
+                                                <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
+                                                // ajouter l'action modifier usager quand la page usager sera faite
+                                            "</a>
                                             <a href='#' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom'>
-                                                <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>
-                                            </a>
+                                                <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
+                                                // ajouter l'action modifier usager quand la page usager sera faite
+                                            " </a>
                                         </div>
                                     </div>
                                 </div>
