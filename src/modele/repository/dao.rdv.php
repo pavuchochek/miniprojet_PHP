@@ -10,18 +10,22 @@ class Dao_Rdv{
         include_once('../../configuration.php');
         $this->pdo = Connexion::getInstance($db_address, $user, $password, $db_name);
     }
+
     public function createRdv(){
         
     }
+
     public function updateRdv(){
 
     }
+
     private function constructRdvFromData($data){
         $usager=$this->getUsagerById($data[0]);
         $medecin=$this->getMedecinById($data[1]);
         $rdv=new Rdv($data[2],$data[3],$data[4],$medecin,$usager);
         return $rdv;
     }
+
     public function liste_rdv_Actuels(){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE()');
         $resRDV->execute();
@@ -32,6 +36,7 @@ class Dao_Rdv{
         }
         return $tablo_rdv;
     }
+
     public function liste_rdv_Actuels_medecinbyId(int $idMedecin){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE() AND Id_medecin = :id') ;
         $resRDV->execute(array(
@@ -43,9 +48,8 @@ class Dao_Rdv{
             $tablo_rdv[]=$rdv;
         }
         return $tablo_rdv;
-
-
     }
+
     public function liste_rdv_Actuels_usagerbyId(int $idUsager){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE() AND Id_Usager = :id') ;
         $resRDV->execute(array(
@@ -58,6 +62,7 @@ class Dao_Rdv{
         }
         return $tablo_rdv;
     }
+
     /* FORMAT DE DATES YYYY-MM-DD */
     public function liste_rdv_Actuels_date(String $date){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv= :dateSelection') ;
@@ -71,6 +76,7 @@ class Dao_Rdv{
         }
         return $tablo_rdv;
     }
+
     public function liste_rdv_Actuels_Intervalle(String $dateDebut,String $dateFin){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv BETWEEN  :dateDebut AND :dateFin') ;
         $resRDV->execute(array(
@@ -82,6 +88,7 @@ class Dao_Rdv{
 
     public function deleteRdv(){
     }
+    
     public function getUsagerById(int $idUsager): Usager {
         try {
             $resUsager = $this->pdo->prepare('
