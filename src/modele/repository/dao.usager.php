@@ -12,6 +12,7 @@ class Dao_Usager{
         include_once('../../configuration.php');
         $this->pdo = Connexion::getInstance($db_address, $user, $password, $db_name);
     }
+
     public function listeUsagers(){
             try {
                 
