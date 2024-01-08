@@ -19,7 +19,7 @@
             </a>
             <a href="usagers.php">
                 <img src="img/icone_menu_usager2.png" alt="logo">
-                <input type="button" value="Usagers">
+                <input type="button" value="Patients">
             </a>
             <a href="rdv.php">
                 <img src="img/icone_menu_rdv.png" alt="logo">

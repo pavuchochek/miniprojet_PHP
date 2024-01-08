@@ -66,11 +66,11 @@
                 </div>
             </div>
             <div class="partie_usagers">
-                <h1>Liste des usagers</h1>
+                <h1>Liste des patients</h1>
                 <div class="box_medecin" id="list_medecin">
                     <div>
                         <form action="" method="GET" class="recherche">
-                            <input type="text" name="search" autocomplete="off" placeholder="Rechercher un médecin">
+                            <input type="text" name="search" autocomplete="off" placeholder="Rechercher un patient">
                             <input type="submit" value="Rechercher">
                         </form>
                     </div>
@@ -87,9 +87,9 @@
                             $nom = $value->getNom();
                             $civilite= $value->getCivilite();
                             if ($value->getCivilite() === 'M') {
-                                $genderIcon = 'icone_homme.png';
+                                $genderIcon = 'icone_homme_usager.png';
                             } else if ($value->getCivilite() === 'F'){
-                                $genderIcon = 'icone_femme.png';
+                                $genderIcon = 'icone_femme_usager.png';
                             } else {
                                 $genderIcon = 'icone_menu_usager.png';
                             }

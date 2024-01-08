@@ -13,7 +13,7 @@
 
     <body>
         <div class="body">
-            <h1>Liste des usagers</h1>
+            <h1>Liste des patients</h1>
             <?php
                     require('../controleur/usager.controleur.php');
                     $controleur = new Usager_Controleur();
@@ -40,7 +40,7 @@
                     }
             ?>
             <div class="boutons_modif" >
-                <input type="button" value="Ajouter un usager">
+                <input type="button" value="Ajouter un patient">
             </div>
         </div>
     </body>
