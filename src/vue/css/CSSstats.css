@@ -1,16 +1,25 @@
 #footer a {
-    display : none;
+    display: none;
+}
+
+.body {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.body div {
+    width: 50%;
 }
 
 table {
     border-collapse: collapse;
-    width: 50%;
-    margin: auto;
+    width: 80%;
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid #dddddd;
+    padding: 1%;
     text-align: center;
 }
 
@@ -25,4 +34,28 @@ th {
     align-items: center;
     padding: 10px;
     border-radius: 5px;
+}
+
+#fv {
+    background-color: #FF6F61;
+}
+
+#hj {
+    background-color: #00CED1;
+}
+
+#fj {
+    background-color: #FFD700;
+}
+
+#hv {
+    background-color: #6A5ACD;
+}
+
+#fa {
+    background-color: #FFA07A;
+}
+
+#ha {
+    background-color: #20B2AA;
 }

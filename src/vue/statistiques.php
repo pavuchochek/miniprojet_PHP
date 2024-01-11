@@ -13,40 +13,73 @@
 
     <body>
         <div class="body">
-            <h1>Stats</h1>
             <div class="usagers">
-                <h1>Usagers</h1>
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Femme</th>
-                                <th>Homme</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Moins de 25 ans</td>
-                                <td>10</td>
-                                <td>8</td>
-                            </tr>   
-                            <tr>
-                                <td>Entre 25 et 50 ans</td>
-                                <td>15</td>
-                                <td>20</td>
-                            </tr>
-                            <tr>
-                                <td>Plus de 50 ans</td>
-                                <td>5</td>
-                                <td>12</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <canvas id="camembertChart" width="400" height="400"></canvas>
-                </div>
+                <h1>Patients</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Femme</th>
+                            <th>Homme</th>
+                        </tr>
+                    </thead>
+                    <?php
+                        require('../controleur/usager.controleur.php');
+                        $controleur = new Usager_controleur();
+                        $resultat = $controleur->liste_usagers();
+                        $fj = 0;
+                        $hj = 0;
+                        $fa = 0;
+                        $ha = 0;
+                        $fv = 0;
+                        $hv = 0;
+                        foreach ($resultat as $value) {
+                            if ($value->getCivilite() == "F") {
+                                if ($value->getAge() < 25){
+                                    $fj++;
+                                }
+                                elseif ($value->getAge() < 50){
+                                    $fv++;
+                                }
+                                else{
+                                    $fa++;
+                                }
+                            } else {
+                                if ($value->getAge() < 25){
+                                    $hj++;
+                                }
+                                elseif ($value->getAge() < 50){
+                                    $hv++;
+                                }
+                                else{
+                                    $ha++;
+                                }
+                            }
+                        }
+                    echo "
+                    <tbody>
+                        <tr>
+                            <th>Moins de 25 ans</th>
+                            <td id = 'fj'>$fj</td>
+                            <td id = 'hj'>$hj</td>
+                        </tr>   
+                        <tr>
+                            <th>Entre 25 et 50 ans</th>
+                            <td id = 'fa'>$fa</td>
+                            <td id = 'ha'>$ha</td>
+                        </tr>
+                        <tr>
+                            <th>Plus de 50 ans</th>
+                            <td id = 'fv'>$fv</td>
+                            <td id = 'hv'>$hv</td>
+                        </tr>
+                    </tbody>";
+                    ?>
+                </table>
+                <canvas id="camembertChart" width="800" height="200"></canvas>
             </div>
-            <div class="medecin">
+            <!--<div class="medecin">
+                <h1>Médecins</h1>
                 <table>
                     <thead>
                         <tr>
@@ -56,9 +89,12 @@
                     </thead>
                     <tbody>
                         <?php
-                            require('../controleur/medecin.controleur.php');
+                            /*require('../controleur/medecin.controleur.php');
                             $controleur = new Medecin_controleur();
                             $resultat = $controleur->liste_medecins();
+                            usort($resultat, function($a, $b) {
+                                return strcmp($a->getNom(), $b->getNom());
+                            });
                             foreach ($resultat as $value){
                                 $prenom = $value->getPrenom();
                                 $nom = $value->getNom();
@@ -70,11 +106,11 @@
                                     <td>$nom $prenom</td>
                                     <td>$nbHeures</td>
                                 </tr>";
-                            }
+                            }*/
                         ?>
                     </tbody>
                 </table>
-            </div> 
+            </div> -->
         </div>
 
     
@@ -85,11 +121,9 @@
     <script>
         // Données de répartition (à remplacer par vos données réelles)
         var data = {
-            labels: ["Femme", "Homme", "Autre", "Non renseigné", "Non binaire", "Transgenre"],
             datasets: [{
-                data: [8, 15, 5, 3, 4, 19], // Remplacez ces valeurs par les vôtres
-                backgroundColor: ["#FF6F61  ", "#FFD700  ", "#FFA07A  ", "#00CED1  ", "#6A5ACD  ", "#20B2AA  "],
-                hoverBackgroundColor: ["#FF5733", "#FFEC38", "#FF8C69", "#33CCCC", "#836FFF", "#40E0D0"]
+                data: [<?php echo $hj?>, <?php echo $ha?>, <?php echo $hv?>, <?php echo $fv?>, <?php echo $fa?>, <?php echo $fj?>],
+                backgroundColor: ["#00CED1", "#20B2AA", "#6A5ACD", "#FF6F61", "#FFA07A", "#FFD700"]
             }]
         };
 
@@ -97,15 +131,7 @@
         var options = {
             responsive: false,
             maintainAspectRatio: false,
-            legend: {
-                position: 'bottom',
-                labels: {
-                    fontColor: 'black',
-                    fontSize: 14,
-                    padding: 20,
-                    boxWidth: 20
-                }
-            }
+            hover: false
         };
 
         // Récupérer le contexte du canvas

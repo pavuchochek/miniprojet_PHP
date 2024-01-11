@@ -64,5 +64,10 @@ class Usager extends Personne{
 	public function setNsecuriteSociale(String $N_sécurite_sociale){
 		$this->_N_sécurite_sociale = $N_sécurite_sociale;
 	}
+
+	public function getAge():int{
+		$age = date_diff(date_create($this->_Date_naissance), date_create('today'))->y;
+		return $age;
+	}
 }
 ?>
