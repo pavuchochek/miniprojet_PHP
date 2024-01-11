@@ -53,6 +53,8 @@
                     <a href="medecins.php"><input type="button" id="bouton_annuler" value="Annuler"></a>
                     <input type="submit" id="bouton_valider" value="Ajouter">
                     <script>
+                        var formulaire = document.getElementById('formulaire');
+                        formulaire.style.display = 'block';
                         function Valide() {
                             var prenom = document.getElementById('prenom').value;
                             var nom = document.getElementById('nom').value;

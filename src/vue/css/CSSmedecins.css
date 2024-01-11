@@ -116,6 +116,7 @@
 }
 
 .formulaire {
+    display: none;
     width: 30%;
     margin: auto;
     margin-top: 5%;

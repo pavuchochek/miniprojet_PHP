@@ -15,7 +15,6 @@ class Dao_Usager{
 
     public function listeUsagers(){
             try {
-                
                     $res = $this->pdo->query('SELECT Personne.Nom,Personne.Prenom,Personne.Civilite,Usager.Id_Personne,
                     Usager.N_securite_sociale,Usager.Adresse,Usager.Date_naissance,Usager.Lieu_naissance,Usager.Id_Usager,Usager.Id_Medecin
                     FROM Usager,Personne

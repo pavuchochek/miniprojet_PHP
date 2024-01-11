@@ -15,8 +15,7 @@
 
     <body>
         <div class="body">
-
-            <div id="formulaire" class="formulaire" style="display: none;">
+            <div id="formulaire" class="formulaire">
                 <form id="medecinForm" method="post" action="traitement_ajout_medecin.php" onsubmit="return Valide()">
                     <label for="prenom">Prénom:</label>
                     <input type="text" id="prenom" name="prenom" autocomplete="off">
@@ -72,7 +71,8 @@
                                 <img class='icone_liste_medecin $class' src='img/$genderIcon' alt='icone d'un medecin'/>
                                 <div>
                                     <div class='nom'>"
-                                        .$prenom . "<br>"
+                                        .$prenom.
+                                        "<br>"
                                         .$nom.
                                     "</div>
                                     <div class='boutons'>
@@ -108,6 +108,7 @@
         <?php include 'footer.php'; ?>
 
         <script>
+            //Script pour afficher ou cacher le formulaire d'ajout de médecin
             var formulaireVisible = false;
             function toggleForm() {
                 var formulaire = document.getElementById('formulaire');
@@ -124,12 +125,13 @@
                 }
             }
 
+            //Script pour vérifier la présence de valeur dans les champs de saisie du formulaire
             function Valide() {
                 var prenom = document.getElementById('prenom').value;
                 var nom = document.getElementById('nom').value;
                 return prenom !== '' && nom !== '';
             }
-            
+            //Script pour activer le bouton valider du formulaire d'ajout de médecin
             document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('medecinForm').addEventListener('input', function () {
                     var prenom = document.getElementById('prenom').value;
@@ -143,14 +145,14 @@
                 });
             });
             
-            
+            //Script de la popup de confirmation de suppression de médecin
             document.addEventListener('DOMContentLoaded', function() {
                 var formulaireVisible = false;
                 var popup = document.getElementById('popupMedecin');
                 popup.style.display = 'none';
 
                 var supprimerBtns = document.getElementsByClassName('supprimerMedecinBtn');
-
+                //Script pour afficher la popup de confirmation de suppression de médecin
                 for (var i = 0; i < supprimerBtns.length; i++) {
                     supprimerBtns[i].addEventListener('click', function(event) {
                         event.preventDefault();
@@ -165,7 +167,7 @@
                         document.querySelector('#popupMedecin .boutons_Popup a').setAttribute('href', 'traitement_supprimer_medecin.php?id='+this.getAttribute('data-id'));
                     });
                 }
-
+                //Script pour initialiser la popup de confirmation de suppression de médecin
                 document.getElementById('Bouton_popup_annuler').addEventListener('click', function() {
                     popup.style.display = 'none';
                     var prenom = this.getAttribute('data-prenom');
