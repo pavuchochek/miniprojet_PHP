@@ -78,7 +78,7 @@
                 </table>
                 <canvas id="camembertChart" width="800" height="200"></canvas>
             </div>
-            <div class="medecin">
+            <!--<div class="medecin">
                 <h1>Médecins</h1>
                 <table>
                     <thead>
@@ -89,7 +89,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            require('../controleur/medecin.controleur.php');
+                            /*require('../controleur/medecin.controleur.php');
                             $controleur = new Medecin_controleur();
                             $resultat = $controleur->liste_medecins();
                             usort($resultat, function($a, $b) {
@@ -106,11 +106,11 @@
                                     <td>$nom $prenom</td>
                                     <td>$nbHeures</td>
                                 </tr>";
-                            }
+                            }*/
                         ?>
                     </tbody>
                 </table>
-            </div>
+            </div>-->
         </div>
 
     
