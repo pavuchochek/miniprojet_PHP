@@ -3,8 +3,6 @@ include_once('/app/src/modele/repository/pdo.php');
 include_once('/app/src/controleur/medecin.controleur.php');
 include_once('/app/src/modele/classes/usagers.class.php');
 
-
-
 class Dao_Usager{
     private $pdo;
 
@@ -67,8 +65,6 @@ class Dao_Usager{
         } catch (PDOException $e) {
             throw $e;
         }
-
-
     }
     public function updatePersonneByIdUsager(int $idUsager,String $nouveauNom,String $nouveauPrenom,String $nouvelleCivilite) {
         $usager=$this->getUsagerById($idUsager);
@@ -158,7 +154,7 @@ class Dao_Usager{
         }
     }
     
-    private function getMedecinById(int $idMedecin): ?Medecin {
+    public function getMedecinById(int $idMedecin): ?Medecin {
         try {
             $req = $this->pdo->prepare('
                 SELECT Personne.Nom, Personne.Prenom, Personne.Civilite, Personne.Id_Personne

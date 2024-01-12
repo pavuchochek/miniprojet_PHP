@@ -17,7 +17,7 @@
         <div class="body">
 
             <div id="formulaire" class="formulaire" style="display: none;">
-                <form id="usagerForm" method="post" action="traitement_ajout_usager.php" onsubmit="return Valide()">
+                <form id="usagerForm" method="post" action="traitements/traitement_ajout_usager.php" onsubmit="return Valide()">
                     <label for="prenom">Prénom :</label>
                     <input type="text" id="prenom" name="prenom" autocomplete="off">
 
@@ -71,7 +71,7 @@
                 </div>
                 
                 <?php
-                    require('app/src/controleur/usager.controleur.php');
+                    require('/app/src/controleur/usager.controleur.php');
                     $controleur = new Usager_Controleur();
                     $resultat = $controleur->liste_usagers();
                     foreach ($resultat as $value){

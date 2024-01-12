@@ -17,5 +17,12 @@ class Usager_controleur{
             });
             return $resultats;
         }
+
+        public function ajouter_usager(string $nom,string $prenom,string $civilite,string $adresse,string $dateNaissance,string $lieuNaissance,int $Numero_Secu,?int $idMedecin){
+            $personne=new Personne($nom,$prenom,$civilite);
+            $medecinReferent=$this->daoUsager->getMedecinById($idMedecin);
+            $usager=new Usager($personne, $Numero_Secu, $adresse, $dateNaissance, $lieuNaissance, $medecinReferent);
+            $this->daoUsager->addUsager($usager);
+        }
 }
 ?>
