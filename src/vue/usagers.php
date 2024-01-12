@@ -39,7 +39,7 @@
                     <label for="lieuNaissance">Lieu de naissance :</label>
                     <input type="text" id="lieuNaissance" name="lieuNaissance" autocomplete="off">
 
-                    <label for="Numero_Secu">Numéro de sécurité sociale :</label>
+                    <label for="Numero_Secu">Numéro de sécurité sociale :</label> <!-- Rajouter une vérif int(13) -->
                     <input type="text" id="Numero_Secu" name="Numero_Secu" autocomplete="off">
 
                     <label for="medecinReferent">Médecin référent:</label>
