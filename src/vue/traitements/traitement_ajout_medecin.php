@@ -1,5 +1,5 @@
 <?php
-    require('../../controleur/medecin.controleur.php');
+    require('/app/src/controleur/medecin.controleur.php');
 
     $controleur = new Medecin_controleur();
     $nom=$_POST["nom"];
@@ -8,5 +8,5 @@
     $prenom = preg_replace("/[^a-zA-Z]/", "", $prenom);
     $civilite=$_POST["civilite"];
     $controleur->ajouter_medecin($nom,$prenom,$civilite);
-    header('Location: ../medecins.php');
+    header('Location: /app/src/vue/medecins.php');
 ?>

@@ -43,7 +43,7 @@
                 </div>
                 
                 <?php
-                    require('../controleur/medecin.controleur.php');
+                    require('/app/src/controleur/medecin.controleur.php');
                     $controleur = new Medecin_controleur();
                     $resultat = $controleur->liste_medecins();
                     if (isset($_GET['search'])) {

@@ -18,7 +18,7 @@
                 <input type="button" value="Ajouter un rendez-vous">
             </div>
             <?php
-                require('../controleur/rdv.controleur.php');
+                require('/app/src/controleur/rdv.controleur.php');
                 $controleur = new Rdv_controleur();
                 $resultat = $controleur->liste_rdv();
                 foreach ($resultat as $value){

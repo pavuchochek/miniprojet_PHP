@@ -1,5 +1,5 @@
 <?php
-require('../modele/repository/dao.medecin.php');
+require('/app/src/modele/repository/dao.medecin.php');
 class Medecin_controleur{
         private $daoMedecin;
     

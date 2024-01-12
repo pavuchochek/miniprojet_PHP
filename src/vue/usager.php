@@ -16,7 +16,7 @@
             <h1>Liste des patients</h1>
             <div class="box_usagers" id="list_usagers">
                 <?php
-                    require('../controleur/usager.controleur.php');
+                    require('/app/src/controleur/usager.controleur.php');
                     $controleur = new Usager_Controleur();
                     $resultat = $controleur->liste_usagers();
                     foreach ($resultat as $value){

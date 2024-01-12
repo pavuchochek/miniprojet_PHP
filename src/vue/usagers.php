@@ -46,7 +46,7 @@
                     <select id="medecinReferent" name="medecinReferent">
                         <option value="null">Aucun</option>
                         <?php
-                            require('../controleur/medecin.controleur.php');
+                            require('/app/src/controleur/medecin.controleur.php');
                             $controleur = new Medecin_controleur();
                             $resultat = $controleur->liste_medecins();
                             foreach ($resultat as $value){
@@ -71,7 +71,7 @@
                 </div>
                 
                 <?php
-                    require('../controleur/usager.controleur.php');
+                    require('app/src/controleur/usager.controleur.php');
                     $controleur = new Usager_Controleur();
                     $resultat = $controleur->liste_usagers();
                     foreach ($resultat as $value){

@@ -17,7 +17,7 @@
     <body>
         <h1 class="titre">Médecin :
             <?php
-            require('../controleur/medecin.controleur.php');
+            require('/app/src/controleur/medecin.controleur.php');
             $controleur = new Medecin_controleur();
             $id = $_GET['id'];
             $prenom = $controleur->getMedecinById($id)->getPrenom();

@@ -1,7 +1,7 @@
 <?php
-include_once('../modele/repository/pdo.php');
-include_once('../controleur/medecin.controleur.php');
-include_once('../modele/classes/usagers.class.php');
+include_once('/app/src/modele/repository/pdo.php');
+include_once('/app/src/controleur/medecin.controleur.php');
+include_once('/app/src/modele/classes/usagers.class.php');
 
 
 
@@ -9,7 +9,7 @@ class Dao_Usager{
     private $pdo;
 
     public function __construct() {
-        include_once('../../configuration.php');
+        include_once('/app/configuration.php');
         $this->pdo = Connexion::getInstance($db_address, $user, $password, $db_name);
     }
 

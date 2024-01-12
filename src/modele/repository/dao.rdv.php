@@ -1,13 +1,13 @@
 <?php
-include_once('../modele/repository/pdo.php');
-include_once('../modele/classes/medecin.class.php');
-include_once('../modele/classes/rdv.class.php');
-include_once('../modele/repository/dao.usager.php');
+include_once('/app/src/modele/repository/pdo.php');
+include_once('/app/src/modele/classes/medecin.class.php');
+include_once('/app/src/modele/classes/rdv.class.php');
+include_once('/app/src/modele/repository/dao.usager.php');
 class Dao_Rdv{
     private $pdo;
 
     public function __construct() {
-        include_once('../../configuration.php');
+        include_once('/app/configuration.php');
         $this->pdo = Connexion::getInstance($db_address, $user, $password, $db_name);
     }
 
