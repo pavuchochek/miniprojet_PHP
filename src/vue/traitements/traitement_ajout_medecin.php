@@ -8,5 +8,5 @@
     $prenom = preg_replace("/[^a-zA-Z]/", "", $prenom);
     $civilite=$_POST["civilite"];
     $controleur->ajouter_medecin($nom,$prenom,$civilite);
-    header('Location: /app/src/vue/medecins.php');
+    header('Location: /medecins.php');
 ?>
