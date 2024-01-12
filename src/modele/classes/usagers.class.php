@@ -1,6 +1,6 @@
 <?php
+include_once('personne.class.php');
 
-include_once('../modele/classes/personne.class.php');
 class Usager extends Personne{
 	private $_IdUsager;
 	private $_N_sécurite_sociale;

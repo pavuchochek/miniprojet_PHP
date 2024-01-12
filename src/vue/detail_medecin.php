@@ -109,10 +109,10 @@
                                     $genderIcon = 'icone_autre.png';
                                 }
                                 echo "
-                                <a class='lien_medecin'>".
+                                <a class='lien_usager'>".
                                 // ajouter le lien vers la page detail_usager quand la page sera faite
                                     "<div class='item_usager'>
-                                        <img class='icone_liste_usager' src='img/$genderIcon' alt='icone d'un medecin'/>
+                                        <img class='icone_liste_usager' src='img/$genderIcon' alt='icone d'un usager'/>
                                         <div>
                                             <div class='nom'><p>"
                                                 .$prenom . "<br>"
@@ -123,7 +123,7 @@
                                                     <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
                                                     // ajouter l'action modifier usager quand la page usager sera faite
                                                 "</a>
-                                                <a href='#' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom'>
+                                                <a href='#' class='supprimerUsagerBtn' data-prenom='$prenom' data-nom='$nom'>
                                                     <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
                                                     // ajouter l'action modifier usager quand la page usager sera faite
                                                 " </a>

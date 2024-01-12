@@ -17,25 +17,26 @@
             <div class="boutons_modif" >
                 <input type="button" value="Ajouter un rendez-vous">
             </div>
-            <?php require('../controleur/rdv.controleur.php');
-                    $controleur = new Rdv_controleur();
-                    $resultat = $controleur->liste_rdv();
-                    foreach ($resultat as $value){
-                        $date = $value->getDateRdvString();
-                        $heure = $value->getHeureDebut();
-                        $nom_usager = $value->getUsager()->getNom();
-                        $prenom_usager = $value->getUsager()->getPrenom();
-                        echo "
-                        <div class='rdv'>
-                            <div>
-                                <div class='rdvinfo'>
-                                    <h3>$date :</h3>
-                                    <p>$heure</p>
-                                </div>
-                                <p>Patient : $nom_usager $prenom_usager</p>
+            <?php
+                require('../controleur/rdv.controleur.php');
+                $controleur = new Rdv_controleur();
+                $resultat = $controleur->liste_rdv();
+                foreach ($resultat as $value){
+                    $date = $value->getDateRdvString();
+                    $heure = $value->getHeureDebut();
+                    $nom_usager = $value->getUsager()->getNom();
+                    $prenom_usager = $value->getUsager()->getPrenom();
+                    echo "
+                    <div class='rdv'>
+                        <div>
+                            <div class='rdvinfo'>
+                                <h3>$date :</h3>
+                                <p>$heure</p>
                             </div>
-                        </div>";
-                    }
+                            <p>Patient : $nom_usager $prenom_usager</p>
+                        </div>
+                    </div>";
+                }
             ?>
         </div>
     </body>

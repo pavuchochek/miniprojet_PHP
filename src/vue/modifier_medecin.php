@@ -18,7 +18,7 @@
         <div class="body">
 
             <div id="formulaire" class="formulaire">
-                <form id="form" method="post" action="traitement_modifier_medecin.php" onsubmit="return Valide()">
+                <form id="form" method="post" action="traitements/traitement_modifier_medecin.php" onsubmit="return Valide()">
                     <label for="prenom">Prénom:</label>
                     <?php
                         $prenom = $_GET['prenom'];

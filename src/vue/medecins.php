@@ -16,7 +16,7 @@
     <body>
         <div class="body">
             <div id="formulaire" class="formulaire">
-                <form id="medecinForm" method="post" action="traitement_ajout_medecin.php" onsubmit="return Valide()">
+                <form id="medecinForm" method="post" action="traitements/traitement_ajout_medecin.php" onsubmit="return Valide()">
                     <label for="prenom">Prénom:</label>
                     <input type="text" id="prenom" name="prenom" autocomplete="off">
 
@@ -164,7 +164,7 @@
                         popup.style.display = 'block';
                         document.getElementById('Bouton_popup_annuler').setAttribute('data-prenom', prenom);
                         document.getElementById('Bouton_popup_annuler').setAttribute('data-nom', nom);
-                        document.querySelector('#popupMedecin .boutons_Popup a').setAttribute('href', 'traitement_supprimer_medecin.php?id='+this.getAttribute('data-id'));
+                        document.querySelector('#popupMedecin .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_medecin.php?id='+this.getAttribute('data-id'));
                     });
                 }
                 //Script pour initialiser la popup de confirmation de suppression de médecin
