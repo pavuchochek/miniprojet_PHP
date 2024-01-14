@@ -86,6 +86,18 @@ class Dao_Rdv{
         ));
 
     }
+    public function liste_rdv_byMedecin(int $idMedecin){
+        $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Id_medecin = :idMedecin') ;
+        $resRDV->execute(array(
+            'idMedecin' => $idMedecin
+        ));
+        $tablo_rdv=array();
+        while ($data = $resRDV->fetch()) {
+            $rdv=$this->constructRdvFromData($data);
+            $tablo_rdv[]=$rdv;
+        }
+        return $tablo_rdv;
+    }
 
     public function deleteRdv(){
     }

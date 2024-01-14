@@ -69,7 +69,18 @@ class Rdv{
 	public function setHeureFin(String $Heure_fin){
 		$this->_Heure_fin = $Heure_fin;
 	}
-
+	public function getDuree(): float {
+		// Convertir les heures de début et de fin en objets DateTime
+		$heureDebut = DateTime::createFromFormat('H:i', $this->_Heure_début);
+		$heureFin = DateTime::createFromFormat('H:i', $this->_Heure_fin);
+	
+		// Calculer la différence entre les deux heures en heures décimales
+		$dureeEnHeures = $heureDebut->diff($heureFin)->h + $heureDebut->diff($heureFin)->i / 60;
+	
+		return $dureeEnHeures;
+	}
+	
+	
 	public function setMedecin(Medecin $Medecin){
 		$this->_Medecin = $Medecin;
 	}
