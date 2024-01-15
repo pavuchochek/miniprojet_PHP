@@ -83,6 +83,7 @@
                         $prenom = $value->getPrenom();
                         $nom = $value->getNom();
                         $medecinRef = $value->getMedecinReferent();
+                        $id = $value->getIdUsager();
                         if ($value->getCivilite() === 'M') {
                             $genderIcon = 'icone_homme_usager.png';
                         } else if ($value->getCivilite() === 'F'){
@@ -111,7 +112,7 @@
                                                 <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
                                                 // ajouter l'action modifier usager quand la page usager sera faite
                                             "</a>
-                                            <a href='#' class='supprimerusagerBtn' data-prenom='$prenom' data-nom='$nom'>
+                                            <a href='#' class='supprimerusagerBtn' data-prenom='$prenom' data-nom='$nom' data-id='$id'>
                                                 <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
                                                 // ajouter l'action modifier usager quand la page usager sera faite
                                             " </a>
@@ -198,7 +199,7 @@
                         popup.style.display = 'block';
                         document.getElementById('Bouton_popup_annuler').setAttribute('data-prenom', prenom);
                         document.getElementById('Bouton_popup_annuler').setAttribute('data-nom', nom);
-                        document.querySelector('#popupusager .boutons_Popup a').setAttribute('href', 'traitement_supprimer_usager.php?id='+this.getAttribute('data-id'));
+                        document.querySelector('#popupusager .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_usager.php?id='+this.getAttribute('data-id'));
                     });
                 }
 

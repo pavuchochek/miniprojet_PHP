@@ -131,8 +131,11 @@ class Dao_Usager{
             }
     
             // Récupération des informations du médecin associé
-            $medecin = $this->getMedecinById($dataUsager['Id_Medecin']);
-    
+            if ($dataUsager['Id_Medecin'] == null) {
+                $medecin = null;
+            } else {
+                $medecin = $this->getMedecinById($dataUsager['Id_Medecin']);
+            }
             // Création de l'objet Usager
             $personne = new Personne($dataUsager['Nom'], $dataUsager['Prenom'], $dataUsager['Civilite']);
             $personne->setId($dataUsager['Id_Personne']);

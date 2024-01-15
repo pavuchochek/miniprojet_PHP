@@ -26,7 +26,8 @@ class Usager_controleur{
         }
 
         public function supprimer_usager(int $id){
-            $this->daoUsager->deleteUsager($id);
+            $usager=$this->daoUsager->getUsagerById($id);
+            $this->daoUsager->deleteUsager($usager);
         }
 
         public function modifier_usager(int $id,string $nom,string $prenom,string $civilite,string $adresse,string $dateNaissance,string $lieuNaissance,int $Numero_Secu,?int $idMedecin){
@@ -42,14 +43,6 @@ class Usager_controleur{
 
         public function getMedecinById(int $id){
             return $this->daoUsager->getMedecinById($id);
-        }
-
-        public function getMedecins(){
-            return $this->daoUsager->getMedecins();
-        }
-
-        public function getUsagers(){
-            return $this->daoUsager->getUsagers();
         }
 }
 ?>
