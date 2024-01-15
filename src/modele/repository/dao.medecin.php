@@ -133,7 +133,17 @@ class Dao_Medecin {
             throw $e;
         }
     }
-
+    public function supprimer_medecin_referentByIdUsager(Medecin $medecin,int $idUsager){
+        try {
+            $req = $this->pdo->prepare('UPDATE Usager SET Id_Medecin=NULL WHERE Id_Medecin = :id; AND Id_Usager = :idUsager');
+            $req->execute(array(
+                'id' => $medecin->getIdMedecin(),
+                'idUsager' => $idUsager
+            ));
+        }catch(PDOException e){
+            throw $e;
+        }
+    }
     public function supprimer_medecins(Medecin $medecin) {
 
         try {
