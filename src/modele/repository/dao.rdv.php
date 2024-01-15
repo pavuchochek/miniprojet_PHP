@@ -1,8 +1,8 @@
 <?php
-include_once('/app/src/modele/repository/pdo.php');
-include_once('/app/src/modele/classes/medecin.class.php');
-include_once('/app/src/modele/classes/rdv.class.php');
-include_once('/app/src/modele/repository/dao.usager.php');
+require_once('/app/src/modele/repository/pdo.php');
+require_once('/app/src/modele/classes/medecin.class.php');
+require_once('/app/src/modele/classes/rdv.class.php');
+require_once('/app/src/modele/repository/dao.usager.php');
 class Dao_Rdv{
     private $pdo;
 
@@ -11,12 +11,28 @@ class Dao_Rdv{
         $this->pdo = Connexion::getInstance($db_address, $user, $password, $db_name);
     }
 
-    public function createRdv(){
-        
+    public function createRdv(Rdv $rdv){
+        try {
+            $req = $this->pdo->prepare('INSERT INTO Rdv (Id_Usager,Id_Medecin,Date_rdv,Heure_debut,Heure_fin) VALUES (:usager,:medecin,:daterdv,:hd,:hf)');
+            $idusager = $rdv->getUsager()->getIdUsager();
+            $idmedecin = $rdv->getMedecin() -> getIdMedecin();
+            $req->execute(array(
+                'usager' => $idusager,
+                'medecin' => $idmedecin,
+                'daterdv' => $rdv->getDateRdv(),
+                'hd' => $rdv->getHeureDebut(),
+                'hf' => $rdv->getHeureFin()
+            ));
+        }catch(PDOException $e){
+            throw $e;
+        }
     }
 
-    public function updateRdv(){
-
+    public function modifier_medecins(Rdv $ancienRdv,Rdv $nouveauRdv){
+        //suppression de l'ancien rdv
+        $this->deleteRdv($ancienRdv);
+        //recreation du rdv
+        $this->createRdv($nouveauRdv);
     }
 
     private function constructRdvFromData($data){
@@ -99,7 +115,19 @@ class Dao_Rdv{
         return $tablo_rdv;
     }
 
-    public function deleteRdv(){
+    public function deleteRdv(Rdv $rdv){
+        try{
+        $resRDV = $this->pdo->prepare('DELETE FROM Rdv WHERE Id_Medecin = :idMedecin AND Id_Usager = :idUsager AND Date_rdv = :daterdv AND Heure_debut = :hd AND Heure_fin = :hf') ;
+        $resRDV->execute(array(
+            'idMedecin' => $rdv->getMedecin()->getIdMedecin(),
+            'idUsager' => $rdv->getUsager()->getIdUsager(),
+            'daterdv' => $rdv ->getDateRdv(),
+            'hd' => $rdv->getHeureDebut(),
+            'hf' => $rdv->getHeureFin()
+        ));
+         }catch(PDOException $e){
+        throw $e;
+        }
     }
     
     public function getUsagerById(int $idUsager): Usager {
