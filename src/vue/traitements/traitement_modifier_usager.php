@@ -11,10 +11,10 @@
     $dateNaissance = $_POST["dateNaissance"];
     $lieuNaissance = $_POST["lieuNaissance"];
     $numeroSecu = $_POST["Numero_Secu"];
-    $medecinReferent = $_POST["medecinReferent"];
+    $medecinReferent = isset($_POST["medecinReferent"]) ? intval($_POST["medecinReferent"]) : null;
     $idUsager = $_POST["idUsager"];
 
-    $controleur->modifier_usager($nom, $prenom, $civilite, $adresse, $dateNaissance, $lieuNaissance, $numeroSecu, $medecinReferent, $idUsager);
+    $controleur->modifier_usager($idUsager, $nom, $prenom, $civilite, $adresse, $dateNaissance, $lieuNaissance, $numeroSecu, $medecinReferent);
 
     header('Location: /usagers.php');
 ?>

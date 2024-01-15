@@ -66,6 +66,7 @@ class Dao_Usager{
             throw $e;
         }
     }
+
     public function updatePersonneByIdUsager(int $idUsager,String $nouveauNom,String $nouveauPrenom,String $nouvelleCivilite) {
         $usager=$this->getUsagerById($idUsager);
         $req=$this->pdo->prepare('UPDATE Personne SET Nom=:nom,Prenom=:prenom,Civilite=:civilite WHERE Id_Personne=:id');
@@ -76,18 +77,25 @@ class Dao_Usager{
             'id'=>$usager->getId()
             ));
     }
-    public function updateUsagerByIdUsager(int $idUsager,int $NSecuSociale,String $Adresse,String $Date_naissance, String $Lieu_naissance, Medecin $medecin){
-        $req=$this->pdo->prepare('UPDATE Usager SET N_securite_sociale=:nsecu,Adresse=:adresse,Date_naissance=:date_naissance,
-        Lieu_naissance=:lieu_naissance,Id_Medecin=:idMedecin WHERE Id_Usager=:id');
+
+    public function updateUsagerByIdUsager(int $idUsager,String $nouveauNom,String $nouveauPrenom,String $nouvelleCivilite,String $Adresse,String $Date_naissance, String $Lieu_naissance,int $NSecuSociale, ?Medecin $medecin){
+        $this->updatePersonneByIdUsager($idUsager, $nouveauNom, $nouveauPrenom, $nouvelleCivilite);
+        if (is_null($medecin)){
+            $medecin=null;
+        }else{
+            $medecin=$medecin->getIdMedecin();
+        }
+        $req = $this->pdo->prepare('UPDATE Usager SET N_securite_sociale=:nsecu,Adresse=:adresse,Date_naissance=:date_naissance, Lieu_naissance=:lieu_naissance,Id_Medecin=:idMedecin WHERE Id_Usager=:id');
         $req->execute(array(
-            'nsecu'=>$NSecuSociale,
-            'adresse'=>$Adresse,
-            'date_naissance'=>$Date_naissance,
-            'lieu_naissance'=>$Lieu_naissance,
-            'Id_Medecin'=>$medecin->getIdMedecin(),
-            'id'=>$idUsager
-            ));
+            'nsecu' => $NSecuSociale,
+            'adresse' => $Adresse,
+            'date_naissance' => $Date_naissance,
+            'lieu_naissance' => $Lieu_naissance,
+            'idMedecin' => $medecin,
+            'id' => $idUsager
+        ));
     }
+
     public function deleteUsager(Usager $usager){
         $req = $this->pdo->prepare('DELETE FROM Rdv WHERE Id_Usager=:id;');
             $req->execute(array(

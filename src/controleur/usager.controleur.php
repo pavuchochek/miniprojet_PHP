@@ -2,9 +2,11 @@
 require('/app/src/modele/repository/dao.usager.php');
 class Usager_controleur{
         private $daoUsager;
+        private $daoMedecin;
     
         public function __construct() {
             $this->daoUsager=new Dao_Usager();
+            $this->daoMedecin=new Dao_Medecin();
         }
         public function liste_usagers(){
             return $this->daoUsager->listeUsagers();
@@ -31,10 +33,8 @@ class Usager_controleur{
         }
 
         public function modifier_usager(int $id,string $nom,string $prenom,string $civilite,string $adresse,string $dateNaissance,string $lieuNaissance,int $Numero_Secu,?int $idMedecin){
-            $personne=new Personne($nom,$prenom,$civilite);
             $medecinReferent=$this->daoUsager->getMedecinById($idMedecin);
-            $usager=new Usager($personne, $Numero_Secu, $adresse, $dateNaissance, $lieuNaissance, $medecinReferent);
-            $this->daoUsager->updateUsager($id,$usager);
+            $this->daoUsager->updateUsagerByIdUsager($id,$nom,$prenom,$civilite,$adresse, $dateNaissance, $lieuNaissance,$Numero_Secu,  $medecinReferent);
         }
 
         public function getUsagerById(int $id){
@@ -43,6 +43,10 @@ class Usager_controleur{
 
         public function getMedecinById(int $id){
             return $this->daoUsager->getMedecinById($id);
+        }
+
+        public function liste_medecins(){
+            return $this->daoMedecin->liste_medecins("","");
         }
 }
 ?>

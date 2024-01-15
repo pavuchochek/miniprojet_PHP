@@ -24,17 +24,21 @@
                     <label for="nom">Nom :</label>
                     <input type="text" id="nom" name="nom" autocomplete="off">
 
-                    <label for="civilite">Civilité :</label>
-                    <select id="civilite" name="civilite">
-                        <option value="M">Monsieur</option>
-                        <option value="F">Madame</option>
-                        <option value="A">Autre</option>
-                    </select>
+                    <div style="display:block">
+                        <label for="civilite">Civilité :</label>
+                        <select id="civilite" name="civilite">
+                            <option value="M">Monsieur</option>
+                            <option value="F">Madame</option>
+                            <option value="A">Autre</option>
+                        </select>
+
+                        <label for="dateNaissance">Date de naissance :</label>
+                        <input type="date" id="dateNaissance" name="dateNaissance" autocomplete="off">
+                    </div>
+
                     <label for="Adresse">Adresse :</label>
                     <input type="text" id="Adresse" name="Adresse" autocomplete="off">
 
-                    <label for="dateNaissance">Date de naissance :</label>
-                    <input type="date" id="dateNaissance" name="dateNaissance" autocomplete="off">
 
                     <label for="lieuNaissance">Lieu de naissance :</label>
                     <input type="text" id="lieuNaissance" name="lieuNaissance" autocomplete="off">
@@ -108,7 +112,7 @@
                                             .$medecinRef.
                                         "</p></div>
                                         <div class='boutons'>
-                                            <a href='modifier_usager.php?prenom=$prenom&nom=$nom'>
+                                            <a href='modifier_usager.php?id=$id'>
                                                 <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
                                                 // ajouter l'action modifier usager quand la page usager sera faite
                                             "</a>
@@ -143,9 +147,9 @@
 
         <script>
             var formulaireVisible = false;
+            var formulaire = document.getElementById('formulaire');
+            var listusager = document.getElementById('list_usager');
             function toggleForm() {
-                var formulaire = document.getElementById('formulaire');
-                var listusager = document.getElementById('list_usager');
                 var afficherFormulaire = document.getElementById('afficherFormulaire');
 
                 if (formulaireVisible) {
@@ -160,25 +164,54 @@
                     formulaireVisible = true;
                 }
             }
+            formulaire.style.display = 'none';
+            listusager.style.display = 'block';
 
+
+            
             function Valide() {
                 var prenom = document.getElementById('prenom').value;
                 var nom = document.getElementById('nom').value;
-                return prenom !== '' && nom !== '';
+                var adresse = document.getElementById('Adresse').value;
+                var lieuNaissance = document.getElementById('lieuNaissance').value;
+                var Numero_Secu = document.getElementById('Numero_Secu').value;
+                var dateNaissance = document.getElementById('dateNaissance').value;
+                Numero_Secu = parseInt(Numero_Secu);
+
+                if (Numero_Secu.toString().length === 13 && !isNaN(Numero_Secu)) {
+                    Numero_Secu = Number(Numero_Secu);
+                } else {
+                    Numero_Secu = '';
+                }
+                return prenom !== '' && nom !== '' && adresse !== '' && lieuNaissance !== '' && Numero_Secu !== '' && dateNaissance !== '';
             }
+            
             
             document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('usagerForm').addEventListener('input', function () {
                     var prenom = document.getElementById('prenom').value;
                     var nom = document.getElementById('nom').value;
+                    var adresse = document.getElementById('Adresse').value;
+                    var lieuNaissance = document.getElementById('lieuNaissance').value;
+                    var Numero_Secu = document.getElementById('Numero_Secu').value;
+                    var dateNaissance = document.getElementById('dateNaissance').value;
+                    Numero_Secu = parseInt(Numero_Secu);
+
+                    if (Numero_Secu.toString().length === 13 && !isNaN(Numero_Secu)) {
+                        Numero_Secu = Number(Numero_Secu);
+                    } else {
+                        Numero_Secu = '';
+                    }
                     var submitBtn = document.getElementById('bouton_valider');
-                    if (prenom !== '' && nom !== '') {
+                    if (prenom !== '' && nom !== '' && adresse !== '' && lieuNaissance !== '' && Numero_Secu !== '' && dateNaissance !== '') {
                         submitBtn.classList.add('active');
                     } else {
                         submitBtn.classList.remove('active');
                     }
                 });
             });
+            var submitBtn = document.getElementById('bouton_valider');
+            submitBtn.classList.remove('active');
             
             
             document.addEventListener('DOMContentLoaded', function() {
