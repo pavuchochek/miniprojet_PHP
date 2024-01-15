@@ -101,7 +101,7 @@
             </div>
 
             <div class="boutons_modif" id="afficherFormulaire">
-                <input type="button" value="Ajouter médecin" onclick="toggleForm()">
+                <input id="boutonAfficher" type="button" value="Ajouter médecin" onclick="toggleForm()">
             </div>
         </div>
 
@@ -113,14 +113,17 @@
             function toggleForm() {
                 var formulaire = document.getElementById('formulaire');
                 var listMedecin = document.getElementById('list_medecin');
+                var btn_modif = document.getElementById('boutonAfficher');
 
                 if (formulaireVisible) {
                     formulaire.style.display = 'none';
                     listMedecin.style.display = 'block';
+                    btn_modif.value = 'Ajouter médecin';
                     formulaireVisible = false;
                 } else {
                     formulaire.style.display = 'block';
                     listMedecin.style.display = 'none';
+                    btn_modif.value = 'Annuler';
                     formulaireVisible = true;
                 }
             }

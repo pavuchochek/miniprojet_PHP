@@ -8,7 +8,7 @@ class Dao_Medecin {
     private $pdo;
 
     public function __construct() {
-        include_once('/app/configuration.php');
+        include('/app/configuration.php');
         $this->pdo = Connexion::getInstance($db_address, $user, $password, $db_name);
     }
 

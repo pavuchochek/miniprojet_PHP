@@ -4,7 +4,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <title>Medecins</title>
+        <title>usagers</title>
         <link rel="stylesheet" href="css/CSSusager.css">
         <link rel="stylesheet" href="css/CSSheader.css">
         <link rel="stylesheet" href="css/CSSfooter.css">
@@ -62,7 +62,7 @@
                 </form>
             </div>
 
-            <div class="box_medecin" id="list_medecin">
+            <div class="box_usager" id="list_usager">
                 <div>
                     <form action="" method="GET" class="recherche">
                         <input type="text" name="search" autocomplete="off" placeholder="Rechercher un patient">
@@ -74,6 +74,11 @@
                     require('/app/src/controleur/usager.controleur.php');
                     $controleur = new Usager_Controleur();
                     $resultat = $controleur->liste_usagers();
+                    if (isset($_GET['search'])) {
+                        $recherche = strtolower($_GET['search']);
+                        $recherche = trim($recherche);
+                        $resultat = $controleur->rechercherUsagers($recherche);
+                    }
                     foreach ($resultat as $value){
                         $prenom = $value->getPrenom();
                         $nom = $value->getNom();
@@ -91,22 +96,22 @@
                             $medecinRef=$medecinRef->getNom();
                         }
                         echo "
-                            <a class='lien_medecin'>".
+                            <a class='lien_usager'>".
                             // ajouter le lien vers la page detail_usager quand la page sera faite
                                 "<div class='item_usager'>
-                                    <img class='icone_liste_usager' src='img/$genderIcon' alt='icone d'un medecin'/>
+                                    <img class='icone_liste_usager' src='img/$genderIcon' alt='icone d'un usager'/>
                                     <div>
                                         <div class='nom'><p>"
                                             .$prenom . "<br>"
                                             .$nom. "<br>Médecin : "
                                             .$medecinRef.
                                         "</p></div>
-                                        <div class='boutonsusager'>
+                                        <div class='boutons'>
                                             <a href='modifier_usager.php?prenom=$prenom&nom=$nom'>
                                                 <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
                                                 // ajouter l'action modifier usager quand la page usager sera faite
                                             "</a>
-                                            <a href='#' class='supprimerMedecinBtn' data-prenom='$prenom' data-nom='$nom'>
+                                            <a href='#' class='supprimerusagerBtn' data-prenom='$prenom' data-nom='$nom'>
                                                 <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
                                                 // ajouter l'action modifier usager quand la page usager sera faite
                                             " </a>
@@ -118,8 +123,8 @@
                 ?>
             </div>
 
-            <div class="popup" id="popupMedecin">
-                <p id="popupMedecinNom"> </p>
+            <div class="popup" id="popupusager">
+                <p id="popupusagerNom"> </p>
                 <div class="boutons_Popup">
                     <input type="button" value="Annuler" id="Bouton_popup_annuler">
                     <a href='#'>
@@ -129,7 +134,7 @@
             </div>
 
             <div class="boutons_modif" id="afficherFormulaire">
-                <input type="button" value="Ajouter médecin" onclick="toggleForm()">
+                <input type="button" value="Ajouter patient" onclick="toggleForm()">
             </div>
         </div>
 
@@ -139,15 +144,18 @@
             var formulaireVisible = false;
             function toggleForm() {
                 var formulaire = document.getElementById('formulaire');
-                var listMedecin = document.getElementById('list_medecin');
+                var listusager = document.getElementById('list_usager');
+                var afficherFormulaire = document.getElementById('afficherFormulaire');
 
                 if (formulaireVisible) {
                     formulaire.style.display = 'none';
-                    listMedecin.style.display = 'block';
+                    listusager.style.display = 'block';
+                    afficherFormulaire.innerHTML = "<input type='button' value='Ajouter patient' onclick='toggleForm()'>";
                     formulaireVisible = false;
                 } else {
                     formulaire.style.display = 'block';
-                    listMedecin.style.display = 'none';
+                    listusager.style.display = 'none';
+                    afficherFormulaire.innerHTML = "<input type='button' value='Annuler' onclick='toggleForm()'>";
                     formulaireVisible = true;
                 }
             }
@@ -174,10 +182,10 @@
             
             document.addEventListener('DOMContentLoaded', function() {
                 var formulaireVisible = false;
-                var popup = document.getElementById('popupMedecin');
+                var popup = document.getElementById('popupusager');
                 popup.style.display = 'none';
 
-                var supprimerBtns = document.getElementsByClassName('supprimerMedecinBtn');
+                var supprimerBtns = document.getElementsByClassName('supprimerusagerBtn');
 
                 for (var i = 0; i < supprimerBtns.length; i++) {
                     supprimerBtns[i].addEventListener('click', function(event) {
@@ -185,12 +193,12 @@
                         var prenom = this.getAttribute('data-prenom');
                         var nom = this.getAttribute('data-nom');
 
-                        var nomprenom = document.getElementById('popupMedecinNom');
-                        nomprenom.innerHTML = "Voulez-vous supprimer le médecin " + prenom + ' ' + nom + " ?";
+                        var nomprenom = document.getElementById('popupusagerNom');
+                        nomprenom.innerHTML = "Voulez-vous supprimer le patient " + prenom + ' ' + nom + " ?";
                         popup.style.display = 'block';
                         document.getElementById('Bouton_popup_annuler').setAttribute('data-prenom', prenom);
                         document.getElementById('Bouton_popup_annuler').setAttribute('data-nom', nom);
-                        document.querySelector('#popupMedecin .boutons_Popup a').setAttribute('href', 'traitement_supprimer_medecin.php?id='+this.getAttribute('data-id'));
+                        document.querySelector('#popupusager .boutons_Popup a').setAttribute('href', 'traitement_supprimer_usager.php?id='+this.getAttribute('data-id'));
                     });
                 }
 

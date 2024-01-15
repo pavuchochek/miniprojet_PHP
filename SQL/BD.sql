@@ -125,8 +125,6 @@ INSERT INTO Medecin (Id_Personne) VALUES
 
 INSERT INTO Usager (N_securite_sociale, Adresse, Date_naissance, Lieu_naissance, Id_Personne, Id_Medecin)
 VALUES
-('1234567890125', '123 Birch St', '2000-04-05', 'City16', 16, 13),
-('9876543210989', '456 Cedar St', '1934-09-12', 'City17', 17, 13),
 ('1111222233336', '789 Elm St', '1904-02-28', 'City18', 38, 1),
 ('4444555566669', '101 Maple St', '2020-06-15', 'City19', 39, 2),
 ('7777888899992', '202 Oak St', '1997-10-20', 'City20', 40, NULL),
