@@ -99,8 +99,9 @@
                             }
                             ?>
                         </select>
-
-                        <input type="submit" value="Assigner un usager" class="boutons_ajout boutons_ajout_usager" id="assignerUsager">
+                        <div class="bouton_assigner">
+                            <input type="submit" value="Assigner un usager" class="boutons_ajout boutons_ajout_usager" id="assignerUsager">
+                        </div>
                     </form>
 
                     <div class="boutons_ajout boutons_ajout_usager" onclick="afficherComboBox()">
