@@ -122,9 +122,8 @@
                                                 <a href='modifier_usager.php?id=$id'>
                                                     <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
                                                 "</a>
-                                                <a href='#' class='supprimerusagerBtn' data-prenom='$prenom' data-nom='$nom' data-id='$id'>
+                                                <a href='#' class='supprimerusagerBtn' data-prenom='$prenom' data-nom='$nom' data-id='$id' data-idMedecin='$idmedecin'>
                                                     <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
-                                                    // ajouter l'action modifier usager quand la page usager sera faite
                                                 " </a>
                                             </div>
                                         </div>
@@ -139,8 +138,11 @@
                 <p id="popupusagerNom"> </p>
                 <div class="boutons_Popup">
                     <input type="button" value="Annuler" id="Bouton_popup_annuler">
-                    <a href='#'>
-                        <input type='button' value='Oui'>
+                    <a href='#' id = 'suppr'>
+                        <input type='button' value='Supprimer'>
+                    </a>
+                    <a href='#' id = 'enleveMed'>
+                        <input type='button' value='Enlever médecin'>
                     </a>
                 </div>
             </div>
@@ -163,11 +165,12 @@
                     var nom = this.getAttribute('data-nom');
 
                     var nomprenom = document.getElementById('popupusagerNom');
-                    nomprenom.innerHTML = "Voulez-vous supprimer le patient " + prenom + ' ' + nom + " ou lui enlever?";
+                    nomprenom.innerHTML = "Voulez-vous supprimer le patient " + prenom + ' ' + nom + " <br>ou lui enlever le médecin référent?";
                     popup.style.display = 'block';
                     document.getElementById('Bouton_popup_annuler').setAttribute('data-prenom', prenom);
                     document.getElementById('Bouton_popup_annuler').setAttribute('data-nom', nom);
-                    document.querySelector('#popupusager .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_usager.php?id='+this.getAttribute('data-id'));
+                    document.querySelector('#popupusager .boutons_Popup a#suppr').setAttribute('href', 'traitements/traitement_supprimer_usager.php?id='+this.getAttribute('data-id'));
+                    document.querySelector('#popupusager .boutons_Popup a#enleveMed').setAttribute('href', 'traitements/traitement_enlever_medecin_usager.php?id='+this.getAttribute('data-id')+'&idMedecin='+this.getAttribute('data-idMedecin'));
                 });
             }
 
