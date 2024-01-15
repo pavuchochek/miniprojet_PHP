@@ -135,7 +135,7 @@ class Dao_Medecin {
     }
     public function supprimer_medecin_referentByIdUsager(int $idMedecin,int $idUsager){
         try {
-            $req = $this->pdo->prepare('UPDATE Usager SET Id_Medecin=NULL WHERE Id_Medecin = :id; AND Id_Usager = :idUsager');
+            $req = $this->pdo->prepare('UPDATE Usager SET Id_Medecin=NULL WHERE Id_Medecin = :id AND Id_Usager = :idUsager');
             $req->execute(array(
                 'id' => $idMedecin,
                 'idUsager' => $idUsager
