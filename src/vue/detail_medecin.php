@@ -121,9 +121,8 @@
                                             <div class='boutonsusager'>
                                                 <a href='modifier_usager.php?id=$id'>
                                                     <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
-                                                    // ajouter l'action modifier usager quand la page usager sera faite
                                                 "</a>
-                                                <a href='#' class='supprimerUsagerBtn' data-prenom='$prenom' data-nom='$nom'>
+                                                <a href='#' class='supprimerusagerBtn' data-prenom='$prenom' data-nom='$nom' data-id='$id'>
                                                     <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
                                                     // ajouter l'action modifier usager quand la page usager sera faite
                                                 " </a>
@@ -136,8 +135,47 @@
                     ?>
                 </div>
             </div>
+            <div class="popup" id="popupusager">
+                <p id="popupusagerNom"> </p>
+                <div class="boutons_Popup">
+                    <input type="button" value="Annuler" id="Bouton_popup_annuler">
+                    <a href='#'>
+                        <input type='button' value='Oui'>
+                    </a>
+                </div>
+            </div>
         </div>
     </body>
     
     <?php include 'footer.php'; ?>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var popup = document.getElementById('popupusager');
+            popup.style.display = 'none';
+
+            var supprimerBtns = document.getElementsByClassName('supprimerusagerBtn');
+
+            for (var i = 0; i < supprimerBtns.length; i++) {
+                supprimerBtns[i].addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var prenom = this.getAttribute('data-prenom');
+                    var nom = this.getAttribute('data-nom');
+
+                    var nomprenom = document.getElementById('popupusagerNom');
+                    nomprenom.innerHTML = "Voulez-vous supprimer le patient " + prenom + ' ' + nom + " ou lui enlever?";
+                    popup.style.display = 'block';
+                    document.getElementById('Bouton_popup_annuler').setAttribute('data-prenom', prenom);
+                    document.getElementById('Bouton_popup_annuler').setAttribute('data-nom', nom);
+                    document.querySelector('#popupusager .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_usager.php?id='+this.getAttribute('data-id'));
+                });
+            }
+
+            document.getElementById('Bouton_popup_annuler').addEventListener('click', function() {
+                popup.style.display = 'none';
+                var prenom = this.getAttribute('data-prenom');
+                var nom = this.getAttribute('data-nom');
+            });
+        });
+    </script>
 </html>

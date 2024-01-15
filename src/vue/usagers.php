@@ -108,17 +108,15 @@
                                     <div>
                                         <div class='nom'><p>"
                                             .$prenom . "<br>"
-                                            .$nom. "<br>Médecin : "
+                                            .$nom. "<br>Dr : "
                                             .$medecinRef.
                                         "</p></div>
                                         <div class='boutons'>
                                             <a href='modifier_usager.php?id=$id'>
                                                 <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
-                                                // ajouter l'action modifier usager quand la page usager sera faite
                                             "</a>
                                             <a href='#' class='supprimerusagerBtn' data-prenom='$prenom' data-nom='$nom' data-id='$id'>
                                                 <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
-                                                // ajouter l'action modifier usager quand la page usager sera faite
                                             " </a>
                                         </div>
                                     </div>
