@@ -78,17 +78,41 @@
             <div class="partie_usagers">
                 <div class = "titre2">
                     <h1>Liste des patients</h1>
+                    <form method="post" action="traitements/traitement_assigner_usager.php" id="form_usager">
+                        <input type="hidden" name="medecinReferent" value="<?php echo $idmedecin; ?>">
+                        <select name="idUsager" id="combo_box">
+                            <?php
+                            $resultat = $controleur->getListeUsagersMedecin($idmedecin);
+                            $usagers = $controleur->getListeUsagers($idmedecin);
+                            if ($usagers == null) {
+                                echo "<option value=''>Aucun patient</option>";
+                            } else {
+                                foreach ($usagers as $value) {
+                                    if (!in_array($value, $resultat)) { //enlever l'usager si il n'est pas déjà assigné au médecin (je sais pas pourquoi ça marche pas)
+                                        $prenom = $value->getPrenom();
+                                        $nom = $value->getNom();
+                                        $id = $value->getIdUsager();
+                                        $num = $value->getNsecuriteSociale();
+                                        echo "<option value='$id'>$prenom $nom ($num)</option>";
+                                    }
+                                }
+                            }
+                            ?>
+                        </select>
 
-                    <div class="boutons_ajout boutons_ajout_usager" id="afficherFormulaireUsager">
+                        <input type="submit" value="Assigner un usager" class="boutons_ajout boutons_ajout_usager" id="assignerUsager">
+                    </form>
+
+                    <div class="boutons_ajout boutons_ajout_usager" id="afficherFormulaireUsager" onclick="afficherComboBox()">
                         <input type="button" value="Assigner un usager">
-                        <!-- Ajouter le formulaire usager quand la page usager sera faite -->
                     </div>
+
                 </div>
 
                 <div class="box_usagers" id="list_usagers">
                     
                     <?php
-                        $resultat = $controleur->getListeUsagersMedecin($idmedecin);
+                        
                         if ($resultat == null) {
                             echo "<div class='item_usager vide'>
                                 <div>
@@ -179,6 +203,16 @@
                 var prenom = this.getAttribute('data-prenom');
                 var nom = this.getAttribute('data-nom');
             });
+            var combo_box = document.getElementById('combo_box');
+            combo_box.style.display = 'block';
+            function afficherComboBox() {
+                var combo_box = document.getElementById('combo_box');
+                if (combo_box.style.display === 'none') {
+                    combo_box.style.display = 'block';
+                } else {
+                    combo_box.style.display = 'none';
+                }
+            }
         });
     </script>
 </html>

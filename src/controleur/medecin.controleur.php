@@ -62,6 +62,10 @@ class Medecin_controleur{
         });
         return $resultats;
     }
+
+    public function getListeUsagers() {
+        return $this->daoMedecin->getListeUsagers();
+    }
 }
 
 ?>

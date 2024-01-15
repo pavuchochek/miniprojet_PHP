@@ -216,6 +216,25 @@ class Dao_Medecin {
         }
         return $tablo_rdv;
     }
+
+    public function getListeUsagers() {
+        try {
+            $res = $this->pdo->query('SELECT Personne.Nom,Personne.Prenom,Personne.Civilite,Usager.N_securite_sociale,Usager.Adresse,Usager.Date_naissance,Usager.Lieu_naissance,Usager.Id_Personne,Usager.Id_Usager
+                FROM Usager,Personne 
+                WHERE Usager.Id_Personne=Personne.Id_Personne');
+            $tablo_usagers = array();
+            while ($data = $res->fetch()) {
+                $personne = new Personne($data[0], $data[1], $data[2]);
+                $personne->setId($data[7]);
+                $usager = new Usager($personne, $data[3], $data[4],$data[5],$data[6],null);
+                $usager->setIdUsager(intval($data[8]));
+                $tablo_usagers[] = $usager;
+            }
+            return $tablo_usagers;
+        } catch (PDOException $e) {
+            error_log("". $e->getMessage());
+        }
+    }
     
     
 }
