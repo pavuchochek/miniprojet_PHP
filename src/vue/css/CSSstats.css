@@ -12,6 +12,11 @@
     width: 50%;
 }
 
+.body div + div {
+    padding-left: 10%;
+    border-left: 1px solid #000;
+}
+
 table {
     border-collapse: collapse;
     width: 80%;
@@ -32,7 +37,7 @@ th {
     text-align: center;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 2%;
     border-radius: 5px;
 }
 

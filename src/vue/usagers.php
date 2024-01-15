@@ -4,7 +4,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <title>usagers</title>
+        <title>Patients</title>
         <link rel="stylesheet" href="css/CSSusager.css">
         <link rel="stylesheet" href="css/CSSheader.css">
         <link rel="stylesheet" href="css/CSSfooter.css">
