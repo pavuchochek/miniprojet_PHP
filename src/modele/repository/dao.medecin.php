@@ -95,7 +95,7 @@ class Dao_Medecin {
     }
     public function liste_usager_medecin(Medecin $medecin){
         try{
-            $req = $this->pdo->prepare('SELECT DISTINCT Personne.Nom,Personne.Prenom,Personne.Civilite,Usager.N_securite_sociale,Usager.Adresse,Usager.Date_naissance,Usager.Lieu_naissance,Usager.Id_Personne
+            $req = $this->pdo->prepare('SELECT DISTINCT Personne.Nom,Personne.Prenom,Personne.Civilite,Usager.N_securite_sociale,Usager.Adresse,Usager.Date_naissance,Usager.Lieu_naissance,Usager.Id_Personne,Usager.Id_Usager
              FROM Usager,Personne WHERE Usager.Id_Personne=Personne.Id_Personne AND Usager.Id_Medecin = :id');
         $req->execute(array(
             'id' => $medecin->getIdMedecin()
@@ -103,9 +103,9 @@ class Dao_Medecin {
         $tablo_usagers = array();
         while ($data = $req->fetch()) {
             $personne = new Personne($data[0], $data[1], $data[2]);
-            $personne->setId($data[3]);
+            $personne->setId($data[7]);
             $usager = new Usager($personne, $data[3], $data[4],$data[5],$data[6],$medecin);
-            $usager->setIdUsager(intval($data[4]));
+            $usager->setIdUsager(intval($data[8]));
             $tablo_usagers[] = $usager;
         }
         return  $tablo_usagers;

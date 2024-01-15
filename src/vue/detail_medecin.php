@@ -19,9 +19,9 @@
             <?php
             require('/app/src/controleur/medecin.controleur.php');
             $controleur = new Medecin_controleur();
-            $id = $_GET['id'];
-            $prenom = $controleur->getMedecinById($id)->getPrenom();
-            $nom = $controleur->getMedecinById($id)->getNom();
+            $idmedecin = $_GET['id'];
+            $prenom = $controleur->getMedecinById($idmedecin)->getPrenom();
+            $nom = $controleur->getMedecinById($idmedecin)->getNom();
             echo $prenom . " " . $nom; ?>
         </h1>
         <div class="body">
@@ -37,7 +37,7 @@
                 
                 <div class="box_rdv">
                     <?php
-                        $resultat = $controleur->getListeRdv($id);
+                        $resultat = $controleur->getListeRdv($idmedecin);
                         if ($resultat == null) {
                             echo "<div>
                                 <div>
@@ -88,7 +88,7 @@
                 <div class="box_usagers" id="list_usagers">
                     
                     <?php
-                        $resultat = $controleur->getListeUsagersMedecin($id);
+                        $resultat = $controleur->getListeUsagersMedecin($idmedecin);
                         if ($resultat == null) {
                             echo "<div class='item_usager vide'>
                                 <div>
@@ -99,7 +99,7 @@
                             foreach ($resultat as $value){
                                 $prenom = $value->getPrenom();
                                 $nom = $value->getNom();
-                                $civilite = $value->getCivilite();
+                                $id = $value->getIdUsager();
                                 $num = $value->getNsecuriteSociale();
                                 if ($value->getCivilite() === 'M') {
                                     $genderIcon = 'icone_homme_usager.png';
@@ -119,7 +119,7 @@
                                                 .$nom.
                                             "</p></div>
                                             <div class='boutonsusager'>
-                                                <a href='modifier_usager.php?prenom=$prenom&nom=$nom&civilite=$civilite'>
+                                                <a href='modifier_usager.php?id=$id'>
                                                     <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
                                                     // ajouter l'action modifier usager quand la page usager sera faite
                                                 "</a>
