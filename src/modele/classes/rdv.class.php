@@ -70,14 +70,22 @@ class Rdv{
 		$this->_Heure_fin = $Heure_fin;
 	}
 	public function getDuree(): float {
-		// Convertir les heures de début et de fin en objets DateTime
-		$heureDebut = DateTime::createFromFormat('H:i', $this->_Heure_début);
-		$heureFin = DateTime::createFromFormat('H:i', $this->_Heure_fin);
+		// Convertir les heures de début et de fin en minutes
+		$heureDebutMinutes = $this->convertirHeureEnMinutes($this->_Heure_début);
+		$heureFinMinutes = $this->convertirHeureEnMinutes($this->_Heure_fin);
 	
-		// Calculer la différence entre les deux heures en heures décimales
-		$dureeEnHeures = $heureDebut->diff($heureFin)->h + $heureDebut->diff($heureFin)->i / 60;
+		// Calculer la différence en minutes
+		$differenceEnMinutes = $heureFinMinutes - $heureDebutMinutes;
+	
+		// Convertir la différence en heures décimales
+		$dureeEnHeures = $differenceEnMinutes / 60;
 	
 		return $dureeEnHeures;
+	}
+	
+	private function convertirHeureEnMinutes($heure): int {
+		list($heures, $minutes) = explode(':', $heure);
+		return ($heures * 60) + $minutes;
 	}
 	
 	

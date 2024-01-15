@@ -2,9 +2,11 @@
 require('/app/src/modele/repository/dao.rdv.php');
 class Stats_controleur{
         private $daoRdv;
+        private $daoMedecin;
         
         public function __construct() {
             $this->daoRdv=new Dao_Rdv();
+            $this->daoMedecin=new Dao_Medecin();
         }
         public function getNbHeures(int $idMedecin) {
             $listeRdv = $this->daoRdv->liste_rdv_byMedecin($idMedecin);
@@ -13,5 +15,9 @@ class Stats_controleur{
                 $nbHeures += $rdv->getDuree();
             }
             return $nbHeures;
+        }
+
+        public function liste_medecins(){
+            return $this->daoMedecin->liste_medecins("","");
         }
     }

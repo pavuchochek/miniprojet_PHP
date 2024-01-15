@@ -78,7 +78,7 @@
                 </table>
                 <canvas id="camembertChart" width="800" height="200"></canvas>
             </div>
-            <!--<div class="medecin">
+            <div class="medecin">
                 <h1>Médecins</h1>
                 <table>
                     <thead>
@@ -89,8 +89,8 @@
                     </thead>
                     <tbody>
                         <?php
-                            /*require('/app/src/controleur/medecin.controleur.php');
-                            $controleur = new Medecin_controleur();
+                            require('/app/src/controleur/stats.controleur.php');
+                            $controleur = new Stats_controleur();
                             $resultat = $controleur->liste_medecins();
                             usort($resultat, function($a, $b) {
                                 return strcmp($a->getNom(), $b->getNom());
@@ -100,17 +100,17 @@
                                 $nom = $value->getNom();
                                 $idMedecin = $value->getIdMedecin();
                                 $nbHeures = 0;
-                                //$nbHeures = $controleur->getNbHeures($idMedecin);
+                                $nbHeures = $controleur->getNbHeures($idMedecin);
                                 echo "
                                 <tr>
                                     <td>$nom $prenom</td>
                                     <td>$nbHeures</td>
                                 </tr>";
-                            }*/
+                            }
                         ?>
                     </tbody>
                 </table>
-            </div>-->
+            </div>
         </div>
 
     
