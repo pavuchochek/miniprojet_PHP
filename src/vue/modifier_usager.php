@@ -135,7 +135,6 @@
                             });
                         });
                         var submitBtn = document.getElementById('bouton_valider');
-                        submitBtn.classList.remove('active');
                     </script>
                 </form>
             </div>
