@@ -103,8 +103,8 @@
                         <input type="submit" value="Assigner un usager" class="boutons_ajout boutons_ajout_usager" id="assignerUsager">
                     </form>
 
-                    <div class="boutons_ajout boutons_ajout_usager" id="afficherFormulaireUsager" onclick="afficherComboBox()">
-                        <input type="button" value="Assigner un usager">
+                    <div class="boutons_ajout boutons_ajout_usager" onclick="afficherComboBox()">
+                        <input type="button" id="afficherFormulaireUsager">
                     </div>
 
                 </div>
@@ -176,6 +176,20 @@
     <?php include 'footer.php'; ?>
 
     <script>
+        var form_usager = document.getElementById('form_usager');
+        form_usager.style.display = 'none';
+        document.getElementById('afficherFormulaireUsager').value = 'Assigner un usager';
+        function afficherComboBox() {
+            var form_usager = document.getElementById('form_usager');
+            if (form_usager.style.display === 'none') {
+                form_usager.style.display = 'block';
+                document.getElementById('afficherFormulaireUsager').value = 'Cacher la sélection';
+            } else {
+                form_usager.style.display = 'none';
+                document.getElementById('afficherFormulaireUsager').value = 'Assigner un usager';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             var popup = document.getElementById('popupusager');
             popup.style.display = 'none';
@@ -203,16 +217,7 @@
                 var prenom = this.getAttribute('data-prenom');
                 var nom = this.getAttribute('data-nom');
             });
-            var combo_box = document.getElementById('combo_box');
-            combo_box.style.display = 'block';
-            function afficherComboBox() {
-                var combo_box = document.getElementById('combo_box');
-                if (combo_box.style.display === 'none') {
-                    combo_box.style.display = 'block';
-                } else {
-                    combo_box.style.display = 'none';
-                }
-            }
+            
         });
     </script>
 </html>
