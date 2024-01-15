@@ -48,5 +48,9 @@ class Usager_controleur{
         public function liste_medecins(){
             return $this->daoMedecin->liste_medecins("","");
         }
+
+        public function supprimer_medecin_byUsagerId($idMedecin,$idUsager){
+            return $this->daoMedecin->supprimer_medecin_referentByIdUsager($idMedecin,$idUsager);
+        }
 }
 ?>
