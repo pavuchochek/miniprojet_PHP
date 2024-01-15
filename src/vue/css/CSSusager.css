@@ -2,7 +2,14 @@
     display:none;
 }
 
-/* CSS Liste des médecins */
+#Titreaccueil,
+#Titremédecin,
+#Titrerdv,
+#Titrestats {
+    display: none;
+}
+
+/* CSS Liste des patients */
 .box_usager{
     width:80%;
     margin:auto;

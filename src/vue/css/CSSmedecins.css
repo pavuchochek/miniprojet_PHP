@@ -2,6 +2,13 @@
     display:none;
 }
 
+#Titreaccueil,
+#Titrepatient,
+#Titrerdv,
+#Titrestats {
+    display: none;
+}
+
 /* CSS Liste des médecins */
 .box_medecin{
     width:80%;

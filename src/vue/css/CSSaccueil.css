@@ -2,6 +2,13 @@
     display:none;
 }
 
+#Titremédecin,
+#Titrepatient,
+#Titrerdv,
+#Titrestats {
+    display: none;
+}
+
 #menu{
     display: flex;
 }

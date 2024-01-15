@@ -12,7 +12,10 @@
     $lieuNaissance=$_POST["lieuNaissance"];
     $Numero_Secu=$_POST["Numero_Secu"];
     $medecinReferent = isset($_POST["medecinReferent"]) ? intval($_POST["medecinReferent"]) : null;
-    $controleur->ajouter_usager($nom, $prenom, $civilite, $adresse, $dateNaissance, $lieuNaissance, $Numero_Secu, $medecinReferent);
-    
-    header('Location: /usagers.php');
+    try {
+        $controleur->ajouter_usager($nom, $prenom, $civilite, $adresse, $dateNaissance, $lieuNaissance, $Numero_Secu, $medecinReferent);
+        header('Location: /usagers.php');
+    } catch (Exception $e) {
+        echo 'erreur';
+    }
 ?>

@@ -1,3 +1,10 @@
+#Titreaccueil,
+#Titrepatient,
+#Titrerdv,
+#Titrestats {
+    display: none;
+}
+
 .body {
     display: flex;
 }
