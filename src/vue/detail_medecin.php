@@ -83,18 +83,16 @@
                         <select name="idUsager" id="combo_box">
                             <?php
                             $resultat = $controleur->getListeUsagersMedecin($idmedecin);
-                            $usagers = $controleur->getListeUsagers($idmedecin);
+                            $usagers = $controleur->listeUsagersNonReferents($idmedecin);
                             if ($usagers == null) {
                                 echo "<option value=''>Aucun patient</option>";
                             } else {
                                 foreach ($usagers as $value) {
-                                    if (!in_array($value, $resultat)) { //enlever l'usager si il n'est pas déjà assigné au médecin (je sais pas pourquoi ça marche pas)
-                                        $prenom = $value->getPrenom();
-                                        $nom = $value->getNom();
-                                        $id = $value->getIdUsager();
-                                        $num = $value->getNsecuriteSociale();
-                                        echo "<option value='$id'>$prenom $nom ($num)</option>";
-                                    }
+                                    $prenom = $value->getPrenom();
+                                    $nom = $value->getNom();
+                                    $id = $value->getIdUsager();
+                                    $num = $value->getNsecuriteSociale();
+                                    echo "<option value='$id'>$prenom $nom ($num)</option>";
                                 }
                             }
                             ?>
