@@ -253,7 +253,16 @@ class Dao_Medecin {
             error_log("". $e->getMessage());
         }
     }
-    
+    public function assignerMedecinReferent(int $idMedecin,int $idUsager){
+        try {
+            $res = $this->pdo->query('UPDATE Usager SET Id_Medecin = :idMedecin WHERE Id_Usager = :idUsager');
+            $res->execute(array(
+                'idMedecin' => $idMedecin,
+                'idUsager' => $idUsager));
+        }catch(PDOException $e) {
+            error_log("". $e->getMessage());
+        }
+    }
     
 }
 ?>
