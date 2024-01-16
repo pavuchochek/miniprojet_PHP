@@ -190,7 +190,7 @@ class Dao_Medecin {
     public function liste_usagers_medecin_non_referent(int $idMedecin){
             try{
                 $req = $this->pdo->prepare('SELECT DISTINCT Personne.Nom,Personne.Prenom,Personne.Civilite,Usager.N_securite_sociale,Usager.Adresse,Usager.Date_naissance,Usager.Lieu_naissance,Usager.Id_Personne,Usager.Id_Usager
-                 FROM Usager,Personne WHERE Usager.Id_Personne=Personne.Id_Personne AND Usager.Id_Medecin != :idMedecin');
+                 FROM Usager,Personne WHERE Usager.Id_Personne=Personne.Id_Personne AND Usager.Id_Medecin != :idMedecin OR Usager.Id_Medecin IS NULL');
             $req->execute(array(
                 'idMedecin'=>$idMedecin));
             $tablo_usagers = array();
