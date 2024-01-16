@@ -47,6 +47,7 @@
                         } else {
                             foreach ($resultat as $value){
                                 $heure = $value->getHeureDebut();
+                                $heure = substr($heure, 0, -3);
                                 $date = $value->getDateRdvString();
                                 $nom_usager = $value->getUsager()->getNom();
                                 $prenom_usager = $value->getUsager()->getPrenom();

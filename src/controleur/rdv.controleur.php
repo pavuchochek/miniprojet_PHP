@@ -1,6 +1,5 @@
 <?php 
 require('/app/src/modele/repository/dao.rdv.php');
-require('/app/src/modele/repository/dao.medecin.php');
 class Rdv_controleur{
         private $daoRdv;
         private $daoMedecin;
