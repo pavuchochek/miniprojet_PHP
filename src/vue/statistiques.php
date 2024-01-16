@@ -100,7 +100,7 @@
                                 $nom = $value->getNom();
                                 $idMedecin = $value->getIdMedecin();
                                 $nbHeures = 0;
-                                $nbHeures = $controleur->getNbHeures($idMedecin);
+                                $nbHeures = $controleur->getNbHeuresPassee($idMedecin);
                                 echo "
                                 <tr>
                                     <td>$nom $prenom</td>

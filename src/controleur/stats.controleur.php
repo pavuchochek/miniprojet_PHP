@@ -17,6 +17,17 @@ class Stats_controleur{
             return $nbHeures;
         }
 
+        public function getNbHeuresPassee(int $idMedecin) {
+            $listeRdv = $this->daoRdv->liste_rdv_byMedecin($idMedecin);
+            $nbHeures = 0;
+            foreach ($listeRdv as $rdv) {
+                if ($rdv->getDateRdv() < date("Y-m-d")) {
+                    $nbHeures += $rdv->getDuree();
+                }
+            }
+            return $nbHeures;
+        }
+
         public function liste_medecins(){
             return $this->daoMedecin->liste_medecins("","");
         }

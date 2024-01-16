@@ -22,7 +22,6 @@ footer{
     width: 98%;
     display: flex;
     justify-content: right;
-    margin: 0.5%;
 }
 
 .olalala {
@@ -41,7 +40,7 @@ footer{
     text-decoration: none;
 }
 
-.olalala:hover {
+.olalala :hover {
     background-color: #6CA6CD;
 }
 
@@ -52,5 +51,5 @@ footer{
     color: black;
     margin-top: auto;
     padding-bottom: 0;
-    height: 50%;
+    margin-right: 1%;
 }
