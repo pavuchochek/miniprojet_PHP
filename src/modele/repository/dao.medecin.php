@@ -214,6 +214,8 @@ class Dao_Medecin {
             $personne=new Personne($data[0],$data[1],$data[2]);
             $personne->setId($idPersonne);
             return $personne;
+        }catch(PDOException $e){
+            error_log("". $e->getMessage());
         }
     }
     public function liste_rdv(Medecin $medecin) {
