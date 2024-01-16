@@ -189,22 +189,32 @@ class Dao_Medecin {
     }
     public function liste_usagers_medecin_non_referent(int $idMedecin){
             try{
-                $req = $this->pdo->prepare('SELECT DISTINCT Personne.Nom,Personne.Prenom,Personne.Civilite,Usager.N_securite_sociale,Usager.Adresse,Usager.Date_naissance,Usager.Lieu_naissance,Usager.Id_Personne,Usager.Id_Usager
-                 FROM Usager,Personne WHERE Usager.Id_Personne=Personne.Id_Personne AND Usager.Id_Medecin != :idMedecin OR Usager.Id_Medecin IS NULL');
+                $req = $this->pdo->prepare('SELECT DISTINCT Usager.N_securite_sociale,Usager.Adresse,Usager.Date_naissance,Usager.Lieu_naissance,Usager.Id_Personne,Usager.Id_Usager,Usager.Id_Medecin
+                FROM Usager,Personne WHERE Usager.Id_Medecin != :idMedecin OR Usager.Id_Medecin IS NULL');
             $req->execute(array(
                 'idMedecin'=>$idMedecin));
             $tablo_usagers = array();
             while ($data = $req->fetch()) {
-                $personne = new Personne($data[0], $data[1], $data[2]);
-                $personne->setId($data[7]);
-                $usager = new Usager($personne, $data[3], $data[4],$data[5],$data[6],null);
-                $usager->setIdUsager(intval($data[8]));
+                $personne = $this->getPersonneById($data[4]);
+                $usager = new Usager($personne, $data[0], $data[1],$data[2],$data[3],$data[6]);
+                $usager->setIdUsager(intval($data[5]));
                 $tablo_usagers[] = $usager;
             }
             return  $tablo_usagers;
             }catch(PDOException $e) {
                 error_log("". $e->getMessage());
             }
+    }
+    public function getPersonneById(int $idPersonne){
+        try{
+            $req = $this->pdo->prepare('SELECT Personne.Nom,Personne.Prenom,Personne.Civilite FROM Personne WHERE Id_Personne = :idPersonne');
+            $req->execute(array(
+                'idPersonne'=>$idPersonne));
+            $data = $req->fetch();
+            $personne=new Personne($data[0],$data[1],$data[2]);
+            $personne->setId($idPersonne);
+            return $personne;
+        }
     }
     public function liste_rdv(Medecin $medecin) {
         // Recherche des rdv avec les informations de l'usager
