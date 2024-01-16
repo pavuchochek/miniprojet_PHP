@@ -19,6 +19,24 @@ class Rdv{
 		return $this->_Date_rdv;
 	}
 
+	public function getJourSemaine():String{
+		$date = $this->_Date_rdv;
+		
+		$englishDays = [
+			'Monday'    => 'Lundi',
+			'Tuesday'   => 'Mardi',
+			'Wednesday' => 'Mercredi',
+			'Thursday'  => 'Jeudi',
+			'Friday'    => 'Vendredi',
+			'Saturday'  => 'Samedi',
+			'Sunday'    => 'Dimanche',
+		];
+	
+		$formattedDate = $englishDays[date('l', strtotime($date))];
+		
+		return $formattedDate;
+	}
+
 	public function getDateRdvString(): String {
 		$date = $this->_Date_rdv;
 		
@@ -38,6 +56,37 @@ class Rdv{
 		];
 	
 		$formattedDate = date('d ') . $englishMonths[date('F', strtotime($date))] . date(' Y', strtotime($date));
+		
+		return $formattedDate;
+	}
+
+	public function getMois3lettres(): String {
+		$date = $this->_Date_rdv;
+		
+		$englishMonths = [
+			'January'   => 'Jan',
+			'February'  => 'Fév',
+			'March'     => 'Mar',
+			'April'     => 'Avr',
+			'May'       => 'Mai',
+			'June'      => 'Juin',
+			'July'      => 'Juil',
+			'August'    => 'Août',
+			'September' => 'Sept',
+			'October'   => 'Oct',
+			'November'  => 'Nov',
+			'December'  => 'Déc',
+		];
+	
+		$formattedDate = $englishMonths[date('F', strtotime($date))];
+		
+		return $formattedDate;
+	}
+
+	public function getNuméroJour(): String {
+		$date = $this->_Date_rdv;
+		
+		$formattedDate = date('d', strtotime($date));
 		
 		return $formattedDate;
 	}

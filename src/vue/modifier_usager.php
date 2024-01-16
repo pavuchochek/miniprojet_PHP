@@ -31,7 +31,11 @@
                     $dateNaissance = $resultat->getDateNaissance();
                     $lieuNaissance = $resultat->getLieuNaissance();
                     $numeroSecu = $resultat->getNsecuriteSociale();
-                    $medecinReferent = $resultat->getMedecinReferent()->getIdMedecin();
+                    if ($resultat->getMedecinReferent() !== null) {
+                        $medecinReferent = $resultat->getMedecinReferent()->getIdMedecin();
+                    } else {
+                        $medecinReferent = null;
+                    }
                 ?>
 
                     <input type="hidden" name="idUsager" value="<?php echo $idUsager; ?>">
@@ -79,6 +83,7 @@
                             foreach ($resultat as $value){
                                 $prenom = $value->getPrenom();
                                 $nom = $value->getNom();
+                                
                                 $idMedecin = $value->getId();
                                 if ($idMedecin == $medecinReferent) {
                                     $selected = 'selected';
