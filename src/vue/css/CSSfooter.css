@@ -8,9 +8,10 @@ footer{
     min-height: 10%;
     position: fixed;
     bottom: 0;
+    align-items: center;
 }
 
-#footer p {
+#footer p  {
     margin-right: 1%;
     font-size: 120%;
 }
@@ -24,13 +25,13 @@ footer{
     margin: 0.5%;
 }
 
-#footer a {
+.olalala {
     margin: auto;
     margin-right: auto;
     margin-left: 2%;
 }
 
-#footer a input{
+.olalala input{
     background-color: #87CEEB;
     border : 0px;
     border-radius: 10px;
@@ -40,6 +41,16 @@ footer{
     text-decoration: none;
 }
 
-#footer a :hover {
+.olalala:hover {
     background-color: #6CA6CD;
+}
+
+.linkfooter {
+    font-size: 110%;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    margin-top: auto;
+    padding-bottom: 0;
+    height: 50%;
 }

@@ -25,6 +25,10 @@
                 <img src="img/icone_menu_rdv.png" alt="logo">
                 <input type="button" value="Rendez-vous">
             </a>
+            <a href="statistiques.php">
+                <img src="img/image_icone_stats.png" alt="logo">
+                <input type="button" value="Statistiques">
+            </a>
         </div>
     </body>
 
