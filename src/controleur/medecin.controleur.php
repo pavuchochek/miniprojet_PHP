@@ -66,6 +66,10 @@ class Medecin_controleur{
         $listeUsagers =$this->daoMedecin->liste_usagers_medecin_non_referent($idMedecin);
         return $listeUsagers;
     }
+
+    public function getListeUsagers() {
+        return $this->daoMedecin->getListeUsagers();
+    }
 }
 
 ?>

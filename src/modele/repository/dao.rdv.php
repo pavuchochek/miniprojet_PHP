@@ -114,7 +114,19 @@ class Dao_Rdv{
         }
         return $tablo_rdv;
     }
-
+    public function liste_rdv_Actuels_medecin_usager_byId(int $idUsager,int $idMedecin){
+        $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Id_medecin = :idMedecin AND Id_usager = :idUsager') ;
+        $resRDV->execute(array(
+            'idMedecin' => $idMedecin,
+            'idUsager' => $idUsager
+        ));
+        $tablo_rdv=array();
+        while ($data = $resRDV->fetch()) {
+            $rdv=$this->constructRdvFromData($data);
+            $tablo_rdv[]=$rdv;
+        }
+        return $tablo_rdv;
+    }
     public function deleteRdv(Rdv $rdv){
         try{
         $resRDV = $this->pdo->prepare('DELETE FROM Rdv WHERE Id_Medecin = :idMedecin AND Id_Usager = :idUsager AND Date_rdv = :daterdv AND Heure_debut = :hd AND Heure_fin = :hf') ;

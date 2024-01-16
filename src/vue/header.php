@@ -1,9 +1,13 @@
-
+<?php clearstatcache();?>
 <header id = "top">
     <a href="index.php">
         <img src="img/logo.png" alt="logo" id = "logo">
     </a>
-    <h1>Cabinet Médical</h1>
+    <h1 id='Titreaccueil'>Cabinet Médical</h1>
+    <h1 id='Titremédecin'>Médecins</h1>
+    <h1 id='Titrepatient'>Patients</h1>
+    <h1 id='Titrerdv'>Rendez-vous</h1>
+    <h1 id='Titrestats'>Statistiques</h1>
     <div id="boutons">
         <a href="index.php" id="header_accueil"><input type="button" value="Accueil"></a>
         <a href="medecins.php" id="header_medecin"><input type="button" value="Médecins"></a>

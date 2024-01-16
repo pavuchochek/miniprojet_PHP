@@ -1,3 +1,10 @@
+#Titreaccueil,
+#Titrepatient,
+#Titrerdv,
+#Titrestats {
+    display: none;
+}
+
 .body {
     display: flex;
 }
@@ -160,6 +167,34 @@
     font-weight: bold;
     text-align: center;
     margin: 2%;
+}
+
+.bouton_assigner {
+    text-align: right;
+}
+
+.bouton_assigner input{
+    background-color: green;
+    font-size: 100%;
+    color: white;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border: none;
+    border-radius: 12px;
+    padding: 5% 5%;
+    margin: 0.4% 1%;
+}
+
+.bouton_assigner input:hover{
+    background-color: #6CA6CD;
+}
+
+#combo_box {
+    width: 100%;
+    margin: 2%;
+    margin-left: 3%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
 /* CSS Popup */
