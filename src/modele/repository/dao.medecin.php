@@ -196,7 +196,11 @@ class Dao_Medecin {
             $tablo_usagers = array();
             while ($data = $req->fetch()) {
                 $personne = $this->getPersonneById($data[4]);
-                $usager = new Usager($personne, $data[0], $data[1],$data[2],$data[3],$data[6]);
+                $medecin=null;
+                if(!is_null($data[6])){
+                    $medecin = $this->getMedecinById($data[6]);
+                }
+                $usager = new Usager($personne, $data[0], $data[1],$data[2],$data[3],$medecin);
                 $usager->setIdUsager(intval($data[5]));
                 $tablo_usagers[] = $usager;
             }
