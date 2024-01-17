@@ -98,6 +98,8 @@
                     <input type="submit" id="bouton_valider" value="Ajouter">
 
                     <script>
+                        var submitBtn = document.getElementById('bouton_valider');
+                        submitBtn.classList.add('active');
                         function Valide() {
                             var prenom = document.getElementById('prenom').value;
                             var nom = document.getElementById('nom').value;

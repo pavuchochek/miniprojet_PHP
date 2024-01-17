@@ -139,7 +139,7 @@
     font-weight: bold;
 }
 
-.formulaire input[type="text"] {
+.formulaire input[type="text"], .formulaire select, .formulaire input[type="date"] {
     width: 90%;
     padding: 2%;
     border: 1px solid #ccc;
