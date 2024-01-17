@@ -54,5 +54,9 @@ class Rdv_controleur{
         public function liste_medecin_avec_rdv(){
             return $this->daoRdv->getListeMedecinsRdv();
         }
+
+        public function liste_rdv_Actuels_date($date){
+            return $this->daoRdv->liste_rdv_Actuels_date($date);
+        }
 }
 ?>

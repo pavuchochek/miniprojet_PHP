@@ -63,17 +63,14 @@
     margin: 0;
 }
 
-h2 {
-    margin-top: 5px;
-}
-
 .list-inline {
     list-style: none;
     padding: 0;
     margin: 0;
+    text-align: right;
+    margin-right: 5%;
 }
 
-/* Style pour chaque élément de la liste d'informations */
 .list-inline-item {
     color: #6c757d;
 }
@@ -87,8 +84,8 @@ h2 {
 }
 
 .boutons a img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: auto;
     margin-left: 5%;
     cursor: pointer;
     border-radius: 5px;
@@ -106,7 +103,7 @@ h2 {
     align-items: center;
 }
 
-.recherche input[type="text"] {
+.recherche select {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-right: 2%;
@@ -120,4 +117,100 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     border: 1px solid #ccc;
+}
+
+/* CSS Popup */
+.popup {
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    height: 11%;
+    overflow: auto;
+    background-color: #fefefe;
+    padding: 2%;
+    border: 1px solid #888;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.popup a {
+    text-decoration: none;
+}
+
+/* CSS Formulaire */
+.boutons_modif {
+    text-align: right;
+}
+
+.boutons_modif input{
+    position: fixed;
+    top : 22%;
+    right: 1%;
+    height: auto;
+    background-color: green;
+    font-size: 100%;
+    color: white;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border: none;
+    border-radius: 12px;
+    padding: 1% 2%;
+    margin: 0.4% 1%;
+}
+
+.boutons_modif input:hover{
+    background-color: #6CA6CD;
+}
+
+.formulaire {
+    display: none;
+    width: 30%;
+    margin: auto;
+    margin-top: 5%;
+    padding: 2%;
+    background-color: #87CEEB;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.formulaire label {
+    display: block;
+    margin-bottom: 3%;
+    font-weight: bold;
+}
+
+.formulaire input[type="text"] {
+    width: 90%;
+    padding: 2%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 5%;
+}
+
+.formulaire input[type="submit"] {
+    padding: 1% 2%;
+    border: none;
+    border-radius: 5px;
+    float: right;
+}
+
+#bouton_valider {
+    background-color: #ccc;
+    cursor: default;
+    color: #000;
+}
+
+#bouton_valider.active:hover {
+    background-color: #127215;
+}
+
+#bouton_valider.active {
+    background-color: #4CAF50;
+    cursor: pointer;
+    color: #fff;
 }

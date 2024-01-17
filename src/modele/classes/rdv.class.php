@@ -91,6 +91,14 @@ class Rdv{
 		return $formattedDate;
 	}
 
+	public function getAnnee(): String {
+		$date = $this->_Date_rdv;
+		
+		$formattedDate = date('Y', strtotime($date));
+		
+		return $formattedDate;
+	}
+
 	public function getHeureDebut():String{
 		return $this->_Heure_début;
 	}

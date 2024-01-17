@@ -12,7 +12,7 @@
         <a href="index.php" id="header_accueil"><input type="button" value="Accueil"></a>
         <a href="medecins.php" id="header_medecin"><input type="button" value="Médecins"></a>
         <a href="usagers.php" id="header_user"><input type="button" value="Patients"></a>
-        <a href="rdv.php" id="header_rdv"><input type="button" value="Rendez-vous"></a>
+        <a href="rdv.php?usagerFilter=&medecinFilter=" id="header_rdv"><input type="button" value="Rendez-vous"></a>
     </div>
     <a href="#top" class="retourHaut">
         <img src="img\flecheHeader.png">
