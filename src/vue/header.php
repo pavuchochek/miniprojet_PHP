@@ -14,7 +14,7 @@
         <a href="usagers.php" id="header_user"><input type="button" value="Patients"></a>
         <a href="rdv.php?usagerFilter=&medecinFilter=" id="header_rdv"><input type="button" value="Rendez-vous"></a>
     </div>
-    <a href="#top" class="retourHaut">
+    <a href="#" class="retourHaut">
         <img src="img\flecheHeader.png">
     </a>
 
