@@ -114,12 +114,16 @@
                 var formulaire = document.getElementById('formulaire');
                 var listMedecin = document.getElementById('list_medecin');
                 var btn_modif = document.getElementById('boutonAfficher');
+                var champ_formulaire1 = document.getElementById('prenom');
+                var champ_formulaire2 = document.getElementById('nom');
 
                 if (formulaireVisible) {
                     formulaire.style.display = 'none';
                     listMedecin.style.display = 'block';
                     btn_modif.value = 'Ajouter médecin';
                     formulaireVisible = false;
+                    champ_formulaire1.value = '';
+                    champ_formulaire2.value = '';
                 } else {
                     formulaire.style.display = 'block';
                     listMedecin.style.display = 'none';

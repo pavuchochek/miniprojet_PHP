@@ -16,8 +16,8 @@
             <div id="formulaire" class="formulaire">
                 <form id="rdvForm" method="post" action="traitements/traitement_ajout_rdv.php" onsubmit="return Valide()">
                     <label for="usager">Patient :</label>
-                    <select id="usager" name="usager">
-                        <option value="" selected disabled hidden>Choisir un patient</option>
+                    <select id="usager" name="usager" onchange="updateMedecin()" required>
+                        <option value="" selected disabled>Choisir un patient</option>
                         <?php
                             require('/app/src/controleur/rdv.controleur.php');
                             $controleur = new Rdv_controleur();
@@ -26,16 +26,17 @@
                                 $nom = $value->getNom();
                                 $prenom = $value->getPrenom();
                                 $id = $value->getIdUsager();
-                                echo "<option value='$id'>$nom $prenom</option>";
-                            }
+                                $medecinReferent = $value->getMedecinReferent() !== null ? $value->getMedecinReferent()->getIdMedecin() : null;
+                                echo "<option value='$id' data-medecin-referent='$medecinReferent'>$nom $prenom</option>";
+                            }                            
                         ?>
                     </select>
 
                     <label for="medecin">Médecin :</label>
-                    <select id="medecin" name="medecin">
-                        <option value="" selected disabled hidden>Choisir un médecin</option>
+                    <select id="medecin" name="medecin" required>
+                        <option value="" selected disabled>Choisir un médecin</option>
                         <?php
-                            $resultat = $controleur->liste_medecin_avec_rdv();
+                            $resultat = $controleur->liste_medecins();
                             foreach ($resultat as $value){
                                 $nom = $value->getNom();
                                 $prenom = $value->getPrenom();
@@ -173,6 +174,11 @@
             var listMedecin = document.getElementById('list_rdv');
             var recherche = document.getElementById('recherche');
             var btn_modif = document.getElementById('boutonAfficher');
+            var champ_formulaire_1 = document.getElementById('usager');
+            var champ_formulaire_2 = document.getElementById('medecin');
+            var champ_formulaire_3 = document.getElementById('date');
+            var champ_formulaire_4 = document.getElementById('heure_debut');
+            var champ_formulaire_5 = document.getElementById('heure_fin');
 
             if (formulaireVisible) {
                 formulaire.style.display = 'none';
@@ -180,6 +186,11 @@
                 recherche.style.display = 'flex';
                 btn_modif.value = 'Ajouter un rendez-vous';
                 formulaireVisible = false;
+                champ_formulaire_1.value = '';
+                champ_formulaire_2.value = '';
+                champ_formulaire_3.value = '';
+                champ_formulaire_4.value = '';
+                champ_formulaire_5.value = '';
             } else {
                 formulaire.style.display = 'block';
                 listMedecin.style.display = 'none';
@@ -188,26 +199,6 @@
                 formulaireVisible = true;
             }
         }
-
-        //Script pour vérifier la présence de valeur dans les champs de saisie du formulaire
-        function Valide() {
-            var prenom = document.getElementById('prenom').value;
-            var nom = document.getElementById('nom').value;
-            return prenom !== '' && nom !== '';
-        }
-        //Script pour activer le bouton valider du formulaire d'ajout de médecin
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('rdvForm').addEventListener('input', function () {
-                var prenom = document.getElementById('prenom').value;
-                var nom = document.getElementById('nom').value;
-                var submitBtn = document.getElementById('bouton_valider');
-                if (prenom !== '' && nom !== '') {
-                    submitBtn.classList.add('active');
-                } else {
-                    submitBtn.classList.remove('active');
-                }
-            });
-        });
 
         //Script de la popup de confirmation de suppression de médecin
         document.addEventListener('DOMContentLoaded', function() {
@@ -238,6 +229,14 @@
                 var nom = this.getAttribute('data-nom');
             });
         });
+
+        function updateMedecin() {
+            var medecinSelect = document.getElementById("medecin");
+            var usagerSelect = document.getElementById("usager");
+            var idUsager = usagerSelect.value;
+            var idMedecinReferent = usagerSelect.options[usagerSelect.selectedIndex].getAttribute('data-medecin-referent');
+            medecinSelect.value = idMedecinReferent;
+        }
 
         document.addEventListener('DOMContentLoaded', flecheHaut);
     </script>
