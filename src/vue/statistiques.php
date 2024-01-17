@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <title>Statistiques</title>
-        <link rel="stylesheet" href="css/CSSstats.css">
         <link rel="stylesheet" href="css/CSSheader.css">
         <link rel="stylesheet" href="css/CSSfooter.css">
+        <link rel="stylesheet" href="css/CSSstats.css">
         <link rel="icon" href="img/logo.png">
     </head>
 
@@ -14,69 +14,71 @@
     <body>
         <div class="body">
             <div class="usagers">
-                <h1>Patients</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Femme</th>
-                            <th>Homme</th>
-                        </tr>
-                    </thead>
-                    <?php
-                        require('/app/src/controleur/usager.controleur.php');
-                        $controleur = new Usager_controleur();
-                        $resultat = $controleur->liste_usagers();
-                        $fj = 0;
-                        $hj = 0;
-                        $fa = 0;
-                        $ha = 0;
-                        $fv = 0;
-                        $hv = 0;
-                        foreach ($resultat as $value) {
-                            if ($value->getCivilite() == "F") {
-                                if ($value->getAge() < 25){
-                                    $fj++;
-                                }
-                                elseif ($value->getAge() < 50){
-                                    $fv++;
-                                }
-                                else{
-                                    $fa++;
-                                }
-                            } else {
-                                if ($value->getAge() < 25){
-                                    $hj++;
-                                }
-                                elseif ($value->getAge() < 50){
-                                    $hv++;
-                                }
-                                else{
-                                    $ha++;
+                <div class="fixed">
+                    <h1>Patients</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Femme</th>
+                                <th>Homme</th>
+                            </tr>
+                        </thead>
+                        <?php
+                            require('/app/src/controleur/usager.controleur.php');
+                            $controleur = new Usager_controleur();
+                            $resultat = $controleur->liste_usagers();
+                            $fj = 0;
+                            $hj = 0;
+                            $fa = 0;
+                            $ha = 0;
+                            $fv = 0;
+                            $hv = 0;
+                            foreach ($resultat as $value) {
+                                if ($value->getCivilite() == "F") {
+                                    if ($value->getAge() < 25){
+                                        $fj++;
+                                    }
+                                    elseif ($value->getAge() < 50){
+                                        $fv++;
+                                    }
+                                    else{
+                                        $fa++;
+                                    }
+                                } else {
+                                    if ($value->getAge() < 25){
+                                        $hj++;
+                                    }
+                                    elseif ($value->getAge() < 50){
+                                        $hv++;
+                                    }
+                                    else{
+                                        $ha++;
+                                    }
                                 }
                             }
-                        }
-                    echo "
-                    <tbody>
-                        <tr>
-                            <th>Moins de 25 ans</th>
-                            <td id = 'fj'>$fj</td>
-                            <td id = 'hj'>$hj</td>
-                        </tr>   
-                        <tr>
-                            <th>Entre 25 et 50 ans</th>
-                            <td id = 'fa'>$fa</td>
-                            <td id = 'ha'>$ha</td>
-                        </tr>
-                        <tr>
-                            <th>Plus de 50 ans</th>
-                            <td id = 'fv'>$fv</td>
-                            <td id = 'hv'>$hv</td>
-                        </tr>
-                    </tbody>";
-                    ?>
-                </table>
-                <canvas id="camembertChart" width="800" height="200"></canvas>
+                        echo "
+                        <tbody>
+                            <tr>
+                                <th>Moins de 25 ans</th>
+                                <td id = 'fj'>$fj</td>
+                                <td id = 'hj'>$hj</td>
+                            </tr>   
+                            <tr>
+                                <th>Entre 25 et 50 ans</th>
+                                <td id = 'fa'>$fa</td>
+                                <td id = 'ha'>$ha</td>
+                            </tr>
+                            <tr>
+                                <th>Plus de 50 ans</th>
+                                <td id = 'fv'>$fv</td>
+                                <td id = 'hv'>$hv</td>
+                            </tr>
+                        </tbody>";
+                        ?>
+                    </table>
+                    <canvas id="camembertChart" width="800" height="200"></canvas>
+                </div>
             </div>
             <div class="medecin">
                 <h1>Médecins</h1>
