@@ -2,10 +2,10 @@
     require('/app/src/controleur/usager.controleur.php');
 
     $controleur = new Usager_controleur();
-    $nom=$_POST["nom"];
-    $nom = preg_replace("/[^a-zA-Z]/", "", $nom);
-    $prenom=$_POST["prenom"];
-    $prenom = preg_replace("/[^a-zA-Z]/", "", $prenom);
+    $nom = $_POST["nom"];
+    $nom = preg_replace("/[^a-zA-Z\-]/", "", $nom);
+    $prenom = $_POST["prenom"];
+    $prenom = preg_replace("/[^a-zA-Z\-]/", "", $prenom);
     $civilite=$_POST["civilite"];
     $adresse=$_POST["Adresse"];
     $dateNaissance=$_POST["dateNaissance"];
