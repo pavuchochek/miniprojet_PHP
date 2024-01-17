@@ -44,7 +44,7 @@ class Dao_Rdv{
     }
 
     public function getListeUsagersRdv(){
-        $resRDV = $this->pdo->prepare('SELECT DISTINCT Id_Usager FROM Rdv;');
+        $resRDV = $this->pdo->prepare('SELECT DISTINCT Id_Usager FROM Rdv WHERE Date_rdv>=CURDATE();');
         $resRDV->execute();
         $tablo_usager=array();
         while ($data = $resRDV->fetch()) {
@@ -55,7 +55,7 @@ class Dao_Rdv{
     }
 
     public function getListeMedecinsRdv(){
-        $resRDV = $this->pdo->prepare('SELECT DISTINCT Id_Medecin FROM Rdv;');
+        $resRDV = $this->pdo->prepare('SELECT DISTINCT Id_Medecin FROM Rdv WHERE Date_rdv>=CURDATE();');
         $resRDV->execute();
         $tablo_medecins=array();
         while ($data = $resRDV->fetch()) {
