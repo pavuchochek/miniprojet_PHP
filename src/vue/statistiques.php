@@ -92,15 +92,20 @@
                             require('/app/src/controleur/stats.controleur.php');
                             $controleur = new Stats_controleur();
                             $resultat = $controleur->liste_medecins();
-                            usort($resultat, function($a, $b) {
-                                return strcmp($a->getNom(), $b->getNom());
-                            });
-                            foreach ($resultat as $value){
-                                $prenom = $value->getPrenom();
-                                $nom = $value->getNom();
+                            $nbHeuresList = [];
+
+                            foreach ($resultat as $value) {
                                 $idMedecin = $value->getIdMedecin();
-                                $nbHeures = 0;
-                                $nbHeures = $controleur->getNbHeuresPassee($idMedecin);
+                                $nbHeuresList[$idMedecin] = $controleur->getNbHeuresPassee($idMedecin);
+                            }
+
+                            arsort($nbHeuresList);
+
+                            foreach ($nbHeuresList as $idMedecin => $nbHeures) {
+                                $medecin = $controleur->getMedecinById($idMedecin);
+                                $prenom = $medecin->getPrenom();
+                                $nom = $medecin->getNom();
+
                                 echo "
                                 <tr>
                                     <td>$nom $prenom</td>
@@ -117,27 +122,21 @@
     </body>
 
     <?php include 'footer.php'; ?>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Données de répartition (à remplacer par vos données réelles)
         var data = {
             datasets: [{
                 data: [<?php echo $hj?>, <?php echo $ha?>, <?php echo $hv?>, <?php echo $fv?>, <?php echo $fa?>, <?php echo $fj?>],
                 backgroundColor: ["#00CED1", "#20B2AA", "#6A5ACD", "#FF6F61", "#FFA07A", "#FFD700"]
             }]
         };
-
-        // Options du diagramme camembert
         var options = {
             responsive: false,
             maintainAspectRatio: false,
             hover: false
         };
-
-        // Récupérer le contexte du canvas
         var ctx = document.getElementById('camembertChart').getContext('2d');
-
-        // Créer le diagramme camembert
         var camembertChart = new Chart(ctx, {
             type: 'pie',
             data: data,

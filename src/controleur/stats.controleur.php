@@ -31,4 +31,8 @@ class Stats_controleur{
         public function liste_medecins(){
             return $this->daoMedecin->liste_medecins("","");
         }
+
+        public function getMedecinById(int $idMedecin) {
+            return $this->daoMedecin->getMedecinById($idMedecin);
+        }
     }
