@@ -14,32 +14,56 @@
     <body>
         <div class="body">
             <div id="formulaire" class="formulaire">
-                <form id="medecinForm" method="post" action="traitements/traitement_ajout_medecin.php" onsubmit="return Valide()">
-                    <label for="prenom">Prénom:</label>
-                    <input type="text" id="prenom" name="prenom" autocomplete="off">
-
-                    <label for="nom">Nom:</label>
-                    <input type="text" id="nom" name="nom" autocomplete="off">
-
-                    <label for="civilite">Civilité:</label>
-                    <select id="civilite" name="civilite">
-                        <option value="M">Monsieur</option>
-                        <option value="F">Madame</option>
-                        <option value="A">Autre</option>
+                <form id="rdvForm" method="post" action="traitements/traitement_ajout_rdv.php" onsubmit="return Valide()">
+                    <label for="usager">Patient :</label>
+                    <select id="usager" name="usager">
+                        <option value="" selected disabled hidden>Choisir un patient</option>
+                        <?php
+                            require('/app/src/controleur/rdv.controleur.php');
+                            $controleur = new Rdv_controleur();
+                            $resultat = $controleur->liste_usager();
+                            foreach ($resultat as $value){
+                                $nom = $value->getNom();
+                                $prenom = $value->getPrenom();
+                                $id = $value->getIdUsager();
+                                echo "<option value='$id'>$nom $prenom</option>";
+                            }
+                        ?>
                     </select>
+
+                    <label for="medecin">Médecin :</label>
+                    <select id="medecin" name="medecin">
+                        <option value="" selected disabled hidden>Choisir un médecin</option>
+                        <?php
+                            $resultat = $controleur->liste_medecin_avec_rdv();
+                            foreach ($resultat as $value){
+                                $nom = $value->getNom();
+                                $prenom = $value->getPrenom();
+                                $id = $value->getIdMedecin();
+                                echo "<option value='$id'>$nom $prenom</option>";
+                            }
+                        ?>
+                    </select>
+
+                    <label for="date">Date :</label>
+                    <input type="date" id="date" name="date" required>
+
+                    <label for="heure_debut">Heure de début :</label>
+                    <input type="time" id="heure_debut" name="heure_debut" required>
+
+                    <label for="heure_fin">Heure de fin :</label>
+                    <input type="time" id="heure_fin" name="heure_fin" required>
 
                     <input type="submit" id="bouton_valider" value="Ajouter">
                 </form>
             </div>
-            <div class="boutons_modif" >
-                <input type="button" value="Ajouter un rendez-vous">
+            <div class="boutons_modif" id="afficherFormulaire">
+                <input id="boutonAfficher" type="button" value="Ajouter un rendez-vous" onclick="toggleForm()">
             </div>
-            <form action="" method="GET" class="recherche">
+            <form action="" method="GET" class="recherche" id="recherche">
                 <select name="usagerFilter">
                     <option value="">Tous les usagers</option>
                     <?php
-                        require('/app/src/controleur/rdv.controleur.php');
-                        $controleur = new Rdv_controleur();
                         $resultat = $controleur->liste_usager_avec_rdv();
                         foreach ($resultat as $value){
                             $nom = $value->getNom();
@@ -134,16 +158,19 @@
         function toggleForm() {
             var formulaire = document.getElementById('formulaire');
             var listMedecin = document.getElementById('list_rdv');
+            var recherche = document.getElementById('recherche');
             var btn_modif = document.getElementById('boutonAfficher');
 
             if (formulaireVisible) {
                 formulaire.style.display = 'none';
-                listMedecin.style.display = 'block';
-                btn_modif.value = 'Ajouter médecin';
+                listMedecin.style.display = 'flex';
+                recherche.style.display = 'flex';
+                btn_modif.value = 'Ajouter un rendez-vous';
                 formulaireVisible = false;
             } else {
                 formulaire.style.display = 'block';
                 listMedecin.style.display = 'none';
+                recherche.style.display = 'none';
                 btn_modif.value = 'Annuler';
                 formulaireVisible = true;
             }
@@ -157,7 +184,7 @@
         }
         //Script pour activer le bouton valider du formulaire d'ajout de médecin
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('medecinForm').addEventListener('input', function () {
+            document.getElementById('rdvForm').addEventListener('input', function () {
                 var prenom = document.getElementById('prenom').value;
                 var nom = document.getElementById('nom').value;
                 var submitBtn = document.getElementById('bouton_valider');

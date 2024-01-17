@@ -66,7 +66,7 @@ class Dao_Rdv{
     }
 
     public function liste_rdv_Actuels(){
-        $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE()');
+        $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE() order by Date_rdv,Heure_Debut');
         $resRDV->execute();
         $tablo_rdv=array();
         while ($data = $resRDV->fetch()) {
