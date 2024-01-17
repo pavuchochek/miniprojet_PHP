@@ -42,6 +42,7 @@ class Dao_Rdv{
         return $rdv;
         
     }
+
     public function getListeUsagersRdv(){
         $resRDV = $this->pdo->prepare('SELECT DISTINCT Id_Usager FROM Rdv;');
         $resRDV->execute();
@@ -52,6 +53,7 @@ class Dao_Rdv{
         }
         return $tablo_usager;
     }
+
     public function getListeMedecinsRdv(){
         $resRDV = $this->pdo->prepare('SELECT DISTINCT Id_Medecin FROM Rdv;');
         $resRDV->execute();
@@ -122,6 +124,7 @@ class Dao_Rdv{
         ));
 
     }
+
     public function liste_rdv_byMedecin(int $idMedecin){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Id_medecin = :idMedecin') ;
         $resRDV->execute(array(
@@ -134,6 +137,7 @@ class Dao_Rdv{
         }
         return $tablo_rdv;
     }
+
     public function liste_rdv_Actuels_medecin_usager_byId(int $idUsager,int $idMedecin){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Id_medecin = :idMedecin AND Id_usager = :idUsager') ;
         $resRDV->execute(array(

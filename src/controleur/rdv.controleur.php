@@ -3,10 +3,12 @@ require('/app/src/modele/repository/dao.rdv.php');
 class Rdv_controleur{
         private $daoRdv;
         private $daoMedecin;
+        private $daoUsager;
     
         public function __construct() {
             $this->daoRdv=new Dao_Rdv();
             $this->daoMedecin=new Dao_Medecin();
+            $this->daoUsager=new Dao_Usager();
         }
 
         public function liste_rdv(){
@@ -39,6 +41,18 @@ class Rdv_controleur{
         public function getRdvByIdMedecinIdUsager(int $idUsager,int $idMedecin){
             $array=$this->daoRdv->liste_rdv_Actuels_medecin_usager_byId($idUsager,$idMedecin);
             return $array;
+        }
+
+        public function liste_usager(){
+            return $this->daoUsager->listeUsagers();
+        }
+
+        public function liste_usager_avec_rdv(){
+            return $this->daoRdv->getListeUsagersRdv();
+        }
+
+        public function liste_medecin_avec_rdv(){
+            return $this->daoRdv->getListeMedecinsRdv();
         }
 }
 ?>

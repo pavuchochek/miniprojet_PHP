@@ -197,7 +197,5 @@ class Dao_Usager{
             error_log("Error executing SQL query: " . $e->getMessage());
             throw $e;
         }
-    }
-    
-    
+    }    
 }

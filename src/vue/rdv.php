@@ -16,10 +16,43 @@
             <div class="boutons_modif" >
                 <input type="button" value="Ajouter un rendez-vous">
             </div>
+            <form action="" method="GET" class="recherche">
+    <select name="usagerFilter">
+        <option value="">Tous les usagers</option>
+        <?php
+            require('/app/src/controleur/rdv.controleur.php');
+            $controleur = new Rdv_controleur();
+            $resultat = $controleur->liste_usager_avec_rdv();
+            foreach ($resultat as $value){
+                $nom = $value->getNom();
+                $prenom = $value->getPrenom();
+                echo "<option value='$nom $prenom'>$nom $prenom</option>";
+            }
+        ?>
+    </select>
+
+    <select name="medecinFilter">
+        <option value="">Tous les médecins</option>
+        <?php
+            $resultat = $controleur->liste_medecin_avec_rdv();
+            foreach ($resultat as $value){
+                $nom = $value->getNom();
+                $prenom = $value->getPrenom();
+                echo "<option value='$nom $prenom'>$nom $prenom</option>";
+            }
+        ?>
+    </select>
+
+    <input type="submit" value="Rechercher">
+</form>
+            <div>
+                <form action="" method="GET" class="recherche">
+                    <input type="text" name="search" autocomplete="off" placeholder="Rechercher par date">
+                    <input type="submit" value="Rechercher">
+                </form>
+            </div>
             <div class="card-container">
             <?php
-                require('/app/src/controleur/rdv.controleur.php');
-                $controleur = new Rdv_controleur();
                 $resultat = $controleur->liste_rdv();
                 foreach ($resultat as $value){
                     $date = $value->getDateRdvString();
@@ -41,19 +74,21 @@
                             <h2>$mois</h2>
                         </div>
                         <div class='col-10'>
-                            <h3 class='text-uppercase'><strong>$nom_medecin $prenom_medecin</strong></h3>
+                            <h3 class='text-uppercase'><strong>Médecin : $nom_medecin $prenom_medecin</strong></h3>
                             <ul class='list-inline'>
                                 <li class='list-inline-item'><i class='fa fa-calendar-o' aria-hidden='true'></i> $jour_semaine</li>
                                 <li class='list-inline-item'><i class='fa fa-clock-o' aria-hidden='true'></i> $heure_debut - $heure_fin</li>
                             </ul>
                             <div>
-                                <p>$nom_usager $prenom_usager</p>
-                                <a href='#'>
-                                    <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
-                                "</a>
-                                <a href='#' class='supprimerusagerBtn'  >
-                                    <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
-                                " </a>
+                                <p>Patient : $nom_usager $prenom_usager</p>
+                                <div class='boutons'>
+                                    <a href='#'>
+                                        <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
+                                    "</a>
+                                    <a href='#' class='supprimerusagerBtn'  >
+                                        <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
+                                    " </a>
+                                </div>
                             </div>
                         </div>
                     </div>";
