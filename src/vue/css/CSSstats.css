@@ -2,6 +2,10 @@
     display: none;
 }
 
+header {
+    position: fixed;
+}
+
 #Titreaccueil,
 #Titremédecin,
 #Titrepatient,
@@ -39,7 +43,7 @@ th {
     background-color: #f2f2f2;
 }
 
-.usagers div {
+.usagers div div {
     display: flex;
     text-align: center;
     justify-content: center;
@@ -70,4 +74,15 @@ th {
 
 #ha {
     background-color: #20B2AA;
+}
+
+.fixed {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 25%;
+}
+
+.medecin {
+    margin-top: 10%;
 }
