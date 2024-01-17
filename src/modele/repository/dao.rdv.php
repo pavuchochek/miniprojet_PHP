@@ -52,6 +52,16 @@ class Dao_Rdv{
         }
         return $tablo_usager;
     }
+    public function getListeMedecinsRdv(){
+        $resRDV = $this->pdo->prepare('SELECT DISTINCT Id_Medecin FROM Rdv;');
+        $resRDV->execute();
+        $tablo_medecins=array();
+        while ($data = $resRDV->fetch()) {
+            $usager=$this->getMedecinById($data[0]);
+            $tablo_medecins[]=$usager;
+        }
+        return $tablo_medecins;
+    }
 
     public function liste_rdv_Actuels(){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE()');
