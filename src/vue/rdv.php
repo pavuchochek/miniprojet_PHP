@@ -114,8 +114,10 @@
                         $heure_fin = substr($heure_fin, 0, -3);
                         $nom_usager = $value->getUsager()->getNom();
                         $prenom_usager = $value->getUsager()->getPrenom();
+                        $id_usager = $value->getUsager()->getIdUsager();
                         $nom_medecin = $value->getMedecin()->getNom();
                         $prenom_medecin = $value->getMedecin()->getPrenom();
+                        $id_medecin = $value->getMedecin()->getIdMedecin();
                         $mois = $value->getMois3lettres();
                         $jour = $value->getNuméroJour();
                         $jour_semaine = $value->getJourSemaine();
@@ -137,7 +139,7 @@
                                         <a href='#'>
                                             <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
                                         "</a>
-                                        <a href='#' class='supprimerusagerBtn'  >
+                                        <a href='#' class='supprimerRdvBtn'  >
                                             <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
                                         " </a>
                                     </div>
@@ -148,7 +150,18 @@
                 ?>
             </div>
 
+            <div class="popup" id="popupMedecin">
+                <p id="popupMedecinNom"> </p>
+                <div class="boutons_Popup">
+                    <input type="button" value="Annuler" id="Bouton_popup_annuler">
+                    <a href='#'>
+                        <input type='button' value='Oui'>
+                    </a>
+                </div>
+            </div>
+
         </div>
+        
     </body>
 
     <?php include 'footer.php'; ?>
@@ -193,6 +206,36 @@
                 } else {
                     submitBtn.classList.remove('active');
                 }
+            });
+        });
+
+        //Script de la popup de confirmation de suppression de médecin
+        document.addEventListener('DOMContentLoaded', function() {
+            var formulaireVisible = false;
+            var popup = document.getElementById('popupMedecin');
+            popup.style.display = 'none';
+
+            var supprimerBtns = document.getElementsByClassName('supprimerRdvBtn');
+            //Script pour afficher la popup de confirmation de suppression de médecin
+            for (var i = 0; i < supprimerBtns.length; i++) {
+                supprimerBtns[i].addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var prenom = this.getAttribute('data-prenom');
+                    var nom = this.getAttribute('data-nom');
+
+                    var nomprenom = document.getElementById('popupMedecinNom');
+                    nomprenom.innerHTML = "Voulez-vous supprimer le médecin " + prenom + ' ' + nom + " ?";
+                    popup.style.display = 'block';
+                    document.getElementById('Bouton_popup_annuler').setAttribute('data-prenom', prenom);
+                    document.getElementById('Bouton_popup_annuler').setAttribute('data-nom', nom);
+                    document.querySelector('#popupMedecin .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_medecin.php?id='+this.getAttribute('data-id'));
+                });
+            }
+            //Script pour initialiser la popup de confirmation de suppression de médecin
+            document.getElementById('Bouton_popup_annuler').addEventListener('click', function() {
+                popup.style.display = 'none';
+                var prenom = this.getAttribute('data-prenom');
+                var nom = this.getAttribute('data-nom');
             });
         });
 
