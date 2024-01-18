@@ -1,0 +1,65 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 400px;
+    margin: 100px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.titreConnexion {
+    text-align: center;
+    color: #333;
+}
+
+.formulaireConnexion {
+    margin-top: 20px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.label_user,
+.label_mdp {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.boutonConnexion {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.boutonConnexion:hover {
+    background-color: #45a049;
+}
+
+.messageErreur {
+    color: #ff0000;
+    text-align: center;
+    margin-bottom: 15px;
+}

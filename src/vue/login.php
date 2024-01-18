@@ -32,26 +32,27 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Connexion</title>
-    <!-- Ajoute tes styles CSS ici si nécessaire -->
+    <title>Connexion - Cabinet Médical</title>
+    <link rel="stylesheet" href="css/CSSlogin.css">
 </head>
 <body>
 
-    <h2>Connexion</h2>
+    <div class="container">
+        <h2 class="titreConnexion">Connexion</h2>
 
-    <?php if (isset($message_erreur)) : ?>
-        <p style="color: red;"><?php echo $message_erreur; ?></p>
-    <?php endif; ?>
+        <?php if (isset($message_erreur)) : ?>
+            <p class = "messageErreur"><?php echo $message_erreur; ?></p>
+        <?php endif; ?>
 
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <label for="nom_utilisateur">Nom d'utilisateur:</label>
-        <input type="text" id="nom_utilisateur" name="nom_utilisateur" value="user" required autocomplete="off"><br>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="formulaireConnexion">
+            <label for="nom_utilisateur" class="label label_user">Nom d'utilisateur:</label>
+            <input type="text" id="nom_utilisateur" name="nom_utilisateur" value="user" required autocomplete="off"><br>
 
-        <label for="mot_de_passe">Mot de passe:</label>
-        <input type="password" id="mot_de_passe" name="mot_de_passe" value="iutinfo" required autocomplete="off"><br>
+            <label for="mot_de_passe" class = "label label_mdp">Mot de passe:</label>
+            <input type="password" id="mot_de_passe" name="mot_de_passe" value="iutinfo" required autocomplete="off"><br>
 
-        <input type="submit" value="Se connecter">
-    </form>
-
+            <input type="submit" value="Se connecter" class="boutonConnexion">
+        </form>
+    </div>
 </body>
 </html>
