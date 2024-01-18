@@ -8,5 +8,8 @@
             <p>Site réalisé par : </p>
             <a class="linkfooter" href="https://limit-breker.gamingdy.fr/" target = "_blank">Simon Armand et Sofia Gribanova</p></a>
         </div>
+        <form method="post" action="logout.php">
+            <input type="submit" value="Se déconnecter">
+        </form>
     </footer>
 </html>
