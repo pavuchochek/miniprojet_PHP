@@ -235,6 +235,7 @@ class Dao_Medecin {
             JOIN Usager ON Rdv.Id_Usager = Usager.Id_Usager
             JOIN Personne ON Usager.Id_Personne = Personne.Id_Personne
             WHERE Rdv.Id_Medecin = :id
+            ORDER BY Rdv.Date_rdv, Rdv.Heure_debut
         ');
         $res->execute(array(
             'id' => $medecin->getIdMedecin()
@@ -250,6 +251,37 @@ class Dao_Medecin {
         }
         return $tablo_rdv;
     }
+
+    public function liste_rdv_actuel(Medecin $medecin) {
+        // Recherche des rdv avec les informations de l'usager
+        $tablo_rdv = array();
+        $res = $this->pdo->prepare('
+            SELECT Rdv.Id_Usager, Rdv.Date_rdv, Rdv.Heure_debut, Rdv.Heure_fin,
+                   Personne.Nom AS Usager_Nom, Personne.Prenom AS Usager_Prenom,
+                   Personne.Civilite AS Usager_Civilite, Usager.N_securite_sociale,
+                   Usager.Adresse, Usager.Date_naissance, Usager.Lieu_naissance,
+                   Usager.Id_Usager
+            FROM Rdv
+            JOIN Usager ON Rdv.Id_Usager = Usager.Id_Usager
+            JOIN Personne ON Usager.Id_Personne = Personne.Id_Personne
+            WHERE Rdv.Id_Medecin = :id AND Rdv.Date_rdv >= CURDATE()
+            ORDER BY Rdv.Date_rdv, Rdv.Heure_debut
+        ');
+        $res->execute(array(
+            'id' => $medecin->getIdMedecin()
+        ));
+        while ($data = $res->fetch()) {
+            // Création de l'objet Usager et Rdv
+            $personne = new Personne($data['Usager_Nom'], $data['Usager_Prenom'], $data['Usager_Civilite']);
+            $personne->setId($data['Id_Usager']);  
+            $usager = new Usager($personne, $data['N_securite_sociale'], $data['Adresse'], $data['Date_naissance'], $data['Lieu_naissance'], $medecin);
+            $usager->setIdUsager($data['Id_Usager']);
+            $rdv = new Rdv($data['Date_rdv'], $data['Heure_debut'], $data['Heure_fin'], $medecin, $usager);
+            $tablo_rdv[] = $rdv;
+        }
+        return $tablo_rdv;
+    }
+
 
     public function getListeUsagers() {
         try {

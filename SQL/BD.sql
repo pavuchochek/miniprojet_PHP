@@ -196,3 +196,17 @@ VALUES
 (2, 1,'2022-09-25', '12:30', '13:00'),
 (2, 1,'2022-10-30', '10:45', '11:45'),
 (2, 1,'2022-12-05', '14:15', '15:15');
+
+-- Début de la transaction
+START TRANSACTION;
+
+-- Mise à jour des dates des rendez-vous
+UPDATE Rdv
+SET Date_rdv = CASE
+    WHEN DAYOFWEEK(Date_rdv) = 1 THEN DATE_ADD(Date_rdv, INTERVAL 1 DAY) -- Si c'est un dimanche, décaler vers le lundi
+    WHEN DAYOFWEEK(Date_rdv) = 7 THEN DATE_ADD(Date_rdv, INTERVAL 2 DAY) -- Si c'est un samedi, décaler vers le lundi
+    ELSE Date_rdv
+END;
+
+-- Validation de la transaction
+COMMIT;

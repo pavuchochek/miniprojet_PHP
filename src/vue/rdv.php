@@ -74,7 +74,7 @@
             </div>
             <form action="" method="GET" class="recherche" id="recherche">
                 <select name="usagerFilter">
-                    <option value="">Tous les usagers</option>
+                    <option value="">Tous les patients</option>
                     <?php
                         $resultat = $controleur->liste_usager_avec_rdv();
                         foreach ($resultat as $value){

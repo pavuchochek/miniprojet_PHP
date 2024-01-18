@@ -86,6 +86,8 @@
                     <label for="heure_fin">Heure de fin :</label>
                     <input type="time" id="heure_fin" name="heure_fin" required value="<?php echo $heure_fin; ?>">
 
+                    <a href="rdv.php"><input type="button" id="bouton_annuler" value="Annuler"></a>
+
                     <input type="submit" id="bouton_valider" value="Modifier">
                 </form>
             </div>
