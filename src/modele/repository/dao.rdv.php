@@ -27,6 +27,37 @@ class Dao_Rdv{
             throw $e;
         }
     }
+    public function creneauDisponible($date, $heureDebut, $heureFin, $idMedecin = null, $idUsager = null) {
+        try {
+            $conditions = array(
+                'date' => $date,
+                'heureDebut' => $heureDebut,
+                'heureFin' => $heureFin
+            );
+    
+            $query = 'SELECT COUNT(*) FROM Rdv WHERE Date_rdv = :date AND ((Heure_Debut >= :heureDebut AND Heure_Debut < :heureFin) OR (Heure_Fin > :heureDebut AND Heure_Fin <= :heureFin))';
+    
+            if ($idMedecin !== null) {
+                $conditions['idMedecin'] = $idMedecin;
+                $query .= ' AND Id_Medecin = :idMedecin';
+            }
+    
+            if ($idUsager !== null) {
+                $conditions['idUsager'] = $idUsager;
+                $query .= ' AND Id_Usager = :idUsager';
+            }
+    
+            $resRDV = $this->pdo->prepare($query);
+            $resRDV->execute($conditions);
+    
+            $count = $resRDV->fetchColumn();
+    
+            return $count === 0;
+        } catch (PDOException $e) {
+            throw $e;
+        }
+    }
+    
 
     public function modifier_medecins(Rdv $ancienRdv,Rdv $nouveauRdv){
         //suppression de l'ancien rdv

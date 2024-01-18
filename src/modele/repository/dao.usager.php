@@ -95,7 +95,14 @@ class Dao_Usager{
             'id' => $idUsager
         ));
     }
-
+    public function isNumeroSecuDejaUtilise(int $nsecu){
+        $req = $this->pdo->prepare('SELECT * FROM Usager WHERE N_securite_sociale = :nsecu');
+        $req->execute(array(
+            'nsecu' => $nsecu,
+        ));
+        $data = $req->fetch();
+        return is_null($data);
+    }
     public function deleteUsager(Usager $usager){
         $req = $this->pdo->prepare('DELETE FROM Rdv WHERE Id_Usager=:id;');
             $req->execute(array(
