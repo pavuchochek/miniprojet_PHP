@@ -145,7 +145,6 @@ class Rdv{
 		return ($heures * 60) + $minutes;
 	}
 	
-	
 	public function setMedecin(Medecin $Medecin){
 		$this->_Medecin = $Medecin;
 	}

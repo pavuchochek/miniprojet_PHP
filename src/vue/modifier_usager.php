@@ -95,7 +95,9 @@
                         ?>
                     </select>
 
-                    <input type="submit" id="bouton_valider" value="Ajouter">
+                    <a href="usagers.php"><input type="button" id="bouton_annuler" value="Annuler"></a>
+
+                    <input type="submit" id="bouton_valider" value="Modifier">
 
                     <script>
                         var submitBtn = document.getElementById('bouton_valider');

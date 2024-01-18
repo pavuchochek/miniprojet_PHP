@@ -48,7 +48,7 @@
 
                     <label for="medecinReferent">Médecin référent:</label>
                     <select id="medecinReferent" name="medecinReferent">
-                        <option value="null">Aucun</option>
+                        <option value="null" selected>Aucun</option>
                         <?php
                             require('/app/src/controleur/medecin.controleur.php');
                             $controleur = new Medecin_controleur();
@@ -149,12 +149,26 @@
             var listusager = document.getElementById('list_usager');
             function toggleForm() {
                 var afficherFormulaire = document.getElementById('afficherFormulaire');
+                var champ_formulaire1 = document.getElementById('prenom');
+                var champ_formulaire2 = document.getElementById('nom');
+                var champ_formulaire3 = document.getElementById('Adresse');
+                var champ_formulaire4 = document.getElementById('lieuNaissance');
+                var champ_formulaire5 = document.getElementById('Numero_Secu');
+                var champ_formulaire6 = document.getElementById('dateNaissance');
+                var champ_formulaire7 = document.getElementById('medecinReferent');
 
                 if (formulaireVisible) {
                     formulaire.style.display = 'none';
                     listusager.style.display = 'block';
                     afficherFormulaire.innerHTML = "<input type='button' value='Ajouter patient' onclick='toggleForm()'>";
                     formulaireVisible = false;
+                    champ_formulaire1.value = '';
+                    champ_formulaire2.value = '';
+                    champ_formulaire3.value = '';
+                    champ_formulaire4.value = '';
+                    champ_formulaire5.value = '';
+                    champ_formulaire6.value = '';
+                    champ_formulaire7.value = '';
                 } else {
                     formulaire.style.display = 'block';
                     listusager.style.display = 'none';
