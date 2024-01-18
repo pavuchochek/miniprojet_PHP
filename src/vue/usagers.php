@@ -48,7 +48,7 @@
 
                     <label for="medecinReferent">Médecin référent:</label>
                     <select id="medecinReferent" name="medecinReferent">
-                        <option value="null">Aucun</option>
+                        <option value="null" selected>Aucun</option>
                         <?php
                             require('/app/src/controleur/medecin.controleur.php');
                             $controleur = new Medecin_controleur();
