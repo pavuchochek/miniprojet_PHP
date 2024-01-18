@@ -181,6 +181,18 @@
     <script>
         //Script pour afficher ou cacher le formulaire d'ajout de médecin
         var formulaireVisible = false;
+        <?php
+            if (isset($_GET['idmedecin']) or isset($_GET['idusager'])) {
+                echo 'toggleForm();';
+                if (isset($_GET['idmedecin'])) {
+                    echo 'document.getElementById("medecin").value = '.$_GET['idmedecin'].';';
+                }
+                if (isset($_GET['idusager'])) {
+                    echo 'document.getElementById("usager").value = '.$_GET['idusager'].';';
+                }
+            }
+        ?>
+
         function toggleForm() {
             var formulaire = document.getElementById('formulaire');
             var listMedecin = document.getElementById('list_rdv');

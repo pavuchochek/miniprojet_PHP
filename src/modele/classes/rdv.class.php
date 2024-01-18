@@ -37,9 +37,9 @@ class Rdv{
 		return $formattedDate;
 	}
 
-	public function getDateRdvString(): String {
+	public function getDateRdvString(): string {
 		$date = $this->_Date_rdv;
-		
+	
 		$englishMonths = [
 			'January'   => 'Janvier',
 			'February'  => 'Février',
@@ -55,8 +55,8 @@ class Rdv{
 			'December'  => 'Décembre',
 		];
 	
-		$formattedDate = date('d ') . $englishMonths[date('F', strtotime($date))] . date(' Y', strtotime($date));
-		
+		$formattedDate = date('d', strtotime($date)) . ' ' . $englishMonths[date('F', strtotime($date))] . date(' Y', strtotime($date));
+	
 		return $formattedDate;
 	}
 

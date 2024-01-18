@@ -39,8 +39,9 @@
                     <h1>Liste des rendez-vous</h1>
 
                     <div class="boutons_ajout boutons_ajout_rdv" id="afficherFormulaireRdv">
-                        <input type="button" value="Ajouter un rendez-vous">
-                        <!-- Ajouter le formulaire rdv quand la page rdv sera faite -->
+                        <a href="rdv.php?idmedecin=<?php echo $idmedecin; ?>">
+                            <input type="button" value="Ajouter un rendez-vous">
+                        </a>
                     </div>
                 </div>
                 
@@ -60,6 +61,10 @@
                                 $date = $value->getDateRdvString();
                                 $nom_usager = $value->getUsager()->getNom();
                                 $prenom_usager = $value->getUsager()->getPrenom();
+                                $id_usager = $value->getUsager()->getIdUsager();
+                                $heure_fin = $value->getHeureFin();
+                                $heure_debut = $value->getHeureDebut();
+                                $date_rdv = $value->getDateRdv();
                                 echo "
                                 <div class='rdv'>
                                     <div>
@@ -70,9 +75,8 @@
                                         <p>Patient : $nom_usager $prenom_usager</p>
                                     </div>
                                     <div class='boutonsrdv'>
-                                        <a href='#'>
+                                        <a href='modifier_rdv.php?usager=$id_usager&medecin=$idmedecin&date=$date_rdv&heure_debut=$heure_debut&heure_fin=$heure_fin'>
                                             <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
-                                            // ajouter l'action modifier rdv quand la page rdv sera faite
                                         "</a>
                                         <a href='#'>
                                             <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
