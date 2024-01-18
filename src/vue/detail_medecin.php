@@ -240,14 +240,12 @@
             });
             
         });
-        //Script de la popup de confirmation de suppression de médecin
         document.addEventListener('DOMContentLoaded', function() {
             var formulaireVisible = false;
             var popup = document.getElementById('popupMedecin');
             popup.style.display = 'none';
 
             var supprimerBtns = document.getElementsByClassName('supprimerRdvBtn');
-            //Script pour afficher la popup de confirmation de suppression de médecin
             for (var i = 0; i < supprimerBtns.length; i++) {
                 supprimerBtns[i].addEventListener('click', function(event) {
                     event.preventDefault();
@@ -263,7 +261,6 @@
                     document.querySelector('#popupMedecin .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_rdv.php?idusager='+this.getAttribute('data-usager')+'&idmedecin='+this.getAttribute('data-medecin')+'&date='+this.getAttribute('data-date')+'&heureDebut='+this.getAttribute('data-heure-debut')+'&heureFin='+this.getAttribute('data-heure-fin'));
                 });
             }
-            //Script pour initialiser la popup de confirmation de suppression de médecin
             document.getElementById('Bouton_popup_annuler').addEventListener('click', function() {
                 popup.style.display = 'none';
                 var prenom = this.getAttribute('data-prenom');
