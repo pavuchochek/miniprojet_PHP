@@ -34,7 +34,7 @@
     
     if ($dayOfWeek >= 1 && $dayOfWeek <= 5) {
         if ($heure_debut >= "08:00" && $heure_debut <= "19:00" && $heure_fin >= "08:00" && $heure_fin <= "19:00") {
-            $controleur->modifierRdv($idUsager_ancien,$idMedecin_ancien,$date_ancienne,$heure_debut_ancienne,$heure_fin_ancienne,$idMedecin,$idUsager,$date,$heure_debut,$heure_fin);
+            $controleur->modifierRdv($idMedecin_ancien,$idUsager_ancien,$date_ancienne,$heure_debut_ancienne,$heure_fin_ancienne,$idMedecin,$idUsager,$date,$heure_debut,$heure_fin);
             header('Location: /rdv.php');
             exit;
         } else {
