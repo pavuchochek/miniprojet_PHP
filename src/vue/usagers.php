@@ -151,7 +151,7 @@
             </div>
         </div>
 
-        <?php include 'footer.php'; ?>
+        <?php include '../includes/footer.php'; ?>
 
         <script>
             var formulaireVisible = false;

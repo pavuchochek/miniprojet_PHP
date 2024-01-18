@@ -177,7 +177,8 @@
         
     </body>
 
-    <?php include 'footer.php'; ?>
+    <?php include '../includes/footer.php'; ?>
+    
     <script>
         //Script pour afficher ou cacher le formulaire d'ajout de médecin
         var formulaireVisible = false;

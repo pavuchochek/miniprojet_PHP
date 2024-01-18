@@ -45,10 +45,10 @@
 
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="nom_utilisateur">Nom d'utilisateur:</label>
-        <input type="text" id="nom_utilisateur" name="nom_utilisateur" value="user" required><br>
+        <input type="text" id="nom_utilisateur" name="nom_utilisateur" value="user" required autocomplete="off"><br>
 
         <label for="mot_de_passe">Mot de passe:</label>
-        <input type="password" id="mot_de_passe" name="mot_de_passe" value="iutinfo" required><br>
+        <input type="password" id="mot_de_passe" name="mot_de_passe" value="iutinfo" required autocomplete="off"><br>
 
         <input type="submit" value="Se connecter">
     </form>
