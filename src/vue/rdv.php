@@ -26,8 +26,10 @@
         <div class="body">
             <div id="formulaire" class="formulaire">
                 <form id="rdvForm" method="post" action="traitements/traitement_ajout_rdv.php" onsubmit="return Valide()">
+                    
                     <label for="usager">Patient :</label>
                     <select id="usager" name="usager" onchange="updateMedecin()" required>
+
                         <option value="" selected disabled>Choisir un patient</option>
                         <?php
                             require('/app/src/controleur/rdv.controleur.php');
@@ -69,9 +71,11 @@
                     <input type="submit" id="bouton_valider" value="Ajouter">
                 </form>
             </div>
+
             <div class="boutons_modif" id="afficherFormulaire">
                 <input id="boutonAfficher" type="button" value="Ajouter un rendez-vous" onclick="toggleForm()">
             </div>
+
             <form action="" method="GET" class="recherche" id="recherche">
                 <select name="usagerFilter">
                     <option value="">Tous les patients</option>
@@ -102,8 +106,10 @@
                 <input type="submit" value="Rechercher">
             </form>
             <div class="card-container" id="list_rdv">
+
                 <?php
                     $resultat = $controleur->liste_rdv();
+
                     if (isset ($_GET['usagerFilter']) && isset($_GET['medecinFilter'])) {
                         if ($_GET['medecinFilter'] !== "") {
                             $id = intval($_GET['medecinFilter']);
@@ -118,6 +124,7 @@
                             $resultat = $controleur->getRdvByIdUsager($id);
                         }
                     }
+
                     foreach ($resultat as $value){
                         $date_rdv = $value->getDateRdv();
                         $date = $value->getDateRdvString();
@@ -135,6 +142,7 @@
                         $jour = $value->getNuméroJour();
                         $jour_semaine = $value->getJourSemaine();
                         $annee = $value->getAnnee();
+
                         echo "
                         <div class='card'>
                             <div class='col-2 text-right'>
@@ -163,8 +171,8 @@
                 ?>
             </div>
 
-            <div class="popup" id="popupMedecin">
-                <p id="popupMedecinNom"> </p>
+            <div class="popup" id="popupRdv">
+                <p id="popupRdvNom"> </p>
                 <div class="boutons_Popup">
                     <input type="button" value="Annuler" id="Bouton_popup_annuler">
                     <a href='#'>
@@ -174,14 +182,14 @@
             </div>
 
         </div>
-        
     </body>
 
     <?php include '../includes/footer.php'; ?>
     
     <script>
-        //Script pour afficher ou cacher le formulaire d'ajout de médecin
+        
         var formulaireVisible = false;
+
         <?php
             if (isset($_GET['idmedecin']) or isset($_GET['idusager'])) {
                 echo 'toggleForm();';
@@ -225,14 +233,13 @@
             }
         }
 
-        //Script de la popup de confirmation de suppression de médecin
         document.addEventListener('DOMContentLoaded', function() {
             var formulaireVisible = false;
-            var popup = document.getElementById('popupMedecin');
+            var popup = document.getElementById('popupRdv');
             popup.style.display = 'none';
 
             var supprimerBtns = document.getElementsByClassName('supprimerRdvBtn');
-            //Script pour afficher la popup de confirmation de suppression de médecin
+
             for (var i = 0; i < supprimerBtns.length; i++) {
                 supprimerBtns[i].addEventListener('click', function(event) {
                     event.preventDefault();
@@ -242,13 +249,13 @@
                     var heureDebut = this.getAttribute('data-heure-debut');
                     var heureFin = this.getAttribute('data-heure-fin');
 
-                    var nomprenom = document.getElementById('popupMedecinNom');
+                    var nomprenom = document.getElementById('popupRdvNom');
                     nomprenom.innerHTML = "Voulez-vous supprimer le rendez-vous du " + date + ' de ' + heureDebut + ' à ' + heureFin + " ?";
                     popup.style.display = 'block';
-                    document.querySelector('#popupMedecin .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_rdv.php?idusager='+this.getAttribute('data-usager')+'&idmedecin='+this.getAttribute('data-medecin')+'&date='+this.getAttribute('data-date')+'&heureDebut='+this.getAttribute('data-heure-debut')+'&heureFin='+this.getAttribute('data-heure-fin'));
+                    document.querySelector('#popupRdv .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_rdv.php?idusager='+this.getAttribute('data-usager')+'&idmedecin='+this.getAttribute('data-medecin')+'&date='+this.getAttribute('data-date')+'&heureDebut='+this.getAttribute('data-heure-debut')+'&heureFin='+this.getAttribute('data-heure-fin'));
                 });
             }
-            //Script pour initialiser la popup de confirmation de suppression de médecin
+
             document.getElementById('Bouton_popup_annuler').addEventListener('click', function() {
                 popup.style.display = 'none';
                 var prenom = this.getAttribute('data-prenom');
