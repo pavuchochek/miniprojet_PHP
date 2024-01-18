@@ -24,17 +24,20 @@
     $dateActuelle = date('Y-m-d');
     if ($dateNaissance > $dateActuelle) {
         echo "La date de naissance ne peut pas être supérieure à la date actuelle.";
+        echo "<a href='/usagers.php'>Go back</a>";
         exit;
     }
     if($erreur=true){
         echo "Ce numero de securité est deja present dans la base";
+        echo "<a href='/usagers.php'>Go back</a>";
         exit;
     }else{
-    try {
-        $controleur->ajouter_usager($nom, $prenom, $civilite, $adresse, $dateNaissance, $lieuNaissance, $Numero_Secu, $medecinReferent);
-        header('Location: /usagers.php');
-    } catch (Exception $e) {
-        echo 'erreur';
-    }
+        try {
+            $controleur->ajouter_usager($nom, $prenom, $civilite, $adresse, $dateNaissance, $lieuNaissance, $Numero_Secu, $medecinReferent);
+            header('Location: /usagers.php');
+        } catch (Exception $e) {
+            echo 'erreur';
+            echo "<a href='/usagers.php'>Go back</a>";
+        }
     }
 ?>
