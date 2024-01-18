@@ -86,7 +86,7 @@
                     <thead>
                         <tr>
                             <th>Médecin</th>
-                            <th>Durée totale (heures)</th>
+                            <th>Heures passées<br>en rendez-vous</th>
                         </tr>
                     </thead>
                     <tbody>
