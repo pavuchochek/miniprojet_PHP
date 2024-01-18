@@ -108,6 +108,7 @@
                         }
                     }
                     foreach ($resultat as $value){
+                        $date_rdv = $value->getDateRdv();
                         $date = $value->getDateRdvString();
                         $heure_debut = $value->getHeureDebut();
                         $heure_debut = substr($heure_debut, 0, -3);
@@ -137,7 +138,7 @@
                                 <div>
                                     <p>Patient : $nom_usager $prenom_usager</p>
                                     <div class='boutons'>
-                                        <a href='#'>
+                                        <a href='modifier_rdv.php?usager=$id_usager&medecin=$id_medecin&date=$date_rdv&heure_debut=$heure_debut&heure_fin=$heure_fin'>
                                             <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
                                         "</a>
                                         <a href='#' class='supprimerRdvBtn'  >
