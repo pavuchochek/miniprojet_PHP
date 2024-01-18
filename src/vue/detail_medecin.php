@@ -30,8 +30,9 @@
                     <h1>Liste des rendez-vous</h1>
 
                     <div class="boutons_ajout boutons_ajout_rdv" id="afficherFormulaireRdv">
-                        <input type="button" value="Ajouter un rendez-vous">
-                        <!-- Ajouter le formulaire rdv quand la page rdv sera faite -->
+                        <a href="rdv.php?idmedecin=<?php echo $idmedecin; ?>">
+                            <input type="button" value="Ajouter un rendez-vous">
+                        </a>
                     </div>
                 </div>
                 
