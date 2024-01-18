@@ -1,4 +1,13 @@
-<?php clearstatcache();
+<?php
+    // Démarre la session
+    session_start();
+
+    // Vérifie si l'utilisateur est connecté
+    if (!isset($_SESSION['utilisateur_connecte'])) {
+        // Redirige vers la page de connexion
+        header("Location: login.php");
+        exit(); // Assure que le script s'arrête après la redirection
+    }
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +21,7 @@
         <link rel="icon" href="img/logo.png">
     </head>
 
-    <?php include 'header.php'; ?>
+    <?php include '../includes/header.php'; ?>
 
     <body>
         <div class="body">
@@ -150,6 +159,6 @@
         </div>
     </body>
 
-    <?php include 'footer.php'; ?>
+    <?php include '../includes/footer.php'; ?>
     
 </html>
