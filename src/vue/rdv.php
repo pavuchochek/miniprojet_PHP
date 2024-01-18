@@ -141,7 +141,7 @@
                                         <a href='modifier_rdv.php?usager=$id_usager&medecin=$id_medecin&date=$date_rdv&heure_debut=$heure_debut&heure_fin=$heure_fin'>
                                             <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
                                         "</a>
-                                        <a href='#' class='supprimerRdvBtn'  >
+                                        <a href='#' class='supprimerRdvBtn' data-usager='$id_usager' data-medecin='$id_medecin' data-date='$date_rdv' data-heure-debut='$heure_debut' data-heure-fin='$heure_fin'>
                                             <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
                                         " </a>
                                     </div>
@@ -212,15 +212,16 @@
             for (var i = 0; i < supprimerBtns.length; i++) {
                 supprimerBtns[i].addEventListener('click', function(event) {
                     event.preventDefault();
-                    var prenom = this.getAttribute('data-prenom');
-                    var nom = this.getAttribute('data-nom');
+                    var idUsager = this.getAttribute('data-usager');
+                    var idMedecin = this.getAttribute('data-medecin');
+                    var date = this.getAttribute('data-date');
+                    var heureDebut = this.getAttribute('data-heure-debut');
+                    var heureFin = this.getAttribute('data-heure-fin');
 
                     var nomprenom = document.getElementById('popupMedecinNom');
-                    nomprenom.innerHTML = "Voulez-vous supprimer le médecin " + prenom + ' ' + nom + " ?";
+                    nomprenom.innerHTML = "Voulez-vous supprimer le rendez-vous du " + date + ' de ' + heureDebut + ' à ' + heureFin + " ?";
                     popup.style.display = 'block';
-                    document.getElementById('Bouton_popup_annuler').setAttribute('data-prenom', prenom);
-                    document.getElementById('Bouton_popup_annuler').setAttribute('data-nom', nom);
-                    document.querySelector('#popupMedecin .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_medecin.php?id='+this.getAttribute('data-id'));
+                    document.querySelector('#popupMedecin .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_rdv.php?idusager='+this.getAttribute('data-usager')+'&idmedecin='+this.getAttribute('data-medecin')+'&date='+this.getAttribute('data-date')+'&heureDebut='+this.getAttribute('data-heure-debut')+'&heureFin='+this.getAttribute('data-heure-fin'));
                 });
             }
             //Script pour initialiser la popup de confirmation de suppression de médecin
