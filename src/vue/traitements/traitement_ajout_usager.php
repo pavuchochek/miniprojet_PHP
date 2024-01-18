@@ -20,10 +20,21 @@
     $lieuNaissance=$_POST["lieuNaissance"];
     $Numero_Secu=$_POST["Numero_Secu"];
     $medecinReferent = isset($_POST["medecinReferent"]) ? intval($_POST["medecinReferent"]) : null;
+    $erreur=$controleur->isNumeroSecuDejaUtilise($Numero_Secu);
+    $dateActuelle = date('Y-m-d');
+    if ($dateNaissance > $dateActuelle) {
+        echo "La date de naissance ne peut pas être supérieure à la date actuelle.";
+        exit;
+    }
+    if($erreur=true){
+        echo "Ce numero de securité est deja present dans la base";
+        exit;
+    }else{
     try {
         $controleur->ajouter_usager($nom, $prenom, $civilite, $adresse, $dateNaissance, $lieuNaissance, $Numero_Secu, $medecinReferent);
         header('Location: /usagers.php');
     } catch (Exception $e) {
         echo 'erreur';
+    }
     }
 ?>

@@ -11,6 +11,9 @@ class Usager_controleur{
         public function liste_usagers(){
             return $this->daoUsager->listeUsagers();
         }
+        public function isNumeroSecuDejaUtilise($numeroSecuDejaUtilise){
+            return $this->daoUsager->isNumeroSecuDejaUtilise($numeroSecuDejaUtilise);
+        }
         public function rechercherUsagers($recherche) {
             $listeUsagers = $this->daoUsager->listeUsagers();
             $resultats = array_filter($listeUsagers, function ($usager) use ($recherche) {
