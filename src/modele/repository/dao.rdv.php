@@ -3,14 +3,18 @@ require_once('/app/src/modele/repository/pdo.php');
 require_once('/app/src/modele/classes/medecin.class.php');
 require_once('/app/src/modele/classes/rdv.class.php');
 require_once('/app/src/modele/repository/dao.usager.php');
+
 class Dao_Rdv{
+
     private $pdo;
 
+    // Constructeur chargé d'ouvrir la BD
     public function __construct() {
         include('/app/configuration.php');
         $this->pdo = Connexion::getInstance($db_address, $user, $password, $db_name);
     }
 
+    // Ajoute un rdv à la BD
     public function createRdv(Rdv $rdv){
         try {
             $req = $this->pdo->prepare('INSERT INTO Rdv (Id_Usager,Id_Medecin,Date_rdv,Heure_debut,Heure_fin) VALUES (:usager,:medecin,:daterdv,:hd,:hf)');
@@ -27,6 +31,8 @@ class Dao_Rdv{
             throw $e;
         }
     }
+
+    //Détermine si un créneau est disponible pour un médecin
     public function creneauDisponibleMedecin($date, $heureDebut, $heureFin, $idMedecin) {
         try {
             $conditions = array(
@@ -49,6 +55,7 @@ class Dao_Rdv{
         }
     }
     
+    //Détermine si un créneau est disponible pour un usager
     public function creneauDisponibleUsager($date, $heureDebut, $heureFin, $idUsager) {
         try {
             $conditions = array(
@@ -72,7 +79,6 @@ class Dao_Rdv{
     }
     
     
-
     public function modifier_medecins(Rdv $ancienRdv,Rdv $nouveauRdv){
         //suppression de l'ancien rdv
         $this->deleteRdv($ancienRdv);
@@ -80,14 +86,15 @@ class Dao_Rdv{
         $this->createRdv($nouveauRdv);
     }
 
+    //Retourne un rdv à partir d'un tableau de données
     private function constructRdvFromData($data){
         $usager=$this->getUsagerById($data[0]);
         $medecin=$this->getMedecinById($data[1]);
         $rdv=new Rdv($data[2],$data[3],$data[4],$medecin,$usager);
         return $rdv;
-        
     }
 
+    //Retourne la liste des usagers ayant des rdv à venir
     public function getListeUsagersRdv(){
         $resRDV = $this->pdo->prepare('SELECT DISTINCT Id_Usager FROM Rdv WHERE Date_rdv>=CURDATE();');
         $resRDV->execute();
@@ -99,6 +106,7 @@ class Dao_Rdv{
         return $tablo_usager;
     }
 
+    //Retourne la liste des médeins ayant des rdv à venir
     public function getListeMedecinsRdv(){
         $resRDV = $this->pdo->prepare('SELECT DISTINCT Id_Medecin FROM Rdv WHERE Date_rdv>=CURDATE();');
         $resRDV->execute();
@@ -110,6 +118,7 @@ class Dao_Rdv{
         return $tablo_medecins;
     }
 
+    //Retourne la liste des futurs rdv
     public function liste_rdv_Actuels(){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE() order by Date_rdv,Heure_Debut');
         $resRDV->execute();
@@ -121,6 +130,7 @@ class Dao_Rdv{
         return $tablo_rdv;
     }
 
+    //Retourne la liste des futurs rdv d'un médecin
     public function liste_rdv_Actuels_medecinbyId(int $idMedecin){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE() AND Id_medecin = :id') ;
         $resRDV->execute(array(
@@ -134,6 +144,7 @@ class Dao_Rdv{
         return $tablo_rdv;
     }
 
+    //Retourne la liste des futurs rdv d'un usager
     public function liste_rdv_Actuels_usagerbyId(int $idUsager){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE() AND Id_Usager = :id') ;
         $resRDV->execute(array(
@@ -148,6 +159,7 @@ class Dao_Rdv{
     }
 
     /* FORMAT DE DATES YYYY-MM-DD */
+    //Retourne la liste des rdv à une date donnée
     public function liste_rdv_Actuels_date(String $date){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv= :dateSelection') ;
         $resRDV->execute(array(
@@ -161,6 +173,8 @@ class Dao_Rdv{
         return $tablo_rdv;
     }
 
+    /* FORMAT DE DATES YYYY-MM-DD */
+    //Retourne la liste des rdv entre deux dates
     public function liste_rdv_Actuels_Intervalle(String $dateDebut,String $dateFin){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv BETWEEN  :dateDebut AND :dateFin') ;
         $resRDV->execute(array(
@@ -170,6 +184,7 @@ class Dao_Rdv{
 
     }
 
+    //Retourne la liste des rdv d'un médecin
     public function liste_rdv_byMedecin(int $idMedecin){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Id_medecin = :idMedecin') ;
         $resRDV->execute(array(
@@ -183,6 +198,7 @@ class Dao_Rdv{
         return $tablo_rdv;
     }
 
+    //Retourne la liste des rdv d'un usager et d'un médecin
     public function liste_rdv_Actuels_medecin_usager_byId(int $idUsager,int $idMedecin){
         $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Id_medecin = :idMedecin AND Id_usager = :idUsager') ;
         $resRDV->execute(array(
@@ -196,21 +212,24 @@ class Dao_Rdv{
         }
         return $tablo_rdv;
     }
+
+    //Supprime un rdv de la BD
     public function deleteRdv(Rdv $rdv){
-        try{
-        $resRDV = $this->pdo->prepare('DELETE FROM Rdv WHERE Id_Medecin = :idMedecin AND Id_Usager = :idUsager AND Date_rdv = :daterdv AND Heure_debut = :hd AND Heure_fin = :hf') ;
-        $resRDV->execute(array(
-            'idMedecin' => $rdv->getMedecin()->getIdMedecin(),
-            'idUsager' => $rdv->getUsager()->getIdUsager(),
-            'daterdv' => $rdv ->getDateRdv(),
-            'hd' => $rdv->getHeureDebut(),
-            'hf' => $rdv->getHeureFin()
-        ));
-         }catch(PDOException $e){
-        throw $e;
+        try {
+            $resRDV = $this->pdo->prepare('DELETE FROM Rdv WHERE Id_Medecin = :idMedecin AND Id_Usager = :idUsager AND Date_rdv = :daterdv AND Heure_debut = :hd AND Heure_fin = :hf') ;
+            $resRDV->execute(array(
+                'idMedecin' => $rdv->getMedecin()->getIdMedecin(),
+                'idUsager' => $rdv->getUsager()->getIdUsager(),
+                'daterdv' => $rdv ->getDateRdv(),
+                'hd' => $rdv->getHeureDebut(),
+                'hf' => $rdv->getHeureFin()
+            ));
+        } catch(PDOException $e) {
+            throw $e;
         }
     }
     
+    //Retourne un usager à partir de son id
     public function getUsagerById(int $idUsager): Usager {
         try {
             $resUsager = $this->pdo->prepare('
@@ -225,7 +244,6 @@ class Dao_Rdv{
                 'id' => $idUsager
             ));
             $dataUsager = $resUsager->fetch();
-    
             if (!$dataUsager) {
                 throw new Exception("Aucun usager trouvé avec l'ID : $idUsager");
             }else{
@@ -234,8 +252,6 @@ class Dao_Rdv{
             }else{
                 $medecin=null;
             }
-               
-    
             // Création de l'objet Usager
             $personne = new Personne($dataUsager[0], $dataUsager[1], $dataUsager[2]);
             $personne->setId($dataUsager[7]);
@@ -249,10 +265,6 @@ class Dao_Rdv{
             );
             $usager->setIdUsager($dataUsager['Id_Usager']);
             }
-    
-            // Récupération des informations du médecin associé
-            
-    
             return $usager;
         } catch (PDOException $e) {
             // En cas d'erreur, afficher le message d'erreur
@@ -261,6 +273,7 @@ class Dao_Rdv{
         }
     }
     
+    //Retourne un médecin à partir de son id
     private function getMedecinById(int $idMedecin): ?Medecin {
         try {
             $req = $this->pdo->prepare('
@@ -269,23 +282,18 @@ class Dao_Rdv{
                 JOIN Personne ON Medecin.Id_Personne = Personne.Id_Personne
                 WHERE Medecin.Id_Medecin = :id
             ');
-    
             $req->execute(array(
                 'id' => $idMedecin
             ));
-    
             $data = $req->fetch();
-    
             if (!$data) {
                 return null; // Aucun médecin trouvé avec l'ID : $idMedecin
             }
-    
             // Création de l'objet Medecin
             $personne = new Personne($data['Nom'], $data['Prenom'], $data['Civilite']);
             $personne->setId($data['Id_Personne']);
             $medecin = new Medecin($personne);
             $medecin->setIdMedecin($idMedecin);
-    
             return $medecin;
         } catch (PDOException $e) {
             // En cas d'erreur, afficher le message d'erreur
@@ -293,6 +301,5 @@ class Dao_Rdv{
             throw $e;
         }
     }
-    
 }
 ?>

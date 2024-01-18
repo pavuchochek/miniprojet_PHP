@@ -4,15 +4,18 @@ include_once('/app/src/controleur/medecin.controleur.php');
 include_once('/app/src/modele/classes/medecin.class.php');
 include_once('/app/src/modele/classes/usagers.class.php');
 include_once('/app/src/modele/classes/rdv.class.php');
+
 class Dao_Medecin {
+
     private $pdo;
 
+    // Constructeur chargé d'ouvrir la BD
     public function __construct() {
         include('/app/configuration.php');
         $this->pdo = Connexion::getInstance($db_address, $user, $password, $db_name);
     }
 
-
+    //Retourne l'id du médecin correspondant au nom et prénom
     public function getIdMedecinByPrenomNom($prenom, $nom) {
         try {
             $req = $this->pdo->prepare('SELECT Medecin.Id_Medecin
@@ -35,6 +38,7 @@ class Dao_Medecin {
         }
     }
 
+    //Retourne le médecin correspondant à l'id
     public function getMedecinById(int $idMedecin): Medecin {
         try {
             $req = $this->pdo->prepare('SELECT Personne.Nom, Personne.Prenom, Personne.Civilite, Personne.Id_Personne, Medecin.Id_Medecin
@@ -69,6 +73,7 @@ class Dao_Medecin {
         }
     }
 
+    //Retourne la liste des médecins correspondant aux critères de recherche
     public function liste_medecins(String $nom, String $prenom) {
         try {
             if ($nom == "" && $prenom == "") {
@@ -93,6 +98,8 @@ class Dao_Medecin {
             throw $e;
         }
     }
+
+    //Retourne la liste des usagers du médecin
     public function liste_usager_medecin(Medecin $medecin){
         try{
             $req = $this->pdo->prepare('SELECT DISTINCT Personne.Nom,Personne.Prenom,Personne.Civilite,Usager.N_securite_sociale,Usager.Adresse,Usager.Date_naissance,Usager.Lieu_naissance,Usager.Id_Personne,Usager.Id_Usager
@@ -114,6 +121,7 @@ class Dao_Medecin {
         }
     }
 
+    //Ajoute un médecin
     public function ajouter_medecins(Medecin $medecin) {
         try {
             $req = $this->pdo->prepare('INSERT INTO Personne (Nom,Prenom,Civilite) VALUES (:nom,:prenom,:civilite)');
@@ -133,6 +141,8 @@ class Dao_Medecin {
             throw $e;
         }
     }
+
+    //Supprime un médecin référent d'un usager
     public function supprimer_medecin_referentByIdUsager(int $idMedecin,int $idUsager){
         try {
             $req = $this->pdo->prepare('UPDATE Usager SET Id_Medecin=NULL WHERE Id_Medecin = :id AND Id_Usager = :idUsager');
@@ -144,6 +154,8 @@ class Dao_Medecin {
             throw $e;
         }
     }
+
+    //Supprime un médecin
     public function supprimer_medecins(Medecin $medecin) {
 
         try {
@@ -178,6 +190,7 @@ class Dao_Medecin {
         }
     }
 
+    //Modifie un médecin
     public function modifier_medecins(Medecin $medecin,String $nouveauNom,String $nouveauPrenom,String $nouvelleCivilite){
         $req=$this->pdo->prepare('UPDATE Personne SET Nom=:nom,Prenom=:prenom,Civilite=:civilite WHERE Id_Personne=:id');
         $req->execute(array(
@@ -187,6 +200,8 @@ class Dao_Medecin {
             'id'=>$medecin->getId()
         ));
     }
+
+    //Retourne la liste des usagers qui n'ont pas le médecin en référent
     public function liste_usagers_medecin_non_referent(int $idMedecin){
             try{
                 $req = $this->pdo->prepare('SELECT DISTINCT Usager.N_securite_sociale,Usager.Adresse,Usager.Date_naissance,Usager.Lieu_naissance,Usager.Id_Personne,Usager.Id_Usager,Usager.Id_Medecin
@@ -209,6 +224,8 @@ class Dao_Medecin {
                 error_log("". $e->getMessage());
             }
     }
+
+    //Retourne la personne correspondant à l'id
     public function getPersonneById(int $idPersonne){
         try{
             $req = $this->pdo->prepare('SELECT Personne.Nom,Personne.Prenom,Personne.Civilite FROM Personne WHERE Id_Personne = :idPersonne');
@@ -222,6 +239,8 @@ class Dao_Medecin {
             error_log("". $e->getMessage());
         }
     }
+
+    //Retourne la liste des rdv du médecin
     public function liste_rdv(Medecin $medecin) {
         // Recherche des rdv avec les informations de l'usager
         $tablo_rdv = array();
@@ -252,6 +271,7 @@ class Dao_Medecin {
         return $tablo_rdv;
     }
 
+    //Retourne la liste des rdv du médecin à venir
     public function liste_rdv_actuel(Medecin $medecin) {
         // Recherche des rdv avec les informations de l'usager
         $tablo_rdv = array();
@@ -282,7 +302,7 @@ class Dao_Medecin {
         return $tablo_rdv;
     }
 
-
+    //Retourne la liste des usagers
     public function getListeUsagers() {
         try {
             $res = $this->pdo->query('SELECT Personne.Nom,Personne.Prenom,Personne.Civilite,Usager.N_securite_sociale,Usager.Adresse,Usager.Date_naissance,Usager.Lieu_naissance,Usager.Id_Personne,Usager.Id_Usager
@@ -301,6 +321,8 @@ class Dao_Medecin {
             error_log("". $e->getMessage());
         }
     }
+
+    //Assigne un médecin référent à un usager
     public function assignerMedecinReferent(int $idMedecin,int $idUsager){
         try {
             $res = $this->pdo->query('UPDATE Usager SET Id_Medecin = :idMedecin WHERE Id_Usager = :idUsager');
@@ -311,6 +333,5 @@ class Dao_Medecin {
             error_log("". $e->getMessage());
         }
     }
-    
 }
 ?>
