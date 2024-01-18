@@ -14,7 +14,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <title>Patients</title>
+        <title>Patients - Cabinet Médical</title>
         <link rel="stylesheet" href="css/CSSusager.css">
         <link rel="stylesheet" href="css/CSSheader.css">
         <link rel="stylesheet" href="css/CSSfooter.css">

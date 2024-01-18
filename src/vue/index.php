@@ -13,7 +13,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <title>Accueil</title>
+        <title>Accueil - Cabinet Médical</title>
         <link rel="stylesheet" href="css/CSSaccueil.css">
         <link rel="stylesheet" href="css/CSSheader.css">
         <link rel="stylesheet" href="css/CSSfooter.css">

@@ -13,7 +13,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <title>Rendez-vous</title>
+        <title>Rendez-vous - Cabinet Médical</title>
         <link rel="stylesheet" href="css/CSSrdv.css">
         <link rel="stylesheet" href="css/CSSheader.css">
         <link rel="stylesheet" href="css/CSSfooter.css">
