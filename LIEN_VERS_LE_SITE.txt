@@ -1,0 +1,17 @@
+Projet PHP Sofia Gribanova Simon Armand groupe A
+
+
+Adresse git :
+https://github.com/pavuchochek/miniprojet_PHP
+
+
+
+
+Adresse du site :
+https://amerpuk.gamingdy.fr
+
+
+Login et mot de passe pour se connecter au site :
+
+login : unnomlambda
+mdp : vraimotdepasse
