@@ -10,8 +10,8 @@
     // Vérifie si le formulaire a été soumis
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Vérifie les identifiants (remplace cela par la vérification réelle, par exemple en interrogeant une base de données)
-        $nom_utilisateur_attendu = "user";
-        $mot_de_passe_attendu = "iutinfo";
+        $nom_utilisateur_attendu = "unnomlambda";
+        $mot_de_passe_attendu = "vraimotdepasse";
 
         $nom_utilisateur = $_POST["nom_utilisateur"];
         $mot_de_passe = $_POST["mot_de_passe"];
@@ -46,10 +46,10 @@
 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="formulaireConnexion">
             <label for="nom_utilisateur" class="label label_user">Nom d'utilisateur:</label>
-            <input type="text" id="nom_utilisateur" name="nom_utilisateur" value="user" required autocomplete="off"><br>
+            <input type="text" id="nom_utilisateur" name="nom_utilisateur" value="" required autocomplete="off"><br>
 
             <label for="mot_de_passe" class = "label label_mdp">Mot de passe:</label>
-            <input type="password" id="mot_de_passe" name="mot_de_passe" value="iutinfo" required autocomplete="off"><br>
+            <input type="password" id="mot_de_passe" name="mot_de_passe" value="" required autocomplete="off"><br>
 
             <input type="submit" value="Se connecter" class="boutonConnexion">
         </form>
