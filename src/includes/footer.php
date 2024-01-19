@@ -22,12 +22,13 @@
                 </div>
             </div>
         </div>
+        Christian merci pour l'hébergement tu régales
     </footer>
     <script>
         function closePopup() {
             document.getElementById("popup_deconnexion").style.display = "none";
         }
-        
+
         var popupVisible = false;
         function afficherPopupDéconnexion() {
             if (popupVisible) {
