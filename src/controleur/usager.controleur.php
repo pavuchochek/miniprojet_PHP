@@ -3,10 +3,12 @@ require('/app/src/modele/repository/dao.usager.php');
 class Usager_controleur{
     private $daoUsager;
     private $daoMedecin;
+    private $daoRdv;
 
     public function __construct() {
         $this->daoUsager=new Dao_Usager();
         $this->daoMedecin=new Dao_Medecin();
+        $this->daoRdv=new Dao_Rdv();
     }
     
     public function liste_usagers(){
@@ -60,7 +62,7 @@ class Usager_controleur{
     }
 
     public function getListeRdv($idusager){
-        return $this->daoUsager->getListeRdv($idusager);
+        return $this->daoRdv->liste_rdv_Actuels_usagerbyId($idusager);
     }
 }
 ?>
