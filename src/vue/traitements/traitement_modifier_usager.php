@@ -36,7 +36,11 @@
         exit;
     }else{*/
         $idUsager = $_POST["idUsager"];
+        if($ancienSecu==$numeroSecu){
+            $controleur->modifier_usager($idUsager, $nom, $prenom, $civilite, $adresse, $dateNaissance, $lieuNaissance, null, $medecinReferent);
+        }else{
         $controleur->modifier_usager($idUsager, $nom, $prenom, $civilite, $adresse, $dateNaissance, $lieuNaissance, $numeroSecu, $medecinReferent);
+        }
         header('Location: /usagers.php');
     //}
 ?>
