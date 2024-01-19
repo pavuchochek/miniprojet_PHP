@@ -24,11 +24,13 @@
     $dateActuelle = date('Y-m-d');
     if ($dateNaissance > $dateActuelle) {
         echo "La date de naissance ne peut pas être supérieure à la date actuelle.";
+        echo "<br>";
         echo "<a href='/usagers.php'>Go back</a>";
         exit;
     }
     if($erreur=true){
-        echo "Ce numero de securité est deja present dans la base";
+        echo "Ce numero de securité est deja présent dans la base";
+        echo "<br>";
         echo "<a href='/usagers.php'>Go back</a>";
         exit;
     }else{
