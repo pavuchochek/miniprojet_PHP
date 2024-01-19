@@ -22,7 +22,6 @@
                 </div>
             </div>
         </div>
-        Christian merci pour l'hébergement tu régales
     </footer>
     <script>
         function closePopup() {
