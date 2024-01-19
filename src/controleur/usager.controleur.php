@@ -41,7 +41,7 @@ class Usager_controleur{
         $this->daoUsager->deleteUsager($usager);
     }
 
-    public function modifier_usager(int $id,string $nom,string $prenom,string $civilite,string $adresse,string $dateNaissance,string $lieuNaissance,int $Numero_Secu,?int $idMedecin){
+    public function modifier_usager(int $id,string $nom,string $prenom,string $civilite,string $adresse,string $dateNaissance,string $lieuNaissance,?int $Numero_Secu,?int $idMedecin){
         $medecinReferent=$this->daoUsager->getMedecinById($idMedecin);
         $this->daoUsager->updateUsagerByIdUsager($id,$nom,$prenom,$civilite,$adresse, $dateNaissance, $lieuNaissance,$Numero_Secu,  $medecinReferent);
     }
