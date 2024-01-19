@@ -27,6 +27,7 @@
         function closePopup() {
             document.getElementById("popup_deconnexion").style.display = "none";
         }
+        
         var popupVisible = false;
         function afficherPopupDéconnexion() {
             if (popupVisible) {
