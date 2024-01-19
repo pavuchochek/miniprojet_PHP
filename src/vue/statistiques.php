@@ -36,8 +36,8 @@
                             </tr>
                         </thead>
                         <?php
-                            require('/app/src/controleur/usager.controleur.php');
-                            $controleur = new Usager_controleur();
+                            require('/app/src/controleur/stats.controleur.php');
+                            $controleur = new Stats_controleur();
                             $resultat = $controleur->liste_usagers();
                             $fj = 0;
                             $hj = 0;
@@ -102,8 +102,6 @@
                     </thead>
                     <tbody>
                         <?php
-                            require('/app/src/controleur/stats.controleur.php');
-                            $controleur = new Stats_controleur();
                             $resultat = $controleur->liste_medecins();
                             $nbHeuresList = [];
 
