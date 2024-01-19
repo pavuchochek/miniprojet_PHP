@@ -145,8 +145,7 @@
                                     $genderIcon = 'icone_autre.png';
                                 }
                                 echo "
-                                <a class='lien_usager'>".
-                                // ajouter le lien vers la page detail_usager quand la page sera faite
+                                <a href='detail_usager.php?id=$id' class = 'lien_usager'>".
                                     "<div class='item_usager'>
                                         <img class='icone_liste_usager' src='img/$genderIcon' alt='icone d'un usager'/>
                                         <div>

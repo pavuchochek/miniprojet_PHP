@@ -48,7 +48,7 @@
             $date_naissance = date("d/m/Y", strtotime($date_naissance));
             $date_naissance = str_replace('/', '-', $date_naissance);
         ?>
-        <h1 class="titre">Usager : <?php echo $prenom . " " . $nom; ?> </h1>
+        <h1 class="titre">Patient : <?php echo $prenom . " " . $nom; ?> </h1>
         <div class="body">
             <div class="partie_rdv">
                 <div class = "titre2">
@@ -116,21 +116,39 @@
                 </div>
             </div>
             <div class="infousager">
-                <h1>Informations</h1>
-                <div class="boutons_ajout boutons_ajout_info">
-                    <a href="modifier_usager.php?id=<?php echo $idusager; ?>">
-                        <input type="button" value="Modifier les informations">
-                    </a>
+                <div class = "titre2">
+                    <h1>Informations</h1>
+                    <div class="boutons_ajout">
+                        <a href="modifier_usager.php?id=<?php echo $idusager; ?>">
+                            <input class="boutons_info" type="button" value="Modifier le patient">
+                        </a>
+                    </div>
                 </div>
-                <p><span class="titre_info">Nom :</span> <?php echo $nom; ?></p>
-                <p><span class="titre_info">Prénom :</span> <?php echo $prenom; ?></p>
-                <p><span class="titre_info">Adresse :</span> <?php echo $adresse; ?></p>
-                <p><span class="titre_info">Date de naissance :</span> <?php echo $date_naissance; ?></p>
-                <p><span class="titre_info">Lieu de naissance :</span> <?php echo $lieu_naissance; ?></p>
-                <p><span class="titre_info">Numéro de sécurité sociale :</span> <?php echo $nsecu; ?></p>
-                <p><span class="titre_info">Médecin référent :</span> <?php echo $prenom_medecin . " " . $nom_medecin; ?></p>
-                <p><span class="titre_info">Civilité :</span> <?php echo $civilite; ?></p>
-
+                <div class="box_info">
+                    <p><span class="titre_info">Nom :</span> <?php echo $nom; ?></p>
+                    <p><span class="titre_info">Prénom :</span> <?php echo $prenom; ?></p>
+                    <p><span class="titre_info">Adresse :</span> <?php echo $adresse; ?></p>
+                    <p><span class="titre_info">Date de naissance :</span> <?php echo $date_naissance; ?></p>
+                    <p><span class="titre_info">Lieu de naissance :</span> <?php echo $lieu_naissance; ?></p>
+                    <p><span class="titre_info">Numéro de sécurité sociale :</span> <?php echo $nsecu; ?></p>
+                    <?php
+                        if ($id_medecin != null) {
+                            echo "
+                            <p>
+                                <span class='titre_info'>
+                                    Médecin référent :
+                                </span>
+                                <a href='detail_medecin.php?id=$id_medecin' class='lienmedecinreferent'>
+                                    $prenom_medecin $nom_medecin
+                                </a>
+                            </p>";
+                        } else {
+                            echo "
+                            <p><span class='titre_info'>Médecin référent :</span> aucun médecin référent</p>";
+                        }
+                    ?>
+                    <p><span class="titre_info">Civilité :</span> <?php echo $civilite; ?></p>
+                </div>
             </div>
         </div>
     </body>

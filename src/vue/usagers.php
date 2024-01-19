@@ -112,7 +112,6 @@
                         }
                         echo "
                             <a href='detail_usager.php?id=$id' class = 'lien_usager'>".
-                            // ajouter le lien vers la page detail_usager quand la page sera faite
                                 "<div class='item_usager'>
                                     <img class='icone_liste_usager' src='img/$genderIcon' alt='icone d'un usager'/>
                                     <div>

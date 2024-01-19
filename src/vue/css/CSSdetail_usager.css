@@ -16,13 +16,13 @@
 .partie_rdv {
     margin: 2%;
     margin-top: 0;
-    width: 60%;
+    width: 100%;
 }
 
-.partie_usagers {
+.infousager {
     margin: 2%;
     margin-top: 0;
-    width: 100%;
+    width: 80%;
 }
 
 .titre2 {
@@ -44,7 +44,6 @@
     transition-duration: 0.4s;
     border: none;
     border-radius: 12px;
-    padding: 10% 10%;
     margin: 0.4% 1%;
 }
 
@@ -54,6 +53,10 @@
 
 .boutons_ajout input:hover{
     background-color: #6CA6CD;
+}
+
+.boutons_info {
+    padding : 10%;
 }
 
 /* CSS RDV */
@@ -106,95 +109,29 @@
     background-color: #6CA6CD;
 }
 
-.boutonsusager {
-    text-align: right;
-    display: block;
-}
-
-.boutonsusager a {
-    text-decoration: none;
-}
-
-.boutonsusager a img {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.boutonsusager a img:hover {
-    background-color: #6CA6CD;
-}
-
 /* CSS usagers */
-.partie_usagers .titre2 {
+.infousager {
     margin-left: 3%;
 }
 
-.box_usagers{
-    width: 100%;
+.box_info{
     margin: auto;
+    padding: 0.5% 2%;
     margin-left: 3%;
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
-.item_usager{
-    display: inline-block;
-    padding:1%;
-    margin:2%;
-    border-radius: 20px;
-}
-
-.lien_usager{
+.lienmedecinreferent {
     text-decoration: none;
     color: black;
+    border-radius: 20px;
+    padding: 0.5% 2%;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
 }
 
-.item_usager:hover {
+.lienmedecinreferent:hover {
     background-color: #6CA6CD;
-}
-
-.vide:hover {
-    background-color: white;
-}
-
-.icone_liste_usager{
-    max-height: 88px;
-}
-
-.nom p{
-    font-weight: bold;
-    text-align: center;
-    margin: 2%;
-}
-
-.bouton_assigner {
-    text-align: right;
-}
-
-.bouton_assigner input{
-    background-color: green;
-    font-size: 100%;
-    color: white;
-    cursor: pointer;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-    border: none;
-    border-radius: 12px;
-    padding: 5% 5%;
-    margin: 0.4% 1%;
-}
-
-.bouton_assigner input:hover{
-    background-color: #6CA6CD;
-}
-
-#combo_box {
-    width: 100%;
-    margin: 2%;
-    margin-left: 3%;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
 /* CSS Popup */
