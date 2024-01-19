@@ -74,3 +74,14 @@ header h1 {
 .retourHaut img:hover {
     background-color: lightgray;
 }
+
+.erreur {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+    border-radius: 10px;
+    color: #FF6347;
+    font-size: 150%;
+    font-family: 'consolas', sans-serif;
+}
