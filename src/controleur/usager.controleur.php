@@ -58,5 +58,9 @@ class Usager_controleur{
     public function supprimer_medecin_byUsagerId($idMedecin,$idUsager){
         return $this->daoMedecin->supprimer_medecin_referentByIdUsager($idMedecin,$idUsager);
     }
+
+    public function getListeRdv($idusager){
+        return $this->daoUsager->getListeRdv($idusager);
+    }
 }
 ?>
