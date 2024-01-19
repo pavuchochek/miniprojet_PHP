@@ -54,7 +54,6 @@ class Medecin_controleur{
         $medecin = $this->daoMedecin->getMedecinById($idMedecin);
         return $this->daoMedecin->liste_rdv_actuel($medecin);
     }
-
     public function rechercherUsagersMedecin($recherche, int $idMedecin) {
         $listeUsagers = $this->getListeUsagersMedecin($idMedecin);
         $resultats = array_filter($listeUsagers, function ($usager) use ($recherche) {
