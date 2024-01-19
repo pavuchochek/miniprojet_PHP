@@ -110,7 +110,10 @@ class Dao_Usager{
             'nsecu' => $nsecu,
         ));
         $data = $req->fetch();
-        return is_null($data);
+        if (!$data) {
+            return false;
+        }
+        return true;
     }
 
     //Supprime un usager

@@ -20,6 +20,7 @@
     $lieuNaissance=$_POST["lieuNaissance"];
     $Numero_Secu=$_POST["Numero_Secu"];
     $medecinReferent = isset($_POST["medecinReferent"]) ? intval($_POST["medecinReferent"]) : null;
+    $erreur = false;
     $erreur=$controleur->isNumeroSecuDejaUtilise($Numero_Secu);
     $dateActuelle = date('Y-m-d');
     if ($dateNaissance > $dateActuelle) {
@@ -28,8 +29,8 @@
         echo "<a href='/usagers.php'>Go back</a>";
         exit;
     }
-    if($erreur=true){
-        echo "Ce numero de securité est deja présent dans la base";
+    if($erreur==true){
+        echo "Ce numero de securité est deja présent dans la base ($Numero_Secu)";
         echo "<br>";
         echo "<a href='/usagers.php'>Go back</a>";
         exit;
@@ -39,6 +40,7 @@
             header('Location: /usagers.php');
         } catch (Exception $e) {
             echo 'erreur';
+            echo "<br>";
             echo "<a href='/usagers.php'>Go back</a>";
         }
     }
