@@ -3,7 +3,7 @@
 
     // Vérifie si l'utilisateur est déjà connecté, redirige vers la page d'accueil
     if (isset($_SESSION['utilisateur_connecte'])) {
-        header("Location: accueil.php");
+        header("Location: index.php");
         exit();
     }
 
