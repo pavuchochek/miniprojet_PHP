@@ -53,3 +53,35 @@ footer{
     padding-bottom: 0;
     margin-right: 1%;
 }
+
+/* CSS Popup */
+#popup_deconnexion {
+    display: none;
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    height: 14%;
+    overflow: auto;
+    background-color: #fefefe;
+    padding: 2%;
+    border: 1px solid #888;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+#popup_deconnexion a {
+    text-decoration: none;
+}
+
+#popup_deconnexion a:hover {
+    text-decoration: underline;
+}
+
+#popup_deconnexion_buttons {
+    display: flex;
+    justify-content: space-around;
+}

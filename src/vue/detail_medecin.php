@@ -182,10 +182,10 @@
                     </a>
                 </div>
             </div>
-            <div class="popup" id="popupMedecin">
-                <p id="popupMedecinNom"> </p>
+            <div class="popup" id="popupRdv">
+                <p id="popupRdvNom"> </p>
                 <div class="boutons_Popup">
-                    <input type="button" value="Annuler" id="Bouton_popup_annuler">
+                    <input type="button" value="Annuler" id="Bouton_popup_annuler_rdv">
                     <a href='#'>
                         <input type='button' value='Oui'>
                     </a>
@@ -212,8 +212,8 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            var popup = document.getElementById('popupusager');
-            popup.style.display = 'none';
+            var popupUsager = document.getElementById('popupusager');
+            popupUsager.style.display = 'none';
 
             var supprimerBtns = document.getElementsByClassName('supprimerusagerBtn');
 
@@ -225,7 +225,7 @@
 
                     var nomprenom = document.getElementById('popupusagerNom');
                     nomprenom.innerHTML = "Voulez-vous supprimer le patient " + prenom + ' ' + nom + " <br>ou lui enlever le médecin référent?";
-                    popup.style.display = 'block';
+                    popupUsager.style.display = 'block';
                     document.getElementById('Bouton_popup_annuler').setAttribute('data-prenom', prenom);
                     document.getElementById('Bouton_popup_annuler').setAttribute('data-nom', nom);
                     document.querySelector('#popupusager .boutons_Popup a#suppr').setAttribute('href', 'traitements/traitement_supprimer_usager.php?id='+this.getAttribute('data-id'));
@@ -234,7 +234,7 @@
             }
 
             document.getElementById('Bouton_popup_annuler').addEventListener('click', function() {
-                popup.style.display = 'none';
+                popupUsager.style.display = 'none';
                 var prenom = this.getAttribute('data-prenom');
                 var nom = this.getAttribute('data-nom');
             });
@@ -242,8 +242,8 @@
         });
         document.addEventListener('DOMContentLoaded', function() {
             var formulaireVisible = false;
-            var popup = document.getElementById('popupMedecin');
-            popup.style.display = 'none';
+            var popupRdv = document.getElementById('popupRdv');
+            popupRdv.style.display = 'none';
 
             var supprimerBtns = document.getElementsByClassName('supprimerRdvBtn');
             for (var i = 0; i < supprimerBtns.length; i++) {
@@ -255,16 +255,14 @@
                     var heureDebut = this.getAttribute('data-heure-debut');
                     var heureFin = this.getAttribute('data-heure-fin');
 
-                    var nomprenom = document.getElementById('popupMedecinNom');
+                    var nomprenom = document.getElementById('popupRdvNom');
                     nomprenom.innerHTML = "Voulez-vous supprimer le rendez-vous du " + date + ' de ' + heureDebut + ' à ' + heureFin + " ?";
-                    popup.style.display = 'block';
-                    document.querySelector('#popupMedecin .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_rdv.php?idusager='+this.getAttribute('data-usager')+'&idmedecin='+this.getAttribute('data-medecin')+'&date='+this.getAttribute('data-date')+'&heureDebut='+this.getAttribute('data-heure-debut')+'&heureFin='+this.getAttribute('data-heure-fin'));
+                    popupRdv.style.display = 'block';
+                    document.querySelector('#popupRdv .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_rdv.php?idusager='+this.getAttribute('data-usager')+'&idmedecin='+this.getAttribute('data-medecin')+'&date='+this.getAttribute('data-date')+'&heureDebut='+this.getAttribute('data-heure-debut')+'&heureFin='+this.getAttribute('data-heure-fin'));
                 });
             }
-            document.getElementById('Bouton_popup_annuler').addEventListener('click', function() {
-                popup.style.display = 'none';
-                var prenom = this.getAttribute('data-prenom');
-                var nom = this.getAttribute('data-nom');
+            document.getElementById('Bouton_popup_annuler_rdv').addEventListener('click', function() {
+                popupRdv.style.display = 'none';
             });
         });
     </script>
