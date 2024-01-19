@@ -20,14 +20,15 @@
     $lieuNaissance = $_POST["lieuNaissance"];
     $numeroSecu = $_POST["Numero_Secu"];
     $ancienSecu = $_POST["ancienSecu"];
+    $idUsager = $_POST["idUsager"];
     $medecinReferent = isset($_POST["medecinReferent"]) ? intval($_POST["medecinReferent"]) : null;
     //$erreur=$controleur->isNumeroSecuDejaUtilise($numeroSecu);
     $dateActuelle = date('Y-m-d');
     if ($dateNaissance > $dateActuelle) {
-        echo "La date de naissance ne peut pas être supérieure à la date actuelle.";
-        echo "<br>";
-        echo "<a href='/usagers.php'>Go back</a>";
-        exit;
+            session_start();
+            $_SESSION['erreur_message'] = "Date naissance non valable. Veuillez vérifier vos données.";
+            header("Location: ../modifier_usager.php?id=" . $idUsager);
+            exit();
     }
     /*if($erreur=true){
         echo "Ce numero de securité est deja present dans la base";
@@ -36,9 +37,12 @@
         exit;
     }else{*/
         
-        $idUsager = $_POST["idUsager"];
+        
         if($controleur->isMemePersonne($idUsager,$medecinReferent)){
-            echo "erreur,on ne peut pas set la meme personne pour medecin referent et usager";
+            session_start();
+            $_SESSION['erreur_message'] = "On ne peut pas set la meme personne pour medecin referent et usager";
+            header("Location: ../modifier_usager.php?id=" . $idUsager);
+            exit();
         }else{
         if($ancienSecu==$numeroSecu){
             $controleur->modifier_usager($idUsager, $nom, $prenom, $civilite, $adresse, $dateNaissance, $lieuNaissance, null, $medecinReferent);

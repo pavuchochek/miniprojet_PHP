@@ -25,7 +25,12 @@
 
     <body>
         <div class="body">
-
+        <?php
+            if (isset($_SESSION['erreur_message'])) {
+                echo "<p class='erreur'>" . $_SESSION['erreur_message'] . "</p>";
+                unset($_SESSION['erreur_message']); // Effacer le message après l'affichage
+            }
+        ?>
             <div id="formulaire" class="formulaire" style="display: block;">
                 <form id="usagerForm" method="post" action="traitements/traitement_modifier_usager.php" onsubmit="return Valide()">
                 <?php
