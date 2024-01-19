@@ -48,6 +48,7 @@
                 ?>
 
                     <input type="hidden" name="idUsager" value="<?php echo $idUsager; ?>">
+                    <input type="hidden" name="ancienSecu" value="<?php echo $numeroSecu; ?>">
 
                     <label for="prenom">Prénom :</label>
                     <input type="text" id="prenom" name="prenom" autocomplete="off" value="<?php echo $prenom; ?>">

@@ -19,6 +19,7 @@
     $dateNaissance = $_POST["dateNaissance"];
     $lieuNaissance = $_POST["lieuNaissance"];
     $numeroSecu = $_POST["Numero_Secu"];
+    $ancienSecu = $_POST["ancienSecu"];
     $medecinReferent = isset($_POST["medecinReferent"]) ? intval($_POST["medecinReferent"]) : null;
     //$erreur=$controleur->isNumeroSecuDejaUtilise($numeroSecu);
     $dateActuelle = date('Y-m-d');
