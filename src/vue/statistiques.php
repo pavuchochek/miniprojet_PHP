@@ -113,15 +113,17 @@
                             arsort($nbHeuresList);
 
                             foreach ($nbHeuresList as $idMedecin => $nbHeures) {
-                                $medecin = $controleur->getMedecinById($idMedecin);
-                                $prenom = $medecin->getPrenom();
-                                $nom = $medecin->getNom();
+                                if ($nbHeures != 0) {
+                                    $medecin = $controleur->getMedecinById($idMedecin);
+                                    $prenom = $medecin->getPrenom();
+                                    $nom = $medecin->getNom();
 
-                                echo "
-                                <tr>
-                                    <td>$nom $prenom</td>
-                                    <td>$nbHeures</td>
-                                </tr>";
+                                    echo "
+                                    <tr>
+                                        <td>$nom $prenom</td>
+                                        <td>$nbHeures</td>
+                                    </tr>";
+                                }
                             }
                         ?>
                     </tbody>
