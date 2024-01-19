@@ -71,6 +71,7 @@ footer{
     border: 1px solid #888;
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    font-size: large;
 }
 
 #popup_deconnexion a {
@@ -84,4 +85,21 @@ footer{
 #popup_deconnexion_buttons {
     display: flex;
     justify-content: space-around;
+}
+
+#popup_deconnexion_buttons button,
+#popup_deconnexion_buttons form input {
+    background-color: #87CEEB;
+    border : 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
+    font-size: 120%;
+    text-decoration: none;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+#popup_deconnexion_buttons button:hover,
+#popup_deconnexion_buttons form input:hover {
+    background-color: #6CA6CD;
 }
