@@ -24,15 +24,22 @@
     <?php include '../includes/header.php'; ?>
 
     <body>
-        <h1 class="titre">Usager :
-            <?php
+        <?php
             require('/app/src/controleur/usager.controleur.php');
             $controleur = new Usager_controleur();
             $idusager = $_GET['id'];
             $prenom = $controleur->getusagerById($idusager)->getPrenom();
             $nom = $controleur->getusagerById($idusager)->getNom();
-            echo $prenom . " " . $nom; ?>
-        </h1>
+            $adresse = $controleur->getusagerById($idusager)->getAdresse();
+            $date_naissance = $controleur->getusagerById($idusager)->getDateNaissance();
+            $lieu_naissance = $controleur->getusagerById($idusager)->getLieuNaissance();
+            $nsecu = $controleur->getusagerById($idusager)->getNsecuriteSociale();
+            $medecin = $controleur->getusagerById($idusager)->getMedecinReferent();
+            $civilite = $controleur->getusagerById($idusager)->getCivilite();
+            $date_naissance = date("d/m/Y", strtotime($date_naissance));
+            $date_naissance = str_replace('/', '-', $date_naissance);
+        ?>
+        <h1 class="titre">Usager :<?php echo $prenom . " " . $nom; ?> </h1>
         <div class="body">
             <div class="partie_rdv">
                 <div class = "titre2">
@@ -61,6 +68,7 @@
                                 $date = $value->getDateRdvString();
                                 $nom_usager = $value->getUsager()->getNom();
                                 $prenom_usager = $value->getUsager()->getPrenom();
+                                $idmedecin = $value->getMedecin()->getIdMedecin();
                                 $id_usager = $value->getUsager()->getIdUsager();
                                 $heure_fin = $value->getHeureFin();
                                 $heure_debut = $value->getHeureDebut();
@@ -75,10 +83,10 @@
                                         <p>Patient : $nom_usager $prenom_usager</p>
                                     </div>
                                     <div class='boutonsrdv'>
-                                        <a href='modifier_rdv.php?usager=$id_usager&usager=$idusager&date=$date_rdv&heure_debut=$heure_debut&heure_fin=$heure_fin'>
+                                        <a href='modifier_rdv.php?usager=$id_usager&medecin=$idmedecin&date=$date_rdv&heure_debut=$heure_debut&heure_fin=$heure_fin'>
                                             <img class='icone_modifier' src='img/icone_modifier.png' alt='icone modifier'/>".
                                         "</a>
-                                        <a href='#' class='supprimerRdvBtn' data-usager='$id_usager' data-usager='$idusager' data-date='$date_rdv' data-heure-debut='$heure_debut' data-heure-fin='$heure_fin'>
+                                        <a href='#' class='supprimerRdvBtn' data-usager='$id_usager' data-medecin='$idmedecin' data-date='$date_rdv' data-heure-debut='$heure_debut' data-heure-fin='$heure_fin'>
                                             <img class='icone_supprimer' src='img/icone_supprimer.png' alt='icone supprimer'/>".
                                         " </a>
                                     </div>
@@ -115,7 +123,7 @@
                 supprimerBtns[i].addEventListener('click', function(event) {
                     event.preventDefault();
                     var idUsager = this.getAttribute('data-usager');
-                    var idusager = this.getAttribute('data-usager');
+                    var idmedecin = this.getAttribute('data-medecin');
                     var date = this.getAttribute('data-date');
                     var heureDebut = this.getAttribute('data-heure-debut');
                     var heureFin = this.getAttribute('data-heure-fin');
@@ -123,7 +131,7 @@
                     var nomprenom = document.getElementById('popupRdvNom');
                     nomprenom.innerHTML = "Voulez-vous supprimer le rendez-vous du " + date + ' de ' + heureDebut + ' à ' + heureFin + " ?";
                     popupRdv.style.display = 'block';
-                    document.querySelector('#popupRdv .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_rdv.php?idusager='+this.getAttribute('data-usager')+'&idusager='+this.getAttribute('data-usager')+'&date='+this.getAttribute('data-date')+'&heureDebut='+this.getAttribute('data-heure-debut')+'&heureFin='+this.getAttribute('data-heure-fin'));
+                    document.querySelector('#popupRdv .boutons_Popup a').setAttribute('href', 'traitements/traitement_supprimer_rdv.php?idusager='+this.getAttribute('data-usager')+'&idmedecin='+this.getAttribute('data-medecin')+'&date='+this.getAttribute('data-date')+'&heureDebut='+this.getAttribute('data-heure-debut')+'&heureFin='+this.getAttribute('data-heure-fin'));
                 });
             }
             document.getElementById('Bouton_popup_annuler_rdv').addEventListener('click', function() {

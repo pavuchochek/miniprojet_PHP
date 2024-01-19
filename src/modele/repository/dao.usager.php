@@ -2,6 +2,7 @@
 include_once('/app/src/modele/repository/pdo.php');
 include_once('/app/src/controleur/medecin.controleur.php');
 include_once('/app/src/modele/classes/usagers.class.php');
+include_once('/app/src/modele/repository/dao.rdv.php');
 
 class Dao_Usager{
     

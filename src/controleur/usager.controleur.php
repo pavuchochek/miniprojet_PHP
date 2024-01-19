@@ -1,5 +1,6 @@
 <?php 
 require('/app/src/modele/repository/dao.usager.php');
+
 class Usager_controleur{
     private $daoUsager;
     private $daoMedecin;
