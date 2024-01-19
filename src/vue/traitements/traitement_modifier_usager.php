@@ -35,12 +35,18 @@
         echo "<a href='/usagers.php'>Go back</a>";
         exit;
     }else{*/
+        
         $idUsager = $_POST["idUsager"];
+        if($controleur->isMemePersonne($idUsager,$medecinReferent)){
+            echo "erreur,on ne peut pas set la meme personne pour medecin referent et usager";
+        }else{
         if($ancienSecu==$numeroSecu){
             $controleur->modifier_usager($idUsager, $nom, $prenom, $civilite, $adresse, $dateNaissance, $lieuNaissance, null, $medecinReferent);
         }else{
         $controleur->modifier_usager($idUsager, $nom, $prenom, $civilite, $adresse, $dateNaissance, $lieuNaissance, $numeroSecu, $medecinReferent);
         }
+        
         header('Location: /usagers.php');
+    }
     //}
 ?>

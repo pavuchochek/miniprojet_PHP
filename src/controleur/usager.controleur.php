@@ -49,6 +49,11 @@ class Usager_controleur{
     public function getUsagerById(int $id){
         return $this->daoUsager->getUsagerById($id);
     }
+    public function isMemePersonne($idUsager,$idMedecin){
+        $usager=$this->daoUsager->getUsagerById($idUsager);
+        $medecin=$this->daoMedecin->getMedecinById($idMedecin);
+        return($usager->getId()==$medecin->getId());
+    }
 
     public function getMedecinById(int $id){
         return $this->daoUsager->getMedecinById($id);
