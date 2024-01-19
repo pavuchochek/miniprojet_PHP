@@ -24,13 +24,13 @@
 
     <body>
         <div class="body">
-            <div id="formulaire" class="formulaire">
             <?php
             if (isset($_SESSION['erreur_message'])) {
-                echo "<p class='erreur'>" . $_SESSION['erreur_message'] . "</p>";
+                echo "<p class='erreur' id='erreur_rdv'>" . $_SESSION['erreur_message'] . "</p>";
                 unset($_SESSION['erreur_message']); // Effacer le message après l'affichage
             }
         ?>
+            <div id="formulaire" class="formulaire">
                 <form id="rdvForm" method="post" action="traitements/traitement_ajout_rdv.php" onsubmit="return Valide()">
                     
                     <label for="usager">Patient :</label>

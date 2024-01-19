@@ -9,10 +9,15 @@
     $heure_fin = $_POST["heure_fin"];
     $dayOfWeek = date('N', strtotime($date));
     $currentDate = date('Y-m-d');
-    
+    if($controleur->creneau_disponible($medecin,$patient,$date,$heure_debut,$heure_fin)){
+        session_start();
+        $_SESSION['erreur_message'] = "Le creneau pour ce medecin ou usager n'est pas disponible ";
+        header("Location: ../rdv.php?idmedecin=null");
+        exit();
+    }
     if ($date < $currentDate) {
         session_start();
-        $_SESSION['erreur_message'] = "La date est invalide, vous ne pouvez pas créer un rendez-vous qui est déjà passé.<br>Le".$date." est avant le ".$currentDate;
+        $_SESSION['erreur_message'] = "La date est invalide, vous ne pouvez pas créer un rendez-vous qui est déjà passé.<br>Le ".$date." est avant le ".$currentDate;
         header("Location: ../rdv.php?idmedecin=null");
         exit();
     }

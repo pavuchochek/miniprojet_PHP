@@ -73,5 +73,9 @@ class Rdv_controleur{
     public function liste_rdv_Actuels_date($date){
         return $this->daoRdv->liste_rdv_Actuels_date($date);
     }
+    public function creneau_disponible(int $idMedecin,int $idUsager,$date,$heureDebut,$heurefin){
+        $resultat=($this->daoRdv->creneauDisponibleMedecin($date,$heureDebut,$heurefin,$idMedecin))&&($this->daoRdv->creneauDisponibleUsager($date,$heureDebut,$heurefin,$idUsager));
+        return $resultat;
+    }
 }
 ?>
