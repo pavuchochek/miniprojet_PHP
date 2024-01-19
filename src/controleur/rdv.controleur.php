@@ -15,7 +15,11 @@ class Rdv_controleur{
     public function liste_rdv(){
         return $this->daoRdv->liste_rdv_Actuels();
     }
-
+    public function isMemePersonne($idUsager,$medecinReferent){
+        $usager=$this->daoUsager->getUsagerById($idUsager);
+        $medecin=$this->daoMedecin->getMedecinById($medecinReferent);
+        return($usager->getId()==$medecin->getId());
+    }
     public function creationRdv($idMedecin,$idUsager,$date,$heureDebut,$heurefin){
         $usager=$this->daoRdv->getUsagerById($idUsager);
         $medecin=$this->daoMedecin->getMedecinById($idMedecin);

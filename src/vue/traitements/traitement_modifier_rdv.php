@@ -22,6 +22,12 @@
         header("Location: ../modifier_rdv.php?usager=".$idUsager_ancien."&medecin=".$idMedecin_ancien."&date=".$date_ancienne."&heure_debut=".$heure_debut_ancienne."&heure_fin=".$heure_fin_ancienne);
         exit();
     }
+    if($controleur->isMemePersonne($idUsager,$idMedecin)){
+        session_start();
+        $_SESSION['erreur_message'] = "On ne peut pas set la meme personne pour un rdv";
+        header("Location: ../modifier_rdv.php?usager=".$idUsager_ancien."&medecin=".$idMedecin_ancien."&date=".$date_ancienne."&heure_debut=".$heure_debut_ancienne."&heure_fin=".$heure_fin_ancienne);
+        exit();
+    }
 
     if ($heure_debut > $heure_fin) {
         session_start();
