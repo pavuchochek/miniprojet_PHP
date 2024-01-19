@@ -29,10 +29,10 @@
             <div id="formulaire" class="formulaire" style="display: none;">
                 <form id="usagerForm" method="post" action="traitements/traitement_ajout_usager.php" onsubmit="return Valide()">
                     <label for="prenom">Prénom :</label>
-                    <input type="text" id="prenom" name="prenom" autocomplete="off">
+                    <input type="text" id="prenom" name="prenom" autocomplete="off" placeholder="Prénom">
 
                     <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="nom" autocomplete="off">
+                    <input type="text" id="nom" name="nom" autocomplete="off" placeholder="Nom">
 
                     <div style="display:block">
                         <label for="civilite">Civilité :</label>
@@ -43,18 +43,18 @@
                         </select>
 
                         <label for="dateNaissance">Date de naissance :</label>
-                        <input type="date" id="dateNaissance" name="dateNaissance" autocomplete="off">
+                        <input type="date" id="dateNaissance" name="dateNaissance" autocomplete="off" placeholder="Date de naissance">
                     </div>
 
                     <label for="Adresse">Adresse :</label>
-                    <input type="text" id="Adresse" name="Adresse" autocomplete="off">
+                    <input type="text" id="Adresse" name="Adresse" autocomplete="off" placeholder="Adresse">
 
 
                     <label for="lieuNaissance">Lieu de naissance :</label>
-                    <input type="text" id="lieuNaissance" name="lieuNaissance" autocomplete="off">
+                    <input type="text" id="lieuNaissance" name="lieuNaissance" autocomplete="off" placeholder="Lieu de naissance">
 
-                    <label for="Numero_Secu">Numéro de sécurité sociale :</label> <!-- Rajouter une vérif int(13) -->
-                    <input type="text" id="Numero_Secu" name="Numero_Secu" autocomplete="off">
+                    <label for="Numero_Secu">Numéro de sécurité sociale :</label>
+                    <input type="text" id="Numero_Secu" name="Numero_Secu" autocomplete="off" placeholder="Numéro de sécurité sociale">
 
                     <label for="medecinReferent">Médecin référent:</label>
                     <select id="medecinReferent" name="medecinReferent">
