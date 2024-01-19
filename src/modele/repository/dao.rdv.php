@@ -132,7 +132,7 @@ class Dao_Rdv{
 
     //Retourne la liste des futurs rdv d'un médecin
     public function liste_rdv_Actuels_medecinbyId(int $idMedecin){
-        $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE() AND Id_medecin = :id') ;
+        $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE() AND Id_medecin = :id order by Date_rdv,Heure_Debut);');
         $resRDV->execute(array(
             'id' => $idMedecin
         ));
@@ -146,7 +146,7 @@ class Dao_Rdv{
 
     //Retourne la liste des futurs rdv d'un usager
     public function liste_rdv_Actuels_usagerbyId(int $idUsager){
-        $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE() AND Id_Usager = :id') ;
+        $resRDV = $this->pdo->prepare('SELECT Id_Usager,Id_medecin,Date_rdv,Heure_Debut,Heure_Fin FROM Rdv WHERE Date_rdv>=CURDATE() AND Id_Usager = :id order by Date_rdv,Heure_Debut') ;
         $resRDV->execute(array(
             'id' => $idUsager
         ));

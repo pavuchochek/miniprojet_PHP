@@ -35,11 +35,20 @@
             $lieu_naissance = $controleur->getusagerById($idusager)->getLieuNaissance();
             $nsecu = $controleur->getusagerById($idusager)->getNsecuriteSociale();
             $medecin = $controleur->getusagerById($idusager)->getMedecinReferent();
+            if ($medecin !== null) {
+                $id_medecin = $medecin->getIdMedecin();
+                $prenom_medecin = $medecin->getPrenom();
+                $nom_medecin = $medecin->getNom();
+            } else {
+                $id_medecin = null;
+                $prenom_medecin = "aucun";
+                $nom_medecin = "médecin référent";
+            }
             $civilite = $controleur->getusagerById($idusager)->getCivilite();
             $date_naissance = date("d/m/Y", strtotime($date_naissance));
             $date_naissance = str_replace('/', '-', $date_naissance);
         ?>
-        <h1 class="titre">Usager :<?php echo $prenom . " " . $nom; ?> </h1>
+        <h1 class="titre">Usager : <?php echo $prenom . " " . $nom; ?> </h1>
         <div class="body">
             <div class="partie_rdv">
                 <div class = "titre2">
@@ -105,6 +114,23 @@
                         <input type='button' value='Oui'>
                     </a>
                 </div>
+            </div>
+            <div class="infousager">
+                <h1>Informations</h1>
+                <div class="boutons_ajout boutons_ajout_info">
+                    <a href="modifier_usager.php?id=<?php echo $idusager; ?>">
+                        <input type="button" value="Modifier les informations">
+                    </a>
+                </div>
+                <p><span class="titre_info">Nom :</span> <?php echo $nom; ?></p>
+                <p><span class="titre_info">Prénom :</span> <?php echo $prenom; ?></p>
+                <p><span class="titre_info">Adresse :</span> <?php echo $adresse; ?></p>
+                <p><span class="titre_info">Date de naissance :</span> <?php echo $date_naissance; ?></p>
+                <p><span class="titre_info">Lieu de naissance :</span> <?php echo $lieu_naissance; ?></p>
+                <p><span class="titre_info">Numéro de sécurité sociale :</span> <?php echo $nsecu; ?></p>
+                <p><span class="titre_info">Médecin référent :</span> <?php echo $prenom_medecin . " " . $nom_medecin; ?></p>
+                <p><span class="titre_info">Civilité :</span> <?php echo $civilite; ?></p>
+
             </div>
         </div>
     </body>
